@@ -8,45 +8,45 @@
 
 //-------------------------------------------- openCV
 #ifdef OF_ADDON_USING_OFXOPENCV
-	#include "ofxCvMain.h"
+#include "ofxCvMain.h"
 #endif
 
 //-------------------------------------------- dir list
 #ifdef OF_ADDON_USING_OFXDIRLIST
-	#include "ofxDirList.h"
+#include "ofxDirList.h"
 #endif
 
 //-------------------------------------------- vector math
 #ifdef OF_ADDON_USING_OFXVECTORMATH
-	#include "ofxVectorMath.h"
+#include "ofxVectorMath.h"
 #endif
 
 //-------------------------------------------- network
 #ifdef OF_ADDON_USING_OFXNETWORK
-	#include "ofxNetwork.h"
+#include "ofxNetwork.h"
 #endif
 
 //-------------------------------------------- vector graphics
 #ifdef OF_ADDON_USING_OFXVECTORGRAPHICS
-	#include "ofxVectorGraphics.h"
+#include "ofxVectorGraphics.h"
 #endif
 
 //-------------------------------------------- OSC
 #ifdef OF_ADDON_USING_OFXOSC
-	#include "ofxOsc.h"
+#include "ofxOsc.h"
 #endif
 
 //-------------------------------------------- ofthread
 #ifdef OF_ADDON_USING_OFXTHREAD
-	#include "ofxThread.h"
+#include "ofxThread.h"
 #endif
 
 //-------------------------------------------- ofXML
 #ifdef OF_ADDON_USING_OFXXMLSETTINGS
-	#include "ofxXmlSettings.h"
+#include "ofxXmlSettings.h"
 #endif
 
 //-------------------------------------------- NCore
 #ifdef OF_ADDON_USING_OFXNCORE
-	#include "ofxNCore.h"
+#include "ofxNCore.h"
 #endif
