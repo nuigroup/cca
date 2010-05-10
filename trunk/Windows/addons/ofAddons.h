@@ -45,3 +45,8 @@
 #ifdef OF_ADDON_USING_OFXXMLSETTINGS
 	#include "ofxXmlSettings.h"
 #endif
+
+//-------------------------------------------- NCore
+#ifdef OF_ADDON_USING_OFXNCORE
+	#include "ofxNCore.h"
+#endif

@@ -1,8 +1,15 @@
 #ifndef _TEST_APP
 #define _TEST_APP
 
+// if standalone mode/non-addon
+#define STANDALONE
 
+// main
 #include "ofMain.h"
+
+// addon
+#define OF_ADDON_USING_OFXNCORE
+#include "ofAddons.h"
 
 class testApp : public ofBaseApp{
 
@@ -18,6 +25,9 @@ class testApp : public ofBaseApp{
 		void mousePressed(int x, int y, int button);
 		void mouseReleased(int x, int y, int button);
 		void windowResized(int w, int h);
+
+	private:
+		ofxNCoreAudio cca;
 
 };
 
