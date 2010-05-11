@@ -1,5 +1,154 @@
 // !$*UTF8*$!
 {
+	587458B11199B5660077BE63 /* ofxNCoreAudio.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 3120}}";
+			sepNavSelRange = "{2345, 0}";
+			sepNavVisRange = "{1665, 1072}";
+		};
+	};
+	587458B21199B5660077BE63 /* ofxNCoreAudio.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {842, 1768}}";
+			sepNavSelRange = "{3662, 31}";
+			sepNavVisRange = "{3526, 233}";
+		};
+	};
+	587458B31199B5660077BE63 /* ofxNCore.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 494}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1119}";
+		};
+	};
+	5874596D1199B6700077BE63 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = E4B69E1F0A3A1BDC003C02F2 /* testApp.h */;
+	};
+	5874596E1199B6980077BE63 /* ofxNCoreAudio.cpp:124 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 587458B11199B5660077BE63 /* ofxNCoreAudio.cpp */;
+		functionName = "ofxNCoreAudio::_draw(ofEventArgs &e)";
+		hitCount = 1;
+		ignoreCount = 0;
+		lineNumber = 124;
+		location = "Community Core AudioDebug";
+		modificationTime = 295286428.50519;
+		originalNumberOfMultipleMatches = 1;
+		state = 1;
+	};
+	587459721199B69C0077BE63 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 587458B31199B5660077BE63 /* ofxNCore.h */;
+		name = "ofxNCore.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1119;
+		vrLoc = 0;
+	};
+	587459731199B69C0077BE63 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 587459741199B69C0077BE63 /* ofTrueTypeFont.cpp */;
+		name = "ofTrueTypeFont.cpp: 728";
+		rLen = 0;
+		rLoc = 22652;
+		rType = 0;
+		vrLen = 1311;
+		vrLoc = 22165;
+	};
+	587459741199B69C0077BE63 /* ofTrueTypeFont.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = ofTrueTypeFont.cpp;
+		path = /Users/jimbo/Documents/GSoC/src/CCA_trunk/OSX/libs/openFrameworks/graphics/ofTrueTypeFont.cpp;
+		sourceTree = "<absolute>";
+	};
+	587459751199B69C0077BE63 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 587458B21199B5660077BE63 /* ofxNCoreAudio.h */;
+		name = "ofxNCoreAudio.h: 18";
+		rLen = 0;
+		rLoc = 659;
+		rType = 0;
+		vrLen = 866;
+		vrLoc = 2660;
+	};
+	587459921199B7C80077BE63 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 587459931199B7C80077BE63 /* ofxNCoreAudio.cpp */;
+		rLen = 0;
+		rLoc = 2365;
+		rType = 0;
+	};
+	587459931199B7C80077BE63 /* ofxNCoreAudio.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = ofxNCoreAudio.cpp;
+		path = /Users/jimbo/Documents/GSoC/src/CCA_trunk/OSX/addons/ofxNCore/src/Modules/ofxNCoreAudio.cpp;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 3159}}";
+			sepNavSelRange = "{2345, 0}";
+			sepNavVisRange = "{1665, 1021}";
+		};
+	};
+	5874599F1199B7FB0077BE63 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 587458B11199B5660077BE63 /* ofxNCoreAudio.cpp */;
+		name = "ofxNCoreAudio.cpp: 63";
+		rLen = 0;
+		rLoc = 2345;
+		rType = 0;
+		vrLen = 1072;
+		vrLoc = 1665;
+	};
+	587459A01199B7FB0077BE63 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1F0A3A1BDC003C02F2 /* testApp.h */;
+		name = "testApp.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 565;
+		vrLoc = 0;
+	};
+	58BE05181199B81300DFD92C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 587459931199B7C80077BE63 /* ofxNCoreAudio.cpp */;
+		name = "ofxNCoreAudio.cpp: 63";
+		rLen = 0;
+		rLoc = 2345;
+		rType = 0;
+		vrLen = 1021;
+		vrLoc = 1665;
+	};
+	58BE051B1199B81300DFD92C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E4B69E1F0A3A1BDC003C02F2 /* testApp.h */;
+		name = "testApp.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 565;
+		vrLoc = 0;
+	};
+	58BE05261199B83800DFD92C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 587459931199B7C80077BE63 /* ofxNCoreAudio.cpp */;
+		name = "ofxNCoreAudio.cpp: 63";
+		rLen = 0;
+		rLoc = 2345;
+		rType = 0;
+		vrLen = 1021;
+		vrLoc = 1665;
+	};
 	58CF6E0A1193309D000EA22E /* Community Core Audio */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
@@ -16,6 +165,7 @@
 		dataTipSortType = 0;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
@@ -23,9 +173,13 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = "Community Core Audio";
+		savedGlobals = {
+		};
 		showTypeColumn = 0;
 		sourceDirectories = (
 		);
+		variableFormatDictionary = {
+		};
 	};
 	58CF6E30119330A0000EA22E /* Source Control */ = {
 		isa = PBXSourceControlManager;
@@ -33,7 +187,7 @@
 		isSCMEnabled = 0;
 		scmConfiguration = {
 			repositoryNamesForRoots = {
-				"" = "";
+				../../../.. = CCA_trunk;
 			};
 		};
 	};
@@ -45,6 +199,12 @@
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 58CF6E0A1193309D000EA22E /* Community Core Audio */;
 		activeTarget = E4B69B5A0A3A1756003C02F2 /* Community Core Audio */;
+		addToTargets = (
+			E4B69B5A0A3A1756003C02F2 /* Community Core Audio */,
+		);
+		breakpoints = (
+			5874596E1199B6980077BE63 /* ofxNCoreAudio.cpp:124 */,
+		);
 		codeSenseManager = 58CF6E31119330A0000EA22E /* Code sense */;
 		executables = (
 			58CF6E0A1193309D000EA22E /* Community Core Audio */,
@@ -55,9 +215,9 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					341,
+					833,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
@@ -77,10 +237,10 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					301,
+					793,
 					60,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 				);
@@ -94,8 +254,20 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 294858909;
-			PBXWorkspaceStateSaveDate = 294858909;
+			PBXPerProjectTemplateStateSaveDate = 295286801;
+			PBXWorkspaceStateSaveDate = 295286801;
+		};
+		perUserProjectItems = {
+			5874596D1199B6700077BE63 = 5874596D1199B6700077BE63 /* PBXBookmark */;
+			587459721199B69C0077BE63 = 587459721199B69C0077BE63 /* PBXTextBookmark */;
+			587459731199B69C0077BE63 = 587459731199B69C0077BE63 /* PBXTextBookmark */;
+			587459751199B69C0077BE63 = 587459751199B69C0077BE63 /* PBXTextBookmark */;
+			587459921199B7C80077BE63 = 587459921199B7C80077BE63 /* PBXTextBookmark */;
+			5874599F1199B7FB0077BE63 = 5874599F1199B7FB0077BE63 /* PBXTextBookmark */;
+			587459A01199B7FB0077BE63 = 587459A01199B7FB0077BE63 /* PBXTextBookmark */;
+			58BE05181199B81300DFD92C /* PBXTextBookmark */ = 58BE05181199B81300DFD92C /* PBXTextBookmark */;
+			58BE051B1199B81300DFD92C /* PBXTextBookmark */ = 58BE051B1199B81300DFD92C /* PBXTextBookmark */;
+			58BE05261199B83800DFD92C /* PBXTextBookmark */ = 58BE05261199B83800DFD92C /* PBXTextBookmark */;
 		};
 		sourceControlManager = 58CF6E30119330A0000EA22E /* Source Control */;
 		userBuildSettings = {
@@ -106,5 +278,13 @@
 		executables = (
 			58CF6E0A1193309D000EA22E /* Community Core Audio */,
 		);
+	};
+	E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 532}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 565}";
+			sepNavWindowFrame = "{{132, 118}, {1106, 660}}";
+		};
 	};
 }
