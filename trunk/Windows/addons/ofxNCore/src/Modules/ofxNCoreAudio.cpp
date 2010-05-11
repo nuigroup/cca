@@ -154,7 +154,7 @@ void ofxNCoreAudio::drawFullMode()
 
     ofSetColor(0x969696);
     bigvideo.drawString("Source", 168, 20);
-    bigvideo.drawString("Output", 509, 20);
+    bigvideo.drawString("Text", 509, 20);
 
     //draw link to CCA website
     ofSetColor(79, 79, 79);

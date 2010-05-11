@@ -42,7 +42,12 @@ class ofxNCoreAudio : public ofxGuiListener
 {
     // ofxGUI setup stuff
     enum
-    {		
+    {	
+        sourcePanel,
+        sourcePanel_record,
+        sourcePanel_readfile,
+        sourcePanel_playpause,
+        sourcePanel_stop,
     };
 
 public:

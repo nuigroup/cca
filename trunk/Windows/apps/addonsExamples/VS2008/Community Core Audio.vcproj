@@ -608,6 +608,14 @@
 							>
 						</File>
 						<File
+							RelativePath="..\..\..\addons\ofxNCore\src\Controls\ofxGuiSwitch.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\..\addons\ofxNCore\src\Controls\ofxGuiSwitch.h"
+							>
+						</File>
+						<File
 							RelativePath="..\..\..\addons\ofxNCore\src\Controls\ofxGuiTypes.h"
 							>
 						</File>

@@ -54,7 +54,7 @@ void ofxGui::update(int parameterId, int type, void* data, int length)
 
 void ofxGui::draw()
 {
-	if(mIsActive)
+    if(mIsActive)
 	{
 		ofEnableAlphaBlending();
 		
