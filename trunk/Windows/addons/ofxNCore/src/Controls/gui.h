@@ -32,6 +32,8 @@
 
 #include "../Modules/ofxNCoreAudio.h"
 
+#include <stdio.h>
+
 ofxNCoreAudio  *appPtr;
 
 void ofxNCoreAudio::setupControls()
@@ -75,7 +77,7 @@ void ofxNCoreAudio::setupControls()
 
     // Source Image
     ofxGuiPanel* srcPanel = controls->addPanel(appPtr->sourcePanel, "Source Audio", 41, 270, OFXGUI_PANEL_BORDER, OFXGUI_PANEL_SPACING);
-    srcPanel->addButton(appPtr->sourcePanel_record, "RECORD SOUND", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Trigger);
+    srcPanel->addButton(appPtr->sourcePanel_record, "RECORD SOUND", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
     srcPanel->addButton(appPtr->sourcePanel_readfile, "READ SOUND FILE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Trigger);
     srcPanel->addButton(appPtr->sourcePanel_playpause, "PLAY/PAUSE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Trigger);
     srcPanel->addButton(appPtr->sourcePanel_stop, "STOP", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Trigger);
@@ -101,6 +103,30 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
 {
 	switch(parameterId)
 	{
+    case sourcePanel_record:
+        if (bRecording) {
+            ofSoundStreamStop();
+            bRecording = false;
+            if (lastAudioSavename.length()>0) {
+                FILE* lastAudio_fp = fopen(lastAudioSavename.c_str(), "wb");
+                for (int i=0; i<audioBufSize; i++) {
+                    short f = short(audioBuf[i]);
+                    fwrite(&f, sizeof(short), 1, lastAudio_fp);
+                }
+                fclose(lastAudio_fp); 
+            }
+        }
+        else {
+            if (audioBuf!=NULL) {
+                delete[] audioBuf;
+                audioBuf = NULL;
+                audioBufSize = 0;
+            }
+            ofSoundStreamStart();
+            bRecording = true;
+        }
+        break;
+
 	default:
 		1;
 	}

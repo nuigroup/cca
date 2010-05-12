@@ -38,7 +38,7 @@
 // Our Addon
 #include "ofxNCore.h"
 
-class ofxNCoreAudio : public ofxGuiListener
+class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
 {
     // ofxGUI setup stuff
     enum
@@ -61,10 +61,18 @@ public:
         ofAddListener(ofEvents.update, this, &ofxNCoreAudio::_update);
         ofAddListener(ofEvents.draw, this, &ofxNCoreAudio::_draw);
         ofAddListener(ofEvents.exit, this, &ofxNCoreAudio::_exit);
+
+        audioBuf = NULL;
+        audioBufSize = 0;
+        bRecording = false;
     }
 
     ~ofxNCoreAudio()
     {		
+        if (audioBuf!=NULL) {
+            delete[] audioBuf;
+            audioBuf = NULL;
+        }
     }
 
     /****************************************************************
@@ -81,6 +89,8 @@ public:
     void _mouseReleased(ofMouseEventArgs &e);
     // Key Events
     void _keyPressed(ofKeyEventArgs &e);
+    // Audio Receive Event
+    void audioReceived( float * input, int bufferSize, int nChannels );
 
     // GUI
     void setupControls();
@@ -91,7 +101,7 @@ public:
     void drawMiniMode();
     void drawFullMode();	
 
-    //Load/save settings
+    //  Load/save settings
     void loadXMLSettings();
     void saveSettings();
 
@@ -100,8 +110,8 @@ public:
     *****************************************************************/
     int					winWidth;
     int					winHeight;
-
     bool  				bMiniMode;
+    int                 maxAudioSize;
     /****************************************************
     *            End config.xml variables
     *****************************************************/
@@ -123,6 +133,15 @@ private:
     bool				showConfiguration;
     bool				bShowInterface;
     bool  				bFullscreen;
+
+    // Sound Record/Play
+    float *             audioBuf;
+    int                 audioBufSize;
+    bool                bRecording;
+
+    // Log
+    string              lastAudioSavename;
+
 };
 
 #endif

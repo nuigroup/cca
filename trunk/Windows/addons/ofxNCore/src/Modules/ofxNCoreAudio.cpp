@@ -56,6 +56,10 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     controls = ofxGui::Instance(this);
     setupControls();
 
+    // Setup audio input
+    ofSoundStreamSetup(0, 1, this, 16000, 256, 2);
+    ofSoundStreamStop();
+
     /*****************************************************************************************************
     * Startup Modes
     ******************************************************************************************************/
@@ -98,6 +102,12 @@ void ofxNCoreAudio::loadXMLSettings()
 
     // MODES
     bMiniMode                   = XML.getValue("CONFIG:BOOLEAN:MINIMODE", 0);
+
+    // Memory
+    maxAudioSize                = XML.getValue("CONFIG:MEMORY:MAXAUDIOSIZE", 102400);
+
+    // Logs
+    lastAudioSavename           = XML.getValue("CONFIG:LOGS:LASTAUDIOFILENAME", "");
     // --------------------------------------------------------------
     //   END XML SETUP
 }
@@ -156,7 +166,17 @@ void ofxNCoreAudio::drawFullMode()
     bigvideo.drawString("Source", 168, 20);
     bigvideo.drawString("Text", 509, 20);
 
-    //draw link to CCA website
+    // Draw input waveform
+    ofSetColor(0x333333);
+    ofRect(100,100,256,200);
+    ofSetColor(0xFFFFFF);
+    if (audioBufSize>=256) {
+        for (int i = audioBufSize-256; i < audioBufSize; i++){
+            ofLine(600+i,200,600+i,200+audioBuf[i]*100.0f);
+        }
+    }
+
+    // Draw link to CCA website
     ofSetColor(79, 79, 79);
     ofFill();
     ofRect(721, 584, 228, 16);
@@ -234,6 +254,23 @@ void ofxNCoreAudio::_mouseReleased(ofMouseEventArgs &e)
 {
     if (showConfiguration)
         controls->mouseReleased(e.x, e.y, 0); // guilistener
+}
+
+void ofxNCoreAudio::audioReceived( float * input, int bufferSize, int nChannels )
+{
+    if (audioBuf==NULL) {
+        audioBuf = new float[maxAudioSize];
+        audioBufSize = 0;
+    }
+    for (int i=0; i<bufferSize; i++) {
+        if (audioBufSize>=maxAudioSize) {
+            printf("Sound is too long. Try set MAXAUDIOSIZE in config.xml.");
+            ofSoundStreamStop();
+        }
+        else {
+            audioBuf[audioBufSize++] = input[i];
+        }
+    }
 }
 
 /*****************************************************************************
