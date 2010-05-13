@@ -77,10 +77,10 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
 
 #ifdef TARGET_WIN32
     // get rid of the console window
-    FreeConsole();
+    // FreeConsole();
 #endif
 
-    printf("Community Core Vision is setup!\n\n");
+    printf("Community Core Audio is setup!\n\n");
 }
 
 /****************************************************************
@@ -168,11 +168,11 @@ void ofxNCoreAudio::drawFullMode()
 
     // Draw input waveform
     ofSetColor(0x333333);
-    ofRect(100,100,256,200);
-    ofSetColor(0xFFFFFF);
-    if (audioBufSize>=256) {
-        for (int i = audioBufSize-256; i < audioBufSize; i++){
-            ofLine(600+i,200,600+i,200+audioBuf[i]*100.0f);
+    ofRect(40, 41, 320, 229);
+    ofSetColor(0x73BA51);
+    if (audioBufSize>320) {
+        for (int i = 0; i < 320; i++){
+            ofLine(40+i,156,41+i,156+audioBuf[audioBufSize-320+i]*100.0f);
         }
     }
 
@@ -248,6 +248,8 @@ void ofxNCoreAudio::_mousePressed(ofMouseEventArgs &e)
         controls->mousePressed(e.x, e.y, e.button); // guilistener
         if (e.x > 722 && e.y > 586){ofLaunchBrowser("http://nuicode.com/projects/cca-alpha");}
     }
+
+    printf("Mouse pressed at x=%d, y=%d\n", e.x, e.y);
 }
 
 void ofxNCoreAudio::_mouseReleased(ofMouseEventArgs &e)
@@ -257,7 +259,7 @@ void ofxNCoreAudio::_mouseReleased(ofMouseEventArgs &e)
 }
 
 void ofxNCoreAudio::audioReceived( float * input, int bufferSize, int nChannels )
-{
+{    
     if (audioBuf==NULL) {
         audioBuf = new float[maxAudioSize];
         audioBufSize = 0;

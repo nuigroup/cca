@@ -32,8 +32,6 @@
 
 #include "../Modules/ofxNCoreAudio.h"
 
-#include <stdio.h>
-
 ofxNCoreAudio  *appPtr;
 
 void ofxNCoreAudio::setupControls()
