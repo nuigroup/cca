@@ -249,7 +249,7 @@ void ofxNCoreAudio::_mousePressed(ofMouseEventArgs &e)
         if (e.x > 722 && e.y > 586){ofLaunchBrowser("http://nuicode.com/projects/cca-alpha");}
     }
 
-    printf("Mouse pressed at x=%d, y=%d\n", e.x, e.y);
+    // printf("Mouse pressed at x=%d, y=%d\n", e.x, e.y);
 }
 
 void ofxNCoreAudio::_mouseReleased(ofMouseEventArgs &e)
@@ -271,6 +271,27 @@ void ofxNCoreAudio::audioReceived( float * input, int bufferSize, int nChannels 
         }
         else {
             audioBuf[audioBufSize++] = input[i];
+        }
+    }
+}
+
+/*****************************************************************************
+* Record 
+*****************************************************************************/
+void ofxNCoreAudio::finishRecord()
+{
+    ofSoundStreamStop();
+    if (lastAudioSavename.length()>0) {
+        FILE* lastAudio_fp = fopen(lastAudioSavename.c_str(), "wb");
+        if (lastAudio_fp==NULL) {
+            printf("Open file %s failed.\n", lastAudioSavename.c_str());
+        }
+        else {
+            for (int i=0; i<audioBufSize; i++) {
+                short f = short(audioBuf[i]);
+                fwrite(&f, sizeof(short), 1, lastAudio_fp);
+            }
+            fclose(lastAudio_fp); 
         }
     }
 }

@@ -103,16 +103,8 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
 	{
     case sourcePanel_record:
         if (bRecording) {
-            ofSoundStreamStop();
             bRecording = false;
-            if (lastAudioSavename.length()>0) {
-                FILE* lastAudio_fp = fopen(lastAudioSavename.c_str(), "wb");
-                for (int i=0; i<audioBufSize; i++) {
-                    short f = short(audioBuf[i]);
-                    fwrite(&f, sizeof(short), 1, lastAudio_fp);
-                }
-                fclose(lastAudio_fp); 
-            }
+            finishRecord();
         }
         else {
             if (audioBuf!=NULL) {
@@ -125,6 +117,15 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
         }
         break;
 
+    case sourcePanel_stop:
+        if (bRecording) {            
+            bRecording = false;
+            finishRecord();
+
+            // Turn off the record button;
+            bool setBool = false;
+            controls->update(sourcePanel_record, kofxGui_Set_Bool, &setBool, sizeof(bool));
+        }
 	default:
 		1;
 	}

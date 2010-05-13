@@ -138,6 +138,7 @@ private:
     float *             audioBuf;
     int                 audioBufSize;
     bool                bRecording;
+    void                finishRecord();
 
     // Log
     string              lastAudioSavename;
