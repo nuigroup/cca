@@ -500,10 +500,6 @@
 						Name="Controls"
 						>
 						<File
-							RelativePath="..\..\..\addons\ofxNCore\src\Controls\gui.h"
-							>
-						</File>
-						<File
 							RelativePath="..\..\..\addons\ofxNCore\src\Controls\ofxGui.cpp"
 							>
 						</File>

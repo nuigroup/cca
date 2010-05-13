@@ -53,6 +53,7 @@ class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
 public:
     ofxNCoreAudio()
     {
+        // Assign listeners
         ofAddListener(ofEvents.mousePressed, this, &ofxNCoreAudio::_mousePressed);
         ofAddListener(ofEvents.mouseDragged, this, &ofxNCoreAudio::_mouseDragged);
         ofAddListener(ofEvents.mouseReleased, this, &ofxNCoreAudio::_mouseReleased);
@@ -62,9 +63,13 @@ public:
         ofAddListener(ofEvents.draw, this, &ofxNCoreAudio::_draw);
         ofAddListener(ofEvents.exit, this, &ofxNCoreAudio::_exit);
 
+        // Variables for Recording and Playings
         audioBuf = NULL;
         audioBufSize = 0;
+        curPlayPoint = 0;
         bRecording = false;
+        bPlaying = false;
+        bPaused = false;
     }
 
     ~ofxNCoreAudio()
@@ -89,8 +94,10 @@ public:
     void _mouseReleased(ofMouseEventArgs &e);
     // Key Events
     void _keyPressed(ofKeyEventArgs &e);
-    // Audio Receive Event
+
+    // Audio Receive/Requeste Event
     void audioReceived( float * input, int bufferSize, int nChannels );
+    void audioRequested(float * output, int bufferSize, int nChannels);
 
     // GUI
     void setupControls();
@@ -137,7 +144,10 @@ private:
     // Sound Record/Play
     float *             audioBuf;
     int                 audioBufSize;
+    int                 curPlayPoint;
     bool                bRecording;
+    bool                bPlaying;
+    bool                bPaused;
     void                finishRecord();
 
     // Log
