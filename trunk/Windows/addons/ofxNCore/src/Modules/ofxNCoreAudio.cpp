@@ -72,7 +72,9 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
 
 #ifdef TARGET_WIN32
     // get rid of the console window
-    // FreeConsole();
+#ifndef _DEBUG
+    FreeConsole();
+#endif
 #endif
 
     printf("Community Core Audio is setup!\n\n");
@@ -119,6 +121,25 @@ void ofxNCoreAudio::saveSettings()
 *****************************************************************************/
 void ofxNCoreAudio::_update(ofEventArgs &e)
 {
+    // recording auto stop
+    if (bRecording && audioBufSize>=maxAudioSize) {
+        printf("Sound is too long. Try to set MAXAUDIOSIZE in config.xml.");
+        finishRecord();
+
+        bool setBool = false;
+        controls->update(sourcePanel_record, kofxGui_Set_Bool, &setBool, sizeof(bool));
+        bRecording = false;
+    }
+    
+    // playing auto stop
+    if (bPlaying && audioBufSize-curPlayPoint < 256) {
+        curPlayPoint = 0;
+        ofSoundStreamClose();
+        bPlaying = false;
+
+        bool setBool = false;
+        controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
+    }
 }
 
 /******************************************************************************
@@ -261,31 +282,20 @@ void ofxNCoreAudio::audioReceived( float * input, int bufferSize, int nChannels 
         audioBuf = new float[maxAudioSize];
         audioBufSize = 0;
     }
-    for (int i=0; i<bufferSize; i++) {
-        if (audioBufSize>=maxAudioSize) {
-            printf("Sound is too long. Try set MAXAUDIOSIZE in config.xml.");
-            ofSoundStreamStop();
-        }
-        else {
-            audioBuf[audioBufSize++] = input[i];
-        }
+    for (int i=0; i<bufferSize; i++) {  
+        audioBuf[audioBufSize++] = input[i];
     }
 }
 
 void ofxNCoreAudio::audioRequested(float * output, int bufferSize, int nChannels)
 {
-    /*if (audioBufSize-curPlayPoint < bufferSize) {
-        ofSoundStreamStop();
-        return;
-    }*/
-    
     float pan = 0.5f;
     float leftScale = 1 - pan;
     float rightScale = pan;
 
     for (int i=0; i<bufferSize; i++) {
-        output[i*nChannels    ] = /*audioBuf[curPlayPoint]*/ ofRandomf() * leftScale;
-        output[i*nChannels + 1] = /*audioBuf[curPlayPoint]*/ ofRandomf() * rightScale;
+        output[i*nChannels    ] = audioBuf[curPlayPoint] * leftScale;
+        output[i*nChannels + 1] = audioBuf[curPlayPoint] * rightScale;
         curPlayPoint++;
     }
 
@@ -444,10 +454,16 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
                 bPaused = true;
             }
         }
-        else { 
-            ofSoundStreamSetup(2, 0, this, 16000, 256, 4);
-            bPlaying = true;
-            bPaused = false;
+        else {
+            if (audioBufSize<256) {
+                bool setBool = false;
+                controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
+            }
+            else {
+                ofSoundStreamSetup(2, 0, this, 16000, 256, 4);
+                bPlaying = true;
+                bPaused = false;
+            }
         }
         break;
     default:
