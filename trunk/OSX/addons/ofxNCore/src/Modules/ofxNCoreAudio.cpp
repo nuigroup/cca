@@ -28,7 +28,6 @@
 ***************************************************************************/
 
 #include "ofxNCoreAudio.h"
-#include "../Controls/gui.h"
 
 /******************************************************************************
 * The setup function is run once to perform initializations in the application
@@ -54,14 +53,14 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
 
     // GUI Controls
     controls = ofxGui::Instance(this);
-    setupControls();
+    setupControls();    
 
     /*****************************************************************************************************
     * Startup Modes
     ******************************************************************************************************/
-    showConfiguration = true;
-	if (bMiniMode)
+    if (bMiniMode)
     {
+        showConfiguration = true;
         bShowInterface = false;
         printf("Starting in Mini Mode...\n\n");
         ofSetWindowShape(190, 200); // minimized size
@@ -73,10 +72,12 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
 
 #ifdef TARGET_WIN32
     // get rid of the console window
+#ifndef _DEBUG
     FreeConsole();
 #endif
+#endif
 
-    printf("Community Core Vision is setup!\n\n");
+    printf("Community Core Audio is setup!\n\n");
 }
 
 /****************************************************************
@@ -98,6 +99,12 @@ void ofxNCoreAudio::loadXMLSettings()
 
     // MODES
     bMiniMode                   = XML.getValue("CONFIG:BOOLEAN:MINIMODE", 0);
+
+    // Memory
+    maxAudioSize                = XML.getValue("CONFIG:MEMORY:MAXAUDIOSIZE", 102400);
+
+    // Logs
+    lastAudioSavename           = XML.getValue("CONFIG:LOGS:LASTAUDIOFILENAME", "");
     // --------------------------------------------------------------
     //   END XML SETUP
 }
@@ -114,6 +121,25 @@ void ofxNCoreAudio::saveSettings()
 *****************************************************************************/
 void ofxNCoreAudio::_update(ofEventArgs &e)
 {
+    // recording auto stop
+    if (bRecording && audioBufSize>=maxAudioSize) {
+        printf("Sound is too long. Try to set MAXAUDIOSIZE in config.xml.");
+        finishRecord();
+
+        bool setBool = false;
+        controls->update(sourcePanel_record, kofxGui_Set_Bool, &setBool, sizeof(bool));
+        bRecording = false;
+    }
+    
+    // playing auto stop
+    if (bPlaying && audioBufSize-curPlayPoint < 256) {
+        curPlayPoint = 0;
+        ofSoundStreamClose();
+        bPlaying = false;
+
+        bool setBool = false;
+        controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
+    }
 }
 
 /******************************************************************************
@@ -156,7 +182,19 @@ void ofxNCoreAudio::drawFullMode()
     bigvideo.drawString("Source", 168, 20);
     bigvideo.drawString("Text", 509, 20);
 
-    //draw link to CCA website
+    // Draw input waveform
+    ofSetColor(0x333333);
+    ofRect(40, 41, 320, 229);
+    ofSetColor(0x73BA51);
+    if (bRecording) {
+        if (audioBufSize>320) {
+            for (int i = 0; i < 320; i++){
+                ofLine(40+i,156,41+i,156+audioBuf[audioBufSize-320+i]*100.0f);
+            }
+        }
+    }
+
+    // Draw link to CCA website
     ofSetColor(79, 79, 79);
     ofFill();
     ofRect(721, 584, 228, 16);
@@ -228,12 +266,60 @@ void ofxNCoreAudio::_mousePressed(ofMouseEventArgs &e)
         controls->mousePressed(e.x, e.y, e.button); // guilistener
         if (e.x > 722 && e.y > 586){ofLaunchBrowser("http://nuicode.com/projects/cca-alpha");}
     }
+
+    // printf("Mouse pressed at x=%d, y=%d\n", e.x, e.y);
 }
 
 void ofxNCoreAudio::_mouseReleased(ofMouseEventArgs &e)
 {
     if (showConfiguration)
         controls->mouseReleased(e.x, e.y, 0); // guilistener
+}
+
+void ofxNCoreAudio::audioReceived( float * input, int bufferSize, int nChannels )
+{    
+    if (audioBuf==NULL) {
+        audioBuf = new float[maxAudioSize];
+        audioBufSize = 0;
+    }
+    for (int i=0; i<bufferSize; i++) {  
+        audioBuf[audioBufSize++] = input[i];
+    }
+}
+
+void ofxNCoreAudio::audioRequested(float * output, int bufferSize, int nChannels)
+{
+    float pan = 0.5f;
+    float leftScale = 1 - pan;
+    float rightScale = pan;
+
+    for (int i=0; i<bufferSize; i++) {
+        output[i*nChannels    ] = audioBuf[curPlayPoint] * leftScale;
+        output[i*nChannels + 1] = audioBuf[curPlayPoint] * rightScale;
+        curPlayPoint++;
+    }
+
+}
+
+/*****************************************************************************
+* Record 
+*****************************************************************************/
+void ofxNCoreAudio::finishRecord()
+{
+    ofSoundStreamClose();
+    if (lastAudioSavename.length()>0) {
+        FILE* lastAudio_fp = fopen(lastAudioSavename.c_str(), "wb");
+        if (lastAudio_fp==NULL) {
+            printf("Open file %s failed.\n", lastAudioSavename.c_str());
+        }
+        else {
+            for (int i=0; i<audioBufSize; i++) {
+                short f = short(audioBuf[i]);
+                fwrite(&f, sizeof(short), 1, lastAudio_fp);
+            }
+            fclose(lastAudio_fp); 
+        }
+    }
 }
 
 /*****************************************************************************
@@ -247,3 +333,140 @@ void ofxNCoreAudio::_exit(ofEventArgs &e)
     printf("CCA module has exited!\n");
 }
 
+/*****************************************************************************
+* GUI
+*****************************************************************************/
+void ofxNCoreAudio::setupControls()
+{
+    ofxNCoreAudio  *appPtr = this;
+
+    // panel border color
+    controls->mGlobals->mBorderColor.r = 0;
+    controls->mGlobals->mBorderColor.g = 0;
+    controls->mGlobals->mBorderColor.b = 0;
+    controls->mGlobals->mBorderColor.a = .3;
+    // panel color
+    controls->mGlobals->mCoverColor.r = 1;
+    controls->mGlobals->mCoverColor.g = 1;
+    controls->mGlobals->mCoverColor.b = 1;
+    controls->mGlobals->mCoverColor.a = .4;
+    // control outline color
+    controls->mGlobals->mFrameColor.r = 0;
+    controls->mGlobals->mFrameColor.g = 0;
+    controls->mGlobals->mFrameColor.b = 0;
+    controls->mGlobals->mFrameColor.a = .3;
+    // text color
+    controls->mGlobals->mTextColor.r = 0;
+    controls->mGlobals->mTextColor.g = 0;
+    controls->mGlobals->mTextColor.b = 0;
+    controls->mGlobals->mTextColor.a = 1;
+    // button color
+    controls->mGlobals->mButtonColor.r = 1;
+    controls->mGlobals->mButtonColor.g = 0;
+    controls->mGlobals->mButtonColor.b = 0;
+    controls->mGlobals->mButtonColor.a = .8;
+    // slider tip color
+    controls->mGlobals->mHandleColor.r = 0;
+    controls->mGlobals->mHandleColor.g = 0;
+    controls->mGlobals->mHandleColor.b = 0;
+    // slider color
+    controls->mGlobals->mSliderColor.r = 1;
+    controls->mGlobals->mSliderColor.g = 0;
+    controls->mGlobals->mSliderColor.b = 0;
+    controls->mGlobals->mSliderColor.a = .8;
+
+    // Source Image
+    ofxGuiPanel* srcPanel = controls->addPanel(appPtr->sourcePanel, "Source Audio", 41, 270, OFXGUI_PANEL_BORDER, OFXGUI_PANEL_SPACING);
+    srcPanel->addButton(appPtr->sourcePanel_record, "RECORD SOUND", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
+    srcPanel->addButton(appPtr->sourcePanel_readfile, "READ SOUND FILE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Trigger);
+    srcPanel->addButton(appPtr->sourcePanel_playpause, "PLAY/PAUSE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
+    srcPanel->addButton(appPtr->sourcePanel_stop, "STOP", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Trigger);
+    srcPanel->mObjHeight = 85;
+    srcPanel->mObjWidth = 319;
+    srcPanel->mObjects[0]->mObjY = 42;
+    srcPanel->mObjects[1]->mObjX = 130;
+    srcPanel->mObjects[1]->mObjY = 42;
+    srcPanel->mObjects[2]->mObjX = 130;
+    srcPanel->mObjects[2]->mObjY = 65;
+    srcPanel->mObjects[3]->mObjY = 65;
+
+    srcPanel->adjustToNewContent(100, 0);
+
+    // do update while inactive
+    controls->forceUpdate(false);
+    controls->activate(true);
+
+}
+
+void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length)
+{
+    switch(parameterId)
+    {
+    case sourcePanel_record:
+        if (bRecording) {
+            finishRecord();
+            bRecording = false;            
+        }
+        else {
+            if (audioBuf!=NULL) {
+                delete[] audioBuf;
+                audioBuf = NULL;
+                audioBufSize = 0;
+            }
+            ofSoundStreamSetup(0, 1, this, 16000, 256, 2);
+            bRecording = true;
+        }
+        break;
+
+    case sourcePanel_stop:
+        if (bRecording) {            
+            finishRecord();
+            bRecording = false;  
+
+            bool setBool = false;
+            controls->update(sourcePanel_record, kofxGui_Set_Bool, &setBool, sizeof(bool));
+        }
+        if (bPlaying) {
+            curPlayPoint = 0;
+            ofSoundStreamClose();
+            bPlaying = false;
+
+            bool setBool = false;
+            controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
+        }
+        break;
+    case sourcePanel_playpause:
+        if (bRecording) {
+            finishRecord();
+            bRecording = false;            
+
+            bool setBool = false;
+            controls->update(sourcePanel_record, kofxGui_Set_Bool, &setBool, sizeof(bool));
+        }
+
+        if (bPlaying) {            
+            if (bPaused) {
+                ofSoundStreamStart();
+                bPaused = false;
+            }
+            else {
+                ofSoundStreamStop();
+                bPaused = true;
+            }
+        }
+        else {
+            if (audioBufSize<256) {
+                bool setBool = false;
+                controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
+            }
+            else {
+                ofSoundStreamSetup(2, 0, this, 16000, 256, 4);
+                bPlaying = true;
+                bPaused = false;
+            }
+        }
+        break;
+    default:
+        1;
+    }
+}
