@@ -38,8 +38,6 @@
 // Our Addon
 #include "ofxNCore.h"
 
-#define SAMEPLERATE 16000
-
 class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
 {
     // ofxGUI setup stuff
@@ -118,6 +116,7 @@ private:
     bool  				bFullscreen;
 
     // Sound Record/Play
+    int                 SampleRate;
     float *             audioBuf;
     int                 audioBufSize;
     int                 curPlayPoint;

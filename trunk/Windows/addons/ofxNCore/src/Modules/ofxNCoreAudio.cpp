@@ -124,14 +124,17 @@ void ofxNCoreAudio::loadXMLSettings()
     // --------------------------------------------------------------
     //   START BINDING XML TO VARS
     // --------------------------------------------------------------
-    winWidth					= XML.getValue("CONFIG:WINDOW:WIDTH", 950);
-    winHeight					= XML.getValue("CONFIG:WINDOW:HEIGHT", 600);	
+    winWidth                    = XML.getValue("CONFIG:WINDOW:WIDTH", 950);
+    winHeight                   = XML.getValue("CONFIG:WINDOW:HEIGHT", 600);	
 
     // MODES
     bMiniMode                   = XML.getValue("CONFIG:BOOLEAN:MINIMODE", 0);
 
     // Memory
     maxAudioSize                = XML.getValue("CONFIG:MEMORY:MAXAUDIOSIZE", 102400);
+
+    // Formats
+    SampleRate                  = XML.getValue("CONFIG:FORMAT:SAMPLERATE", 16000);
 
     // Logs
     lastAudioSavename           = XML.getValue("CONFIG:LOGS:LASTAUDIOFILENAME", "");
@@ -368,7 +371,7 @@ void ofxNCoreAudio::finishRecord()
         }
         else {
             for (int i=0; i<audioBufSize; i++) {
-                short f = short(audioBuf[i]);
+                short f = short(audioBuf[i] * 32767.5 - 0.5);
                 fwrite(&f, sizeof(short), 1, lastAudio_fp);
             }
             fclose(lastAudio_fp); 
@@ -467,7 +470,7 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
                 audioBuf = NULL;
                 audioBufSize = 0;
             }
-            ofSoundStreamSetup(0, 1, this, SAMEPLERATE, AUDIO_SEGBUF_SIZE, 2);
+            ofSoundStreamSetup(0, 1, this, SampleRate, AUDIO_SEGBUF_SIZE, 2);
             bRecording = true;
         }
         break;
@@ -514,7 +517,7 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
                 controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
             }
             else {
-                ofSoundStreamSetup(2, 0, this, SAMEPLERATE, AUDIO_SEGBUF_SIZE, 4);
+                ofSoundStreamSetup(2, 0, this, SampleRate, AUDIO_SEGBUF_SIZE, 4);
                 bPlaying = true;
                 bPaused = false;
             }
