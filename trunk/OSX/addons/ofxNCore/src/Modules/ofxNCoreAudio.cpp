@@ -20,10 +20,10 @@
 * GNU General Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Community Core Audio.  If not, see <http:// www.gnu.org/licenses/>.
+* with Community Core Audio.  If not, see <http://www.gnu.org/licenses/>.
 *
 *
-* Web: http:// nuicode.com/projects/cca-alpha
+* Web: http://nuicode.com/projects/cca-alpha
 *
 ***************************************************************************/
 
@@ -212,32 +212,34 @@ void ofxNCoreAudio::drawFullMode()
     ofTriangle(70, 420, 70, 460, 50, 440);
 
     ofSetColor(0x969696);
-    bigvideo.drawString("Source", 168, 20);
-    bigvideo.drawString("Text", 509, 20);
+    bigvideo.drawString("Source Audio", 140, 30);
+    bigvideo.drawString("Converted Text", 475, 30);
 
-    // Draw input waveform
-    int viewerX = 40;
-    int viewerY = 41;
+    // Draw input waveform viewer
+    int inputViewerX = 40;
+    int inputViewerY = 41;
     int viewerHeight = 229;
     int viewerWidth = 320;
-    int viewerMiddleY = viewerY + viewerHeight / 2;
-    ofSetColor(0x333333);
-    ofRect(viewerX, viewerY, viewerWidth, viewerHeight);
-    int waveColor = 0x73BA51;
+	int viewerBackColor = 0x333333;
+	int waveColor = 0x73BA51;
+    int viewerMiddleY = inputViewerY + viewerHeight / 2;
+    ofSetColor(viewerBackColor);
+    ofRect(inputViewerX, inputViewerY, viewerWidth, viewerHeight);
+    
     ofSetColor(waveColor);
 
     if (audioBufSize > viewerWidth) {
         for (int i = 0; i < viewerWidth; i++){
             if (bRecording) {
                 // Dynamic waveform
-                ofLine(viewerX+i,viewerMiddleY,viewerX+i,viewerMiddleY
+                ofLine(inputViewerX+i,viewerMiddleY,inputViewerX+i,viewerMiddleY
                     +audioBuf[audioBufSize-viewerWidth+i]*100.0f);
             }
             else {
                 // Static waveform
-                ofLine(viewerX+i,viewerMiddleY,viewerX+i,viewerMiddleY
+                ofLine(inputViewerX+i,viewerMiddleY,inputViewerX+i,viewerMiddleY
                     +audioBuf[i*audioBufSize/viewerWidth]*100.0f);
-                ofLine(viewerX+i,viewerMiddleY,viewerX+i,viewerMiddleY
+                ofLine(inputViewerX+i,viewerMiddleY,inputViewerX+i,viewerMiddleY
                     -audioBuf[i*audioBufSize/viewerWidth]*100.0f);
             }
         }
@@ -245,11 +247,18 @@ void ofxNCoreAudio::drawFullMode()
         if (bPlaying) {
             ofSetColor(0xFFFFFF);
             int curDrawPoint = int(curPlayPoint/(float)audioBufSize*viewerWidth);
-            ofLine(viewerX+curDrawPoint, viewerY,
-                viewerX+curDrawPoint, viewerY+viewerHeight);
+            ofLine(inputViewerX+curDrawPoint, inputViewerY,
+                inputViewerX+curDrawPoint, inputViewerY+viewerHeight);
             ofSetColor(waveColor);
         }
     }
+	
+	// Draw output text viewer
+	int outputViewerX = 386;
+    int outputViewerY = 41;
+    ofSetColor(viewerBackColor);
+    ofRect(outputViewerX, outputViewerY, viewerWidth, viewerHeight);
+    ofSetColor(waveColor);
 
     // Draw link to CCA website
     ofSetColor(79, 79, 79);

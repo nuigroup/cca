@@ -20,10 +20,10 @@
 * GNU General Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Community Core Audio.  If not, see <http:// www.gnu.org/licenses/>.
+* with Community Core Audio.  If not, see <http://www.gnu.org/licenses/>.
 *
 *
-* Web: http:// nuicode.com/projects/cca-alpha
+* Web: http://nuicode.com/projects/cca-alpha
 *
 ***************************************************************************/
 
@@ -53,51 +53,50 @@ class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
 public:
     ofxNCoreAudio();
     ~ofxNCoreAudio();
-
-    /****************************************************************
-    *						Public functions
-    ****************************************************************/
-    // Basic Events called every frame
+	
+private:
+	// Basic Events called every frame
     void _setup(ofEventArgs &e);
     void _update(ofEventArgs &e);
     void _draw(ofEventArgs &e);
     void _exit(ofEventArgs &e);
+	
     // Mouse Events
     void _mousePressed(ofMouseEventArgs &e);
     void _mouseDragged(ofMouseEventArgs &e);
     void _mouseReleased(ofMouseEventArgs &e);
+	
     // Key Events
     void _keyPressed(ofKeyEventArgs &e);
-
+	
     // Audio Receive/Requeste Event
     void audioReceived( float * input, int bufferSize, int nChannels );
-    void audioRequested(float * output, int bufferSize, int nChannels);
-
-    // GUI
+    void audioRequested(float * output, int bufferSize, int nChannels); 
+	
+	// GUI
     void setupControls();
     void		handleGui(int parameterId, int task, void* data, int length);
     ofxGui*		controls;
-
+	
     // drawing
     void drawMiniMode();
     void drawFullMode();	
-
-    //  Load/save settings
+	
+    // Load/save settings
     void loadXMLSettings();
     void saveSettings();
-
+	
     /****************************************************************
-    *            Variables in config.xml Settings file
-    *****************************************************************/
+	 *            Variables in config.xml Settings file
+	 *****************************************************************/
     int					winWidth;
     int					winHeight;
     bool  				bMiniMode;
     int                 maxAudioSize;
     /****************************************************
-    *            End config.xml variables
-    *****************************************************/
-
-private:
+	 *            End config.xml variables
+	 *****************************************************/
+	
     // Fonts
     ofTrueTypeFont		verdana;
     ofTrueTypeFont      sidebarTXT;
