@@ -89,9 +89,9 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     /*****************************************************************************************************
     * Startup Modes
     ******************************************************************************************************/
+    showConfiguration = true;
     if (bMiniMode)
     {
-        showConfiguration = true;
         bShowInterface = false;
         printf("Starting in Mini Mode...\n\n");
         ofSetWindowShape(190, 200); // minimized size
