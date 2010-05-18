@@ -29,6 +29,37 @@
 
 #include "ofxNCoreAudio.h"
 
+#define AUDIO_SEGBUF_SIZE 256
+
+ofxNCoreAudio::ofxNCoreAudio()
+{
+    // Assign listeners
+    ofAddListener(ofEvents.mousePressed, this, &ofxNCoreAudio::_mousePressed);
+    ofAddListener(ofEvents.mouseDragged, this, &ofxNCoreAudio::_mouseDragged);
+    ofAddListener(ofEvents.mouseReleased, this, &ofxNCoreAudio::_mouseReleased);
+    ofAddListener(ofEvents.keyPressed, this, &ofxNCoreAudio::_keyPressed);
+    ofAddListener(ofEvents.setup, this, &ofxNCoreAudio::_setup);
+    ofAddListener(ofEvents.update, this, &ofxNCoreAudio::_update);
+    ofAddListener(ofEvents.draw, this, &ofxNCoreAudio::_draw);
+    ofAddListener(ofEvents.exit, this, &ofxNCoreAudio::_exit);
+
+    // Variables for Recording and Playings
+    audioBuf = NULL;
+    audioBufSize = 0;
+    curPlayPoint = 0;
+    bRecording = false;
+    bPlaying = false;
+    bPaused = false;
+}
+
+ofxNCoreAudio::~ofxNCoreAudio()
+{		
+    if (audioBuf!=NULL) {
+        delete[] audioBuf;
+        audioBuf = NULL;
+    }
+}
+
 /******************************************************************************
 * The setup function is run once to perform initializations in the application
 *****************************************************************************/
@@ -44,12 +75,12 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     ofSetWindowShape(winWidth,winHeight);
     ofSetVerticalSync(false);
 
-    // Fonts - Is there a way to dynamically change font size?
+    // Fonts
     verdana.loadFont("verdana.ttf", 8, true, true);	   // Font used for small images
     bigvideo.loadFont("verdana.ttf", 13, true, true);  // Font used for big images.
 
     // Static Images
-    background.loadImage("images/background.jpg"); // Main (Temp?) Background
+    background.loadImage("images/background.jpg"); // Main Background
 
     // GUI Controls
     controls = ofxGui::Instance(this);
@@ -58,9 +89,9 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     /*****************************************************************************************************
     * Startup Modes
     ******************************************************************************************************/
-    if (bMiniMode)
+    showConfiguration = true;
+	if (bMiniMode)
     {
-        showConfiguration = true;
         bShowInterface = false;
         printf("Starting in Mini Mode...\n\n");
         ofSetWindowShape(190, 200); // minimized size
@@ -71,7 +102,6 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     }
 
 #ifdef TARGET_WIN32
-    // get rid of the console window
 #ifndef _DEBUG
     FreeConsole();
 #endif
@@ -94,14 +124,17 @@ void ofxNCoreAudio::loadXMLSettings()
     // --------------------------------------------------------------
     //   START BINDING XML TO VARS
     // --------------------------------------------------------------
-    winWidth					= XML.getValue("CONFIG:WINDOW:WIDTH", 950);
-    winHeight					= XML.getValue("CONFIG:WINDOW:HEIGHT", 600);	
+    winWidth                    = XML.getValue("CONFIG:WINDOW:WIDTH", 950);
+    winHeight                   = XML.getValue("CONFIG:WINDOW:HEIGHT", 600);	
 
     // MODES
     bMiniMode                   = XML.getValue("CONFIG:BOOLEAN:MINIMODE", 0);
 
     // Memory
     maxAudioSize                = XML.getValue("CONFIG:MEMORY:MAXAUDIOSIZE", 102400);
+
+    // Formats
+    SampleRate                  = XML.getValue("CONFIG:FORMAT:SAMPLERATE", 16000);
 
     // Logs
     lastAudioSavename           = XML.getValue("CONFIG:LOGS:LASTAUDIOFILENAME", "");
@@ -132,7 +165,7 @@ void ofxNCoreAudio::_update(ofEventArgs &e)
     }
     
     // playing auto stop
-    if (bPlaying && audioBufSize-curPlayPoint < 256) {
+    if (bPlaying && audioBufSize-curPlayPoint < AUDIO_SEGBUF_SIZE) {
         curPlayPoint = 0;
         ofSoundStreamClose();
         bPlaying = false;
@@ -183,14 +216,38 @@ void ofxNCoreAudio::drawFullMode()
     bigvideo.drawString("Text", 509, 20);
 
     // Draw input waveform
+    int viewerX = 40;
+    int viewerY = 41;
+    int viewerHeight = 229;
+    int viewerWidth = 320;
+    int viewerMiddleY = viewerY + viewerHeight / 2;
     ofSetColor(0x333333);
-    ofRect(40, 41, 320, 229);
-    ofSetColor(0x73BA51);
-    if (bRecording) {
-        if (audioBufSize>320) {
-            for (int i = 0; i < 320; i++){
-                ofLine(40+i,156,41+i,156+audioBuf[audioBufSize-320+i]*100.0f);
+    ofRect(viewerX, viewerY, viewerWidth, viewerHeight);
+    int waveColor = 0x73BA51;
+    ofSetColor(waveColor);
+
+    if (audioBufSize > viewerWidth) {
+        for (int i = 0; i < viewerWidth; i++){
+            if (bRecording) {
+                // Dynamic waveform
+                ofLine(viewerX+i,viewerMiddleY,viewerX+i,viewerMiddleY
+                    +audioBuf[audioBufSize-viewerWidth+i]*100.0f);
             }
+            else {
+                // Static waveform
+                ofLine(viewerX+i,viewerMiddleY,viewerX+i,viewerMiddleY
+                    +audioBuf[i*audioBufSize/viewerWidth]*100.0f);
+                ofLine(viewerX+i,viewerMiddleY,viewerX+i,viewerMiddleY
+                    -audioBuf[i*audioBufSize/viewerWidth]*100.0f);
+            }
+        }
+
+        if (bPlaying) {
+            ofSetColor(0xFFFFFF);
+            int curDrawPoint = int(curPlayPoint/(float)audioBufSize*viewerWidth);
+            ofLine(viewerX+curDrawPoint, viewerY,
+                viewerX+curDrawPoint, viewerY+viewerHeight);
+            ofSetColor(waveColor);
         }
     }
 
@@ -314,7 +371,7 @@ void ofxNCoreAudio::finishRecord()
         }
         else {
             for (int i=0; i<audioBufSize; i++) {
-                short f = short(audioBuf[i]);
+                short f = short(audioBuf[i] * 32767.5 - 0.5);
                 fwrite(&f, sizeof(short), 1, lastAudio_fp);
             }
             fclose(lastAudio_fp); 
@@ -413,7 +470,7 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
                 audioBuf = NULL;
                 audioBufSize = 0;
             }
-            ofSoundStreamSetup(0, 1, this, 16000, 256, 2);
+            ofSoundStreamSetup(0, 1, this, SampleRate, AUDIO_SEGBUF_SIZE, 2);
             bRecording = true;
         }
         break;
@@ -455,12 +512,12 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
             }
         }
         else {
-            if (audioBufSize<256) {
+            if (audioBufSize<AUDIO_SEGBUF_SIZE) {
                 bool setBool = false;
                 controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
             }
             else {
-                ofSoundStreamSetup(2, 0, this, 16000, 256, 4);
+                ofSoundStreamSetup(2, 0, this, SampleRate, AUDIO_SEGBUF_SIZE, 4);
                 bPlaying = true;
                 bPaused = false;
             }

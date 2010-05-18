@@ -138,7 +138,6 @@
 		587458871199B5660077BE63 /* ofxDirList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxDirList.h; path = ../../../addons/ofxDirList/src/ofxDirList.h; sourceTree = SOURCE_ROOT; };
 		5874588A1199B5660077BE63 /* Lisence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Lisence.txt; path = ../../../addons/ofxNCore/docs/Lisence.txt; sourceTree = SOURCE_ROOT; };
 		5874588C1199B5660077BE63 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = install.xml; path = ../../../addons/ofxNCore/install.xml; sourceTree = SOURCE_ROOT; };
-		587458901199B5660077BE63 /* gui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gui.h; path = ../../../addons/ofxNCore/src/Controls/gui.h; sourceTree = SOURCE_ROOT; };
 		587458911199B5660077BE63 /* ofxGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxGui.cpp; path = ../../../addons/ofxNCore/src/Controls/ofxGui.cpp; sourceTree = SOURCE_ROOT; };
 		587458921199B5660077BE63 /* ofxGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxGui.h; path = ../../../addons/ofxNCore/src/Controls/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		587458931199B5660077BE63 /* ofxGuiButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxGuiButton.cpp; path = ../../../addons/ofxNCore/src/Controls/ofxGuiButton.cpp; sourceTree = SOURCE_ROOT; };
@@ -484,7 +483,6 @@
 		5874588F1199B5660077BE63 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				587458901199B5660077BE63 /* gui.h */,
 				587458911199B5660077BE63 /* ofxGui.cpp */,
 				587458921199B5660077BE63 /* ofxGui.h */,
 				587458931199B5660077BE63 /* ofxGuiButton.cpp */,

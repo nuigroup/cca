@@ -51,34 +51,8 @@ class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
     };
 
 public:
-    ofxNCoreAudio()
-    {
-        // Assign listeners
-        ofAddListener(ofEvents.mousePressed, this, &ofxNCoreAudio::_mousePressed);
-        ofAddListener(ofEvents.mouseDragged, this, &ofxNCoreAudio::_mouseDragged);
-        ofAddListener(ofEvents.mouseReleased, this, &ofxNCoreAudio::_mouseReleased);
-        ofAddListener(ofEvents.keyPressed, this, &ofxNCoreAudio::_keyPressed);
-        ofAddListener(ofEvents.setup, this, &ofxNCoreAudio::_setup);
-        ofAddListener(ofEvents.update, this, &ofxNCoreAudio::_update);
-        ofAddListener(ofEvents.draw, this, &ofxNCoreAudio::_draw);
-        ofAddListener(ofEvents.exit, this, &ofxNCoreAudio::_exit);
-
-        // Variables for Recording and Playings
-        audioBuf = NULL;
-        audioBufSize = 0;
-        curPlayPoint = 0;
-        bRecording = false;
-        bPlaying = false;
-        bPaused = false;
-    }
-
-    ~ofxNCoreAudio()
-    {		
-        if (audioBuf!=NULL) {
-            delete[] audioBuf;
-            audioBuf = NULL;
-        }
-    }
+    ofxNCoreAudio();
+    ~ofxNCoreAudio();
 
     /****************************************************************
     *						Public functions
@@ -142,6 +116,7 @@ private:
     bool  				bFullscreen;
 
     // Sound Record/Play
+    int                 SampleRate;
     float *             audioBuf;
     int                 audioBufSize;
     int                 curPlayPoint;
