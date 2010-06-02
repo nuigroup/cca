@@ -34,11 +34,14 @@ class ofxASR
 {
 public:
     // Operation of the ASR Engine
-    virtual void initEngine() = 0;
-    virtual void exitEngine() = 0;
-    virtual void openEngine() = 0;
-    virtual void closeEngine() = 0;
+    virtual void engineInit() = 0;
+    virtual void engineExit() = 0;
+    virtual void engineOpen() = 0;
+    virtual void engineClose() = 0;
+    virtual void engineReset() = 0;
+    virtual char * engineGetText() = 0;
 
+private:
     // Audio Receive Event
     virtual void _audioReceived(ofAudioEventArgs &e) = 0;
 };

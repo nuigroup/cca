@@ -39,24 +39,34 @@ ofxSphinxASR::~ofxSphinxASR()
 
 }
 
-void ofxSphinxASR::initEngine()
+void ofxSphinxASR::engineInit()
 {
 
 }
 
-void ofxSphinxASR::exitEngine()
+void ofxSphinxASR::engineExit()
 {
 
 }
 
-void ofxSphinxASR::openEngine()
+void ofxSphinxASR::engineOpen()
 {
 
 }
 
-void ofxSphinxASR::closeEngine()
+void ofxSphinxASR::engineClose()
 {
 
+}
+
+void ofxSphinxASR::engineReset()
+{
+
+}
+
+char * engineGetText()
+{
+    return NULL;
 }
 
 void ofxSphinxASR::_audioReceived(ofAudioEventArgs &e)

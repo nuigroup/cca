@@ -37,15 +37,17 @@ public:
     ~ofxSphinxASR();
 
     // Operation of the ASR Engine
-    void initEngine();
-    void exitEngine();
-    void openEngine();
-    void closeEngine();
+    void engineInit();
+    void engineExit();
+    void engineOpen();
+    void engineClose();
+    void engineReset();
+    char * engineGetText();
 
+private:
     // Audio Receive Event
     void _audioReceived(ofAudioEventArgs &e);
 
-private:
     bool bEngineInitialed;
     bool bEngineStarted;
 };
