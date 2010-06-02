@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glee\include;..\..\..\libs\glu\include;..\..\..\libs\quicktime\include;..\..\..\libs\Poco\include;..\..\..\addons;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxDirList\src;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxOpenCv\src;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxOsc\libs\oscpack\include\ip;..\..\..\addons\ofxOsc\libs\oscpack\include\osc;..\..\..\addons\ofxThread\src;..\..\..\addons\ofxVectorGraphics\src;..\..\..\addons\ofxVectorGraphics\libs;..\..\..\addons\ofxVectorMath\src;..\..\..\addons\ofxXMLSettings\libs;..\..\..\addons\ofxXMLSettings\src;..\..\..\addons\ofxNCore\src"
+				AdditionalIncludeDirectories="..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glee\include;..\..\..\libs\glu\include;..\..\..\libs\quicktime\include;..\..\..\libs\Poco\include;..\..\..\addons;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxDirList\src;..\..\..\addons\ofxObjLoader\src;..\..\..\addons\ofxOpenCv\src;..\..\..\addons\ofxOpenCv\libs\opencv\include;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxOsc\libs\oscpack\include\ip;..\..\..\addons\ofxOsc\libs\oscpack\include\osc;..\..\..\addons\ofxThread\src;..\..\..\addons\ofxVectorGraphics\src;..\..\..\addons\ofxVectorGraphics\libs;..\..\..\addons\ofxVectorMath\src;..\..\..\addons\ofxXMLSettings\libs;..\..\..\addons\ofxXMLSettings\src;..\..\..\addons\ofxNCore\src;..\..\..\addons\ofxASR\src"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;POCO_STATIC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -636,6 +636,18 @@
 							>
 						</File>
 					</Filter>
+				</Filter>
+			</Filter>
+			<Filter
+				Name="ofxASR"
+				>
+				<Filter
+					Name="src"
+					>
+					<File
+						RelativePath="..\..\..\addons\ofxASR\src\ofxASR.h"
+						>
+					</File>
 				</Filter>
 			</Filter>
 		</Filter>

@@ -1,0 +1,26 @@
+<install>
+	
+	<version>0.0.1</version>
+	<author>Jimbo Zhang</author>
+	<url></url>
+	<requires></requires>
+	
+	<add>	
+		
+		<!-- 	=====================================================================	-->
+		<!--	========================== add per project using this addon =========	-->
+		<!-- 	=====================================================================	-->
+	
+		<src>
+			<folder name="addons/ofxASR/src">
+				<file>../../../put all filesand folders here...</file>
+			</folder>
+		</src>
+		
+		<include>
+			<path>../../../put include folders here...</path>
+		</include>
+		
+	</add>
+	 
+</install>
