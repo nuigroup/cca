@@ -648,6 +648,18 @@
 						RelativePath="..\..\..\addons\ofxASR\src\ofxASR.h"
 						>
 					</File>
+					<File
+						RelativePath="..\..\..\addons\ofxASR\src\ofxBaseASR.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\addons\ofxASR\src\ofxSphinxASR.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\addons\ofxASR\src\ofxSphinxASR.h"
+						>
+					</File>
 				</Filter>
 			</Filter>
 		</Filter>

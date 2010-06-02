@@ -34,6 +34,7 @@
 #include "ofMain.h"
 // Addons
 #include "ofxXmlSettings.h"
+#include "ofxASR.h"
 
 // Our Addon
 #include "ofxNCore.h"
@@ -126,6 +127,9 @@ private:
 
     // Log
     string              lastAudioSavename;
+
+    // The ASR Engine
+    ofxASR *            asrEngine;
 
 };
 

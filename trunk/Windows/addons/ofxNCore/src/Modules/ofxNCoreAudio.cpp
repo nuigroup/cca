@@ -50,6 +50,9 @@ ofxNCoreAudio::ofxNCoreAudio()
     bRecording = false;
     bPlaying = false;
     bPaused = false;
+
+    // The ASR Engine
+    asrEngine = new ofxSphinxASR;
 }
 
 ofxNCoreAudio::~ofxNCoreAudio()
@@ -58,6 +61,12 @@ ofxNCoreAudio::~ofxNCoreAudio()
         delete[] audioBuf;
         audioBuf = NULL;
     }
+    if (asrEngine!=NULL) {
+        delete asrEngine;
+        asrEngine = NULL;
+    }
+
+
 }
 
 /******************************************************************************

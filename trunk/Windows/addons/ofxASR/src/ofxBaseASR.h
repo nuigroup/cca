@@ -1,6 +1,6 @@
 /***************************************************************************
 *
-*  ofxASR.h
+*  ofxBaseASR.h
 * 
 *  Author: Jimbo Zhang <dr.jimbozhang@gmail.com>
 *  Copyright 2010 Jimbo Zhang. All rights reserved.       
@@ -25,10 +25,22 @@
 *
 ***************************************************************************/
 
-#ifndef OFXASR_H
-#define OFXASR_H
+#ifndef OFXBASEASR_H
+#define OFXBASEASR_H
 
-#include "ofxBaseASR.h"
-#include "ofxSphinxASR.h"
+#include "ofMain.h"
+
+class ofxASR
+{
+public:
+    // Operation of the ASR Engine
+    virtual void initEngine() = 0;
+    virtual void exitEngine() = 0;
+    virtual void openEngine() = 0;
+    virtual void closeEngine() = 0;
+
+    // Audio Receive Event
+    virtual void _audioReceived(ofAudioEventArgs &e) = 0;
+};
 
 #endif
