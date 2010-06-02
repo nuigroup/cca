@@ -483,6 +483,16 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
             bRecording = false;            
         }
         else {
+            if (bPlaying) {
+                curPlayPoint = 0;
+                ofSoundStreamClose();
+                bPlaying = false;
+
+                bool setBool = false;
+                controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
+            }
+
+
             if (audioBuf!=NULL) {
                 delete[] audioBuf;
                 audioBuf = NULL;

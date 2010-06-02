@@ -29,6 +29,7 @@
 
 ofxSphinxASR::ofxSphinxASR()
 {
+    ofAddListener(ofEvents.audioReceived, this, &ofxSphinxASR::_audioReceived);
     bEngineInitialed = false;
     bEngineStarted = false;
 }
