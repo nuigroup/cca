@@ -54,25 +54,25 @@ public:
     ofxNCoreAudio();
     ~ofxNCoreAudio();
 
-    /****************************************************************
-    *						Public functions
-    ****************************************************************/
+private:
     // Basic Events called every frame
     void _setup(ofEventArgs &e);
     void _update(ofEventArgs &e);
     void _draw(ofEventArgs &e);
     void _exit(ofEventArgs &e);
+	
     // Mouse Events
     void _mousePressed(ofMouseEventArgs &e);
     void _mouseDragged(ofMouseEventArgs &e);
     void _mouseReleased(ofMouseEventArgs &e);
+	
     // Key Events
     void _keyPressed(ofKeyEventArgs &e);
-
+	
     // Audio Receive/Requeste Event
     void audioReceived( float * input, int bufferSize, int nChannels );
-    void audioRequested(float * output, int bufferSize, int nChannels);
-
+    void audioRequested(float * output, int bufferSize, int nChannels); 
+	
     // GUI
     void setupControls();
     void		handleGui(int parameterId, int task, void* data, int length);
@@ -96,8 +96,7 @@ public:
     /****************************************************
     *            End config.xml variables
     *****************************************************/
-
-private:
+	
     // Fonts
     ofTrueTypeFont		verdana;
     ofTrueTypeFont      sidebarTXT;
