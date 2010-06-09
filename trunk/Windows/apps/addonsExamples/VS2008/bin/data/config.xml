@@ -30,7 +30,7 @@
     <LOGS>
         <LASTAUDIOFILENAME>lastaudio.pcm</LASTAUDIOFILENAME>
     </LOGS>
-    <ASR>    		
+    <ASR>
         <AM>data/sphinxmodel/digit.8gau</AM>
         <LM>data/sphinxmodel/digit.lm.DMP</LM>
         <DICT>data/sphinxmodel/digit.dict</DICT>

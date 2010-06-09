@@ -57,6 +57,9 @@ private:
     // States
     bool bEngineInitialed;
     bool bEngineStarted;
+
+    // Grammar
+    fsg_model_t *get_fsg(jsgf_t *grammar, const char *name);
 };
 
 #endif

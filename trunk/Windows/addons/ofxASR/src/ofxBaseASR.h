@@ -32,11 +32,14 @@
 
 // The return codes
 #define OFXASR_SUCCESS 0
-#define OFXASR_FAIL_READ_FILES 1
-#define OFXASR_HAVE_NOT_INIT 2
+#define OFXASR_FAIL_READ_FILES -1
+#define OFXASR_HAVE_NOT_INIT -2
+#define OFXASR_FAIL_WRITE_CONFIG -3
 
 struct ofAsrEngineArgs
 {    
+    int samplerate;
+    
     // Only for sphinx
     string sphinxmodel_am;
     string sphinxmodel_lm;
@@ -48,6 +51,12 @@ struct ofAsrEngineArgs
     // Only for some other recognition engine
     int other_engine_foo;
     int other_engine_bar;
+
+    ofAsrEngineArgs()
+    {
+        samplerate = 16000;
+        sphinx_mode = 0;
+    }
 };
 
 class ofxASR

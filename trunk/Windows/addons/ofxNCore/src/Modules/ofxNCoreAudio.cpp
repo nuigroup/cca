@@ -107,6 +107,7 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     engineArgs->sphinxmodel_dict = sphinxmodel_dict;
     engineArgs->sphinxmodel_fdict = sphinxmodel_fdict;
     engineArgs->sphinx_mode = 2;  // other modes will be supported in later versions.
+    engineArgs->samplerate = SampleRate;
     FILE *fp_list = fopen(commandList.c_str(), "rt");
     if (fp_list==NULL) {
         printf("Error: Can not find command list file %s.", commandList);
