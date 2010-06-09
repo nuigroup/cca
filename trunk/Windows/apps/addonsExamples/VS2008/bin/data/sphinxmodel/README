@@ -1,0 +1,23 @@
+A Typical Model for CMU Sphinx
+------------------------------
+
+This is a typical model for CMU Sphinx3. It was trained for recognition English
+digits sound.
+
+It provides complete resource for a digit sound recognition task. We also hope
+it can help people understand what files a typical model should contain.
+
+Files in this package:
+* digit.8gau:   This folder contains acoustics model. You should not rename the
+                files under this folder. Below is a brief comments for these
+                files. To learn more, read books on speech recognition.
+                 digit.8gau/mdef:  The definitions of every tri-phone.
+                 digit.8gau/means: The mean values. Part of the GMM.
+                 digit.8gau/variances: The variance values. Part of the GMM.
+                 digit.8gau/mixture_weights: The mixture weights. Part of the GMM.
+                 digit.8gau/transition_matrices: Probability of a state to another.
+* digit.lm.DMP: The language model.
+* digit.dict  :   The dictionary which translate word to phonemes.
+* digit.fdict :   A special dictionary that only contains some silence.
+
+This is shipped by Sphinx3 and arranged by Jimbo Zhang <dr.jimbozhang@gmail.com>.

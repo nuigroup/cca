@@ -97,6 +97,20 @@ private:
     int					winHeight;
     bool  				bMiniMode;
     int                 maxAudioSize;
+
+    // Log
+    string              lastAudioSavename;
+
+    // Command Candidate List
+    string              commandList;
+    int                 maxSentenceLength;
+
+#ifdef USE_SPHINX
+    string              sphinxmodel_am;
+    string              sphinxmodel_lm;
+    string              sphinxmodel_dict;
+    string              sphinxmodel_fdict;
+#endif
     /****************************************************
     *            End config.xml variables
     *****************************************************/
@@ -126,10 +140,7 @@ private:
     bool                bRecording;
     bool                bPlaying;
     bool                bPaused;
-    void                finishRecord();
-
-    // Log
-    string              lastAudioSavename;
+    void                finishRecord();    
 
     // The ASR Engine
     ofxASR *            asrEngine;

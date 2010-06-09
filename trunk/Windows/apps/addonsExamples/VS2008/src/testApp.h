@@ -6,7 +6,6 @@
 
 // addon
 #define OF_ADDON_USING_OFXASR
-#define USE_SPHINX
 #define OF_ADDON_USING_OFXNCORE
 #include "ofAddons.h"
 

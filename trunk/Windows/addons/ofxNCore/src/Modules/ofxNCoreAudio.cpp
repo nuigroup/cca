@@ -28,7 +28,10 @@
 ***************************************************************************/
 
 #include "ofxNCoreAudio.h"
+
+#ifdef USE_SPHINX
 #include "ofxSphinxASR.h"
+#endif
 
 #define AUDIO_SEGBUF_SIZE 256
 
@@ -98,7 +101,25 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
 
     // ASR Engine
     asrEngine = new ofxSphinxASR;
-    asrEngine->engineInit("");
+    ofAsrEngineArgs *engineArgs = new ofAsrEngineArgs;
+    engineArgs->sphinxmodel_am = sphinxmodel_am;
+    engineArgs->sphinxmodel_lm = sphinxmodel_lm;
+    engineArgs->sphinxmodel_dict = sphinxmodel_dict;
+    engineArgs->sphinxmodel_fdict = sphinxmodel_fdict;
+    engineArgs->sphinx_mode = 2;  // other modes will be supported in later versions.
+    FILE *fp_list = fopen(commandList.c_str(), "rt");
+    if (fp_list==NULL) {
+        printf("Error: Can not find command list file %s.", commandList);
+    }
+    char *sentence = new char[maxSentenceLength];
+    while (fgets(sentence, maxSentenceLength, fp_list)) {
+        engineArgs->sphinx_candidate_sentences.push_back(sentence);
+    }
+    if (asrEngine->engineInit(engineArgs) != OFXASR_SUCCESS) {
+        printf("Initial ASR Engine Failed!");
+    }
+    delete engineArgs;
+    delete []sentence;
 
     /*****************************************************************************************************
     * Startup Modes
@@ -152,6 +173,18 @@ void ofxNCoreAudio::loadXMLSettings()
 
     // Logs
     lastAudioSavename           = XML.getValue("CONFIG:LOGS:LASTAUDIOFILENAME", "");
+
+    // Command Candidate
+    commandList                 = XML.getValue("CONFIG:ASR:LIST", "");
+    maxSentenceLength           = XML.getValue("CONFIG:ASR:MAXCOMMANDLENGTH", 32);;
+
+#ifdef USE_SPHINX
+    sphinxmodel_am              = XML.getValue("CONFIG:ASR:AM", "");
+    sphinxmodel_lm              = XML.getValue("CONFIG:ASR:LM", "");
+    sphinxmodel_dict            = XML.getValue("CONFIG:ASR:DICT", "");
+    sphinxmodel_fdict           = XML.getValue("CONFIG:ASR:FDICT", "");
+#endif
+
     // --------------------------------------------------------------
     //   END XML SETUP
 }

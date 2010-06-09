@@ -30,16 +30,31 @@
 
 #include "ofMain.h"
 
-// The Return Codes
+// The return codes
 #define OFXASR_SUCCESS 0
 #define OFXASR_FAIL_READ_FILES 1
 #define OFXASR_HAVE_NOT_INIT 2
 
+struct ofAsrEngineArgs
+{    
+    // Only for sphinx
+    string sphinxmodel_am;
+    string sphinxmodel_lm;
+    string sphinxmodel_dict;
+    string sphinxmodel_fdict;
+    int sphinx_mode;
+    vector<string> sphinx_candidate_sentences;
+
+    // Only for some other recognition engine
+    int other_engine_foo;
+    int other_engine_bar;
+};
+
 class ofxASR
 {
 public:
-    // Operation of the ASR Engine
-    virtual int engineInit(char *resources_path) = 0;
+    // Operation of the ASR engine
+    virtual int engineInit(ofAsrEngineArgs *e) = 0;
     virtual int engineExit() = 0;
     virtual int engineOpen() = 0;
     virtual int engineClose() = 0;
@@ -49,7 +64,7 @@ public:
     virtual bool isEngineStarted() = 0;
 
 private:
-    // Audio Receive Event
+    // Audio receive event
     virtual void _audioReceived(ofAudioEventArgs &e) = 0;
 };
 

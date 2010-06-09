@@ -38,7 +38,7 @@ public:
     ~ofxSphinxASR();
 
     // Operation of the ASR Engine
-    int engineInit(char *resources_path);
+    int engineInit(ofAsrEngineArgs *e);
     int engineExit();
     int engineOpen();
     int engineClose();

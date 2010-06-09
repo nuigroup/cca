@@ -28,7 +28,12 @@
 #ifndef OFXASR_H
 #define OFXASR_H
 
+#define USE_SPHINX
+
 #include "ofxBaseASR.h"
+
+#ifdef USE_SPHINX
 #include "ofxSphinxASR.h"
+#endif
 
 #endif

@@ -40,7 +40,7 @@ ofxSphinxASR::~ofxSphinxASR()
 
 }
 
-int ofxSphinxASR::engineInit(char *resources_path)
+int ofxSphinxASR::engineInit(ofAsrEngineArgs *e)
 {
     bEngineInitialed = true;
 
