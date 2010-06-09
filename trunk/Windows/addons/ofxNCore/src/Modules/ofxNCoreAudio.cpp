@@ -28,6 +28,7 @@
 ***************************************************************************/
 
 #include "ofxNCoreAudio.h"
+#include "ofxSphinxASR.h"
 
 #define AUDIO_SEGBUF_SIZE 256
 
@@ -52,7 +53,7 @@ ofxNCoreAudio::ofxNCoreAudio()
     bPaused = false;
 
     // The ASR Engine
-    asrEngine = new ofxSphinxASR;
+    asrEngine = NULL;
 }
 
 ofxNCoreAudio::~ofxNCoreAudio()
@@ -93,7 +94,11 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
 
     // GUI Controls
     controls = ofxGui::Instance(this);
-    setupControls();    
+    setupControls(); 
+
+    // ASR Engine
+    asrEngine = new ofxSphinxASR;
+    asrEngine->engineInit("");
 
     /*****************************************************************************************************
     * Startup Modes
@@ -555,6 +560,24 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
                 ofSoundStreamSetup(2, 0, this, SampleRate, AUDIO_SEGBUF_SIZE, 4);
                 bPlaying = true;
                 bPaused = false;
+            }
+        }
+        break;
+    case outputPanel_startEngine:
+        if (asrEngine->isEngineStarted()) {
+            bool setBool = true;
+            controls->update(outputPanel_startEngine, kofxGui_Set_Bool, &setBool, sizeof(bool));
+            if (asrEngine->engineClose()==OFXASR_SUCCESS) {
+                setBool = false;
+                controls->update(outputPanel_startEngine, kofxGui_Set_Bool, &setBool, sizeof(bool));
+            }
+        }
+        else {
+            bool setBool = false;
+            controls->update(outputPanel_startEngine, kofxGui_Set_Bool, &setBool, sizeof(bool));
+            if (asrEngine->engineOpen()==OFXASR_SUCCESS) {
+                setBool = true;
+                controls->update(outputPanel_startEngine, kofxGui_Set_Bool, &setBool, sizeof(bool));
             }
         }
         break;

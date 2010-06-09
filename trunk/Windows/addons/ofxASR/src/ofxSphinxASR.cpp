@@ -42,7 +42,7 @@ ofxSphinxASR::~ofxSphinxASR()
 
 int ofxSphinxASR::engineInit(char *resources_path)
 {
-    decoder = new s3_decode_t;
+    bEngineInitialed = true;
 
     return OFXASR_SUCCESS;
 }
@@ -59,13 +59,19 @@ int ofxSphinxASR::engineExit()
 
 int ofxSphinxASR::engineOpen()
 {
+    if (! bEngineInitialed) 
+        return OFXASR_HAVE_NOT_INIT;
 
+    bEngineStarted = true;
     return OFXASR_SUCCESS;
 }
 
 int ofxSphinxASR::engineClose()
 {
+    if (! bEngineInitialed) 
+        return OFXASR_HAVE_NOT_INIT;
 
+    bEngineStarted = false;
     return OFXASR_SUCCESS;
 }
 

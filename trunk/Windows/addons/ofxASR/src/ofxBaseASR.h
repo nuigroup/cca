@@ -33,6 +33,7 @@
 // The Return Codes
 #define OFXASR_SUCCESS 0
 #define OFXASR_FAIL_READ_FILES 1
+#define OFXASR_HAVE_NOT_INIT 2
 
 class ofxASR
 {
