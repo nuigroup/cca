@@ -13,13 +13,42 @@
 	
 		<src>
 			<folder name="addons/ofxASR/src">
-				<file>../../../put all filesand folders here...</file>
+				<file>../../../addons/ofxASR/src/ofxASR.h</file>
+				<file>../../../addons/ofxASR/src/ofxBaseASR.h</file>
+				<file>../../../addons/ofxASR/src/ofxSphinxASR.h</file>
+				<file>../../../addons/ofxASR/src/ofxSphinxASR.cpp</file>
 			</folder>
 		</src>
 		
 		<include>
-			<path>../../../put include folders here...</path>
+			<path>../../../addons/ofxASR/src</path>
+			<path>../../../addons/ofxASR/libs/sphinx/include/sphinxbase</path>
+			<path>../../../addons/ofxASR/libs/sphinx/include/sphinx3</path>
 		</include>
+		
+		<link>
+			<lib os="win32" compiler="codeblocks"> </lib>
+			<lib os="win32" compiler="codeblocks"> </lib>
+			<lib os="win32" compiler="visualstudio">../../../addons/ofxASR/libs/sphinx/lib/win32/s3decoder.lib</lib>
+			<lib os="win32" compiler="visualstudio">../../../addons/ofxASR/libs/sphinx/lib/win32/sphinxbase.lib</lib>
+			<lib os="mac"   compiler="xcode"> </lib>
+			<lib os="linux" compiler="codeblocks, makefile"> </lib>
+			<lib os="linux" compiler="codeblocks, makefile"> </lib>
+			<lib os="linux64" compiler="codeblocks, makefile"> </lib>
+			<lib os="linux64" compiler="codeblocks, makefile"> </lib>
+		</link>
+		
+		<export>
+			<export os="win32" compiler="codeblocks"> </export>
+			<export os="win32" compiler="codeblocks"> </export>
+			<export os="win32" compiler="visualstudio">../../../addons/ofxASR/libs/sphinx/lib/win32/s3decoder.dll</export>
+			<export os="win32" compiler="visualstudio">../../../addons/ofxASR/libs/sphinx/lib/win32/sphinxbase.dll</export>
+			<export os="mac"   compiler="xcode"> </export>
+			<export os="linux" compiler="codeblocks, makefile"> </export>
+			<export os="linux" compiler="codeblocks, makefile"> </export>
+			<export os="linux64" compiler="codeblocks, makefile"> </export>
+			<export os="linux64" compiler="codeblocks, makefile"> </export>
+		</export>
 		
 	</add>
 	 

@@ -29,6 +29,7 @@
 #define OFXSPHINXASR_H
 
 #include "ofxBaseASR.h"
+#include "s3_decode.h"
 
 class ofxSphinxASR : public ofxASR
 {
@@ -42,12 +43,17 @@ public:
     void engineOpen();
     void engineClose();
     void engineReset();
+    void engineSentAudio(char *audioBuf, int audioSize);
     char * engineGetText();
 
 private:
     // Audio Receive Event
     void _audioReceived(ofAudioEventArgs &e);
 
+    // The Decoder
+    s3_decode_t *decoder;
+
+    // States
     bool bEngineInitialed;
     bool bEngineStarted;
 };

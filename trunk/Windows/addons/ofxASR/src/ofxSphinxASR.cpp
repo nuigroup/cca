@@ -32,6 +32,7 @@ ofxSphinxASR::ofxSphinxASR()
     ofAddListener(ofEvents.audioReceived, this, &ofxSphinxASR::_audioReceived);
     bEngineInitialed = false;
     bEngineStarted = false;
+    decoder = NULL;
 }
 
 ofxSphinxASR::~ofxSphinxASR()
@@ -41,11 +42,16 @@ ofxSphinxASR::~ofxSphinxASR()
 
 void ofxSphinxASR::engineInit()
 {
+    decoder = new s3_decode_t;
 
 }
 
 void ofxSphinxASR::engineExit()
 {
+    if (decoder != NULL) {
+        delete decoder;
+        decoder = NULL;
+    }
 
 }
 
@@ -64,7 +70,12 @@ void ofxSphinxASR::engineReset()
 
 }
 
-char * engineGetText()
+void ofxSphinxASR::engineSentAudio(char *audioBuf, int audioSize)
+{
+
+}
+
+char * ofxSphinxASR::engineGetText()
 {
     return NULL;
 }

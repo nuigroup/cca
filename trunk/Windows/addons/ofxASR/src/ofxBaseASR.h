@@ -39,6 +39,7 @@ public:
     virtual void engineOpen() = 0;
     virtual void engineClose() = 0;
     virtual void engineReset() = 0;
+    virtual void engineSentAudio(char *audioBuf, int audioSize) = 0;
     virtual char * engineGetText() = 0;
 
 private:
