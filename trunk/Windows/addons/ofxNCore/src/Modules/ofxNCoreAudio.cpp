@@ -451,7 +451,7 @@ void ofxNCoreAudio::setupControls()
     controls->mGlobals->mSliderColor.a = .8;
 
     // Source Image
-    ofxGuiPanel* srcPanel = controls->addPanel(appPtr->sourcePanel, "Source Audio", 41, 270, OFXGUI_PANEL_BORDER, OFXGUI_PANEL_SPACING);
+    ofxGuiPanel* srcPanel = controls->addPanel(appPtr->sourcePanel, "Input Audio Panel", 41, 270, OFXGUI_PANEL_BORDER, OFXGUI_PANEL_SPACING);
     srcPanel->addButton(appPtr->sourcePanel_record, "RECORD SOUND", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
     srcPanel->addButton(appPtr->sourcePanel_readfile, "READ SOUND FILE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Trigger);
     srcPanel->addButton(appPtr->sourcePanel_playpause, "PLAY/PAUSE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
@@ -464,6 +464,13 @@ void ofxNCoreAudio::setupControls()
     srcPanel->mObjects[2]->mObjX = 130;
     srcPanel->mObjects[2]->mObjY = 65;
     srcPanel->mObjects[3]->mObjY = 65;
+
+    // Output Panel
+    ofxGuiPanel* outputPanel = controls->addPanel(appPtr->outputPanel, "Convert Text Panel", 387, 270, OFXGUI_PANEL_BORDER, OFXGUI_PANEL_SPACING);
+    outputPanel->addButton(appPtr->outputPanel_startEngine, "START ASR ENGINE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
+    outputPanel->mObjHeight = 85;
+    outputPanel->mObjWidth = 319;
+    outputPanel->mObjects[0]->mObjY = 42;
 
     srcPanel->adjustToNewContent(100, 0);
 

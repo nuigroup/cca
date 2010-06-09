@@ -38,12 +38,13 @@ public:
     ~ofxSphinxASR();
 
     // Operation of the ASR Engine
-    void engineInit();
-    void engineExit();
-    void engineOpen();
-    void engineClose();
-    void engineReset();
-    void engineSentAudio(char *audioBuf, int audioSize);
+    int engineInit(char *resources_path);
+    int engineExit();
+    int engineOpen();
+    int engineClose();
+    int engineReset();
+    int engineSentAudio(char *audioBuf, int audioSize);
+    bool isEngineStarted();
     char * engineGetText();
 
 private:

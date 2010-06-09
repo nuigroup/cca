@@ -49,6 +49,9 @@ class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
         sourcePanel_readfile,
         sourcePanel_playpause,
         sourcePanel_stop,
+
+        outputPanel,
+        outputPanel_startEngine,
     };
 
 public:

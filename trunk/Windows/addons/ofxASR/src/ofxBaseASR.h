@@ -30,17 +30,22 @@
 
 #include "ofMain.h"
 
+// The Return Codes
+#define OFXASR_SUCCESS 0
+#define OFXASR_FAIL_READ_FILES 1
+
 class ofxASR
 {
 public:
     // Operation of the ASR Engine
-    virtual void engineInit() = 0;
-    virtual void engineExit() = 0;
-    virtual void engineOpen() = 0;
-    virtual void engineClose() = 0;
-    virtual void engineReset() = 0;
-    virtual void engineSentAudio(char *audioBuf, int audioSize) = 0;
+    virtual int engineInit(char *resources_path) = 0;
+    virtual int engineExit() = 0;
+    virtual int engineOpen() = 0;
+    virtual int engineClose() = 0;
+    virtual int engineReset() = 0;
+    virtual int engineSentAudio(char *audioBuf, int audioSize) = 0;
     virtual char * engineGetText() = 0;
+    virtual bool isEngineStarted() = 0;
 
 private:
     // Audio Receive Event

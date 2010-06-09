@@ -40,39 +40,45 @@ ofxSphinxASR::~ofxSphinxASR()
 
 }
 
-void ofxSphinxASR::engineInit()
+int ofxSphinxASR::engineInit(char *resources_path)
 {
     decoder = new s3_decode_t;
 
+    return OFXASR_SUCCESS;
 }
 
-void ofxSphinxASR::engineExit()
+int ofxSphinxASR::engineExit()
 {
     if (decoder != NULL) {
         delete decoder;
         decoder = NULL;
     }
 
+    return OFXASR_SUCCESS;
 }
 
-void ofxSphinxASR::engineOpen()
+int ofxSphinxASR::engineOpen()
 {
 
+    return OFXASR_SUCCESS;
 }
 
-void ofxSphinxASR::engineClose()
+int ofxSphinxASR::engineClose()
 {
 
+    return OFXASR_SUCCESS;
 }
 
-void ofxSphinxASR::engineReset()
+int ofxSphinxASR::engineReset()
 {
 
+    return OFXASR_SUCCESS;
 }
 
-void ofxSphinxASR::engineSentAudio(char *audioBuf, int audioSize)
+int ofxSphinxASR::engineSentAudio(char *audioBuf, int audioSize)
 {
 
+    return OFXASR_SUCCESS;
 }
 
 char * ofxSphinxASR::engineGetText()
@@ -83,4 +89,9 @@ char * ofxSphinxASR::engineGetText()
 void ofxSphinxASR::_audioReceived(ofAudioEventArgs &e)
 {
 
+}
+
+bool ofxSphinxASR::isEngineStarted()
+{
+    return bEngineInitialed * bEngineStarted;
 }
