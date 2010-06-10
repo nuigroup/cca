@@ -30,6 +30,8 @@
 
 #include "ofxBaseASR.h"
 #include "s3_decode.h"
+#include "fsg_model.h"
+#include "jsgf.h"
 
 class ofxSphinxASR : public ofxASR
 {

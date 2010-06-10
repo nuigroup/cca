@@ -43,9 +43,10 @@
  * **********************************************
  */
 
-
 #ifndef __FSG_MODEL_H__
 #define __FSG_MODEL_H__
+
+extern "C" {
 
 /* System headers. */
 #include <stdio.h>
@@ -360,5 +361,7 @@ void fsg_model_write_symtab(fsg_model_t *fsg, FILE *file);
  */
 SPHINXBASE_EXPORT
 void fsg_model_writefile_symtab(fsg_model_t *fsg, char const *file);
+
+}
 
 #endif /* __FSG_MODEL_H__ */

@@ -31,8 +31,6 @@
 #include <unistd.h>
 #endif
 
-#include "fsg_model.h"
-#include "jsgf.h"
 #include "ofxSphinxASR.h"
 
 ofxSphinxASR::ofxSphinxASR()
@@ -88,13 +86,21 @@ int ofxSphinxASR::engineInit(ofAsrEngineArgs *e)
                 e->sphinx_candidate_sentences[e->sphinx_candidate_sentences.size()-1].c_str());
             fclose(gram_fp);
         }
+
+        jsgf_t *jsgf = jsgf_parse_file(grammarJSGF_filename, NULL);
+        if (jsgf == NULL) {
+            return OFXASR_INVAILED_JSGF_GRAMMAR;
+        }
+        fsg_model_t *fsg = get_fsg(jsgf, NULL);
+        fsg_model_writefile(fsg, grammarFSG_filename);
+        fsg_model_free(fsg);
+        jsgf_grammar_free(jsgf);
     }
 
     fprintf(cfg_fp, "-op_mode %d\n", e->sphinx_mode);
     fclose(cfg_fp);
-
     
-    bEngineInitialed = true;        
+    bEngineInitialed = true;
 
     return OFXASR_SUCCESS;
 }

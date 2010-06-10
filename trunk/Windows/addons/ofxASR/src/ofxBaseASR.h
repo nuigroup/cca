@@ -35,6 +35,7 @@
 #define OFXASR_FAIL_READ_FILES -1
 #define OFXASR_HAVE_NOT_INIT -2
 #define OFXASR_FAIL_WRITE_CONFIG -3
+#define OFXASR_INVAILED_JSGF_GRAMMAR -4;
 
 struct ofAsrEngineArgs
 {    
