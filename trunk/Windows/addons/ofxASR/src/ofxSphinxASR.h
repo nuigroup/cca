@@ -44,8 +44,7 @@ public:
     int engineExit();
     int engineOpen();
     int engineClose();
-    int engineReset();
-    int engineSentAudio(char *audioBuf, int audioSize);
+    int engineSentAudio(short *audioBuf, int audioSize);
     bool isEngineStarted();
     char * engineGetText();
 
@@ -55,13 +54,17 @@ private:
 
     // The Decoder
     s3_decode_t *decoder;
+    fe_t *fe;
 
     // States
     bool bEngineInitialed;
-    bool bEngineStarted;
+    bool bEngineStarted;    
 
     // Grammar
     fsg_model_t *get_fsg(jsgf_t *grammar, const char *name);
+
+    // Utterance number
+    int uttnum;
 };
 
 #endif

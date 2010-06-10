@@ -39,12 +39,11 @@ ofxSphinxASR::ofxSphinxASR()
     bEngineInitialed = false;
     bEngineStarted = false;
     decoder = NULL;
+    fe = NULL;
+    uttnum = 0;
 }
 
-ofxSphinxASR::~ofxSphinxASR()
-{
-
-}
+ofxSphinxASR::~ofxSphinxASR() {}
 
 int ofxSphinxASR::engineInit(ofAsrEngineArgs *e)
 {
@@ -89,19 +88,41 @@ int ofxSphinxASR::engineInit(ofAsrEngineArgs *e)
 
         jsgf_t *jsgf = jsgf_parse_file(grammarJSGF_filename, NULL);
         if (jsgf == NULL) {
-            return OFXASR_INVAILED_JSGF_GRAMMAR;
+            printf("Bad jsgf file %s.\n", grammarJSGF_filename);
+            return OFXASR_INVALID_JSGF_GRAMMAR;
         }
         fsg_model_t *fsg = get_fsg(jsgf, NULL);
         fsg_model_writefile(fsg, grammarFSG_filename);
         fsg_model_free(fsg);
         jsgf_grammar_free(jsgf);
+
+        fprintf(cfg_fp, "-fsg %s\n", grammarFSG_filename);
     }
 
     fprintf(cfg_fp, "-op_mode %d\n", e->sphinx_mode);
     fclose(cfg_fp);
-    
-    bEngineInitialed = true;
 
+    err_set_logfp(NULL); // disable logs
+    cmd_ln_t *config = NULL;
+    config = cmd_ln_parse_file_r(config, S3_DECODE_ARG_DEFS, cfg_filename, TRUE);
+    if (config == NULL) {
+        return OFXASR_INVALID_CONFIG;
+    }
+
+    decoder = new s3_decode_t;
+    if (s3_decode_init(decoder, config) != S3_DECODE_SUCCESS) {
+        return OFXASR_FAIL_INIT_DECODER;
+    }
+    else {
+        printf("ok\n");
+    }
+
+    fe = fe_init_auto_r(config); 
+    if (fe == NULL) {
+        return OFXASR_FAIL_INIT_FRONTEND;
+    }
+
+    bEngineInitialed = true;
     return OFXASR_SUCCESS;
 }
 
@@ -120,39 +141,63 @@ int ofxSphinxASR::engineOpen()
     if (! bEngineInitialed) 
         return OFXASR_HAVE_NOT_INIT;
 
-    bEngineStarted = true;
-    return OFXASR_SUCCESS;
+    char uttid[8];
+    itoa(uttnum, uttid, 10);
+    if (s3_decode_begin_utt(decoder, uttid) != S3_DECODE_SUCCESS)
+    {
+        return OFXASR_FAIL_STARTENGINE;
+    }
+    else {
+        bEngineStarted = true;
+        return OFXASR_SUCCESS;
+    }    
 }
 
 int ofxSphinxASR::engineClose()
 {
-    if (! bEngineInitialed) 
-        return OFXASR_HAVE_NOT_INIT;
-
     bEngineStarted = false;
+    if (! bEngineInitialed) 
+        return OFXASR_SUCCESS;
+
+    s3_decode_end_utt(decoder); 
     return OFXASR_SUCCESS;
 }
 
-int ofxSphinxASR::engineReset()
+int ofxSphinxASR::engineSentAudio(short *audioBuf, int audioSize)
 {
-
-    return OFXASR_SUCCESS;
-}
-
-int ofxSphinxASR::engineSentAudio(char *audioBuf, int audioSize)
-{
-
+    float32 **frames;
+    int n_frames;
+    fe_process_utt(fe, audioBuf, audioSize, &frames, &n_frames);
+    if (frames != NULL) {
+        s3_decode_process(decoder, frames, n_frames);
+        ckd_free_2d((void **)frames);
+    }   
     return OFXASR_SUCCESS;
 }
 
 char * ofxSphinxASR::engineGetText()
 {
-    return NULL;
+    char * hypstr;
+    if (s3_decode_hypothesis(decoder, NULL, &hypstr, NULL)
+        == S3_DECODE_SUCCESS && decoder->phypdump) {
+        return hypstr;
+    }
+    else {
+        return NULL;
+    }       
 }
 
 void ofxSphinxASR::_audioReceived(ofAudioEventArgs &e)
 {
-
+    if (e.nChannels > 1) {
+        printf("Only support 1-channel audio!\n");
+        return;
+    }
+    short *buf_16 = new short[e.bufferSize];
+    for (int i=0; i<e.bufferSize; i++) {
+        buf_16[i] = short(e.buffer[i] * 32767.5 - 0.5);
+    }
+    engineSentAudio(buf_16, e.bufferSize);
 }
 
 bool ofxSphinxASR::isEngineStarted()

@@ -31,11 +31,17 @@
 #include "ofMain.h"
 
 // The return codes
-#define OFXASR_SUCCESS 0
-#define OFXASR_FAIL_READ_FILES -1
-#define OFXASR_HAVE_NOT_INIT -2
-#define OFXASR_FAIL_WRITE_CONFIG -3
-#define OFXASR_INVAILED_JSGF_GRAMMAR -4;
+#define OFXASR_SUCCESS                   0
+#define OFXASR_FAIL_UNKNOWN             -1
+#define OFXASR_FAIL_READ_FILES          -2
+#define OFXASR_HAVE_NOT_INIT            -3
+#define OFXASR_FAIL_WRITE_CONFIG        -4
+#define OFXASR_INVALID_JSGF_GRAMMAR     -5
+#define OFXASR_INVALID_CONFIG           -6
+#define OFXASR_FAIL_INIT_FRONTEND       -7
+#define OFXASR_FAIL_STARTENGINE         -8
+#define OFXASR_FAIL_INIT_DECODER        -9
+#define OFXASR_INVALID_AUDIO_FORMAT     -10
 
 struct ofAsrEngineArgs
 {    
@@ -68,8 +74,7 @@ public:
     virtual int engineExit() = 0;
     virtual int engineOpen() = 0;
     virtual int engineClose() = 0;
-    virtual int engineReset() = 0;
-    virtual int engineSentAudio(char *audioBuf, int audioSize) = 0;
+    virtual int engineSentAudio(short *audioBuf, int audioSize) = 0;
     virtual char * engineGetText() = 0;
     virtual bool isEngineStarted() = 0;
 
