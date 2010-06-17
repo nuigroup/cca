@@ -527,6 +527,9 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
                 controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
             }
 
+            if (asr_mode != mode_commandpicking) {
+                break;
+            }
 
             if (audioBuf!=NULL) {
                 delete[] audioBuf;
@@ -575,6 +578,10 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
             }
         }
         else {
+            if (asr_mode != mode_commandpicking) {
+                break;
+            }
+
             if (audioBufSize<AUDIO_SEGBUF_SIZE) {
                 setBool = false;
                 controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
