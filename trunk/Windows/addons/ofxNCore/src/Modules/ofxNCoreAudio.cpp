@@ -57,6 +57,7 @@ ofxNCoreAudio::ofxNCoreAudio()
 
     // The ASR Engine
     asrEngine = NULL;
+    asr_mode = mode_commandpicking;
 }
 
 ofxNCoreAudio::~ofxNCoreAudio()
@@ -172,9 +173,6 @@ void ofxNCoreAudio::loadXMLSettings()
     // Formats
     SampleRate                  = XML.getValue("CONFIG:FORMAT:SAMPLERATE", 16000);
 
-    // Logs
-    lastAudioSavename           = XML.getValue("CONFIG:LOGS:LASTAUDIOFILENAME", "");
-
     // Command Candidate
     commandList                 = XML.getValue("CONFIG:ASR:LIST", "");
     maxSentenceLength           = XML.getValue("CONFIG:ASR:MAXCOMMANDLENGTH", 32);;
@@ -205,7 +203,7 @@ void ofxNCoreAudio::_update(ofEventArgs &e)
     // recording auto stop
     if (bRecording && audioBufSize>=maxAudioSize) {
         printf("Sound is too long. Try to set MAXAUDIOSIZE in config.xml.");
-        finishRecord();
+        ofSoundStreamClose();
 
         bool setBool = false;
         controls->update(sourcePanel_record, kofxGui_Set_Bool, &setBool, sizeof(bool));
@@ -243,7 +241,14 @@ void ofxNCoreAudio::_draw(ofEventArgs &e)
         }
 
         // draw gui controls
-        if (!bMiniMode) {controls->draw();}
+        if (!bMiniMode) {
+            if (asr_mode == mode_commandpicking) {
+                controls->draw();
+            }
+            else if (asr_mode == mode_freespeaking) {
+                controls->draw();
+            }
+        }
     }
 }
 
@@ -416,27 +421,6 @@ void ofxNCoreAudio::audioRequested(float * output, int bufferSize, int nChannels
 }
 
 /*****************************************************************************
-* Record 
-*****************************************************************************/
-void ofxNCoreAudio::finishRecord()
-{
-    ofSoundStreamClose();
-    if (lastAudioSavename.length()>0) {
-        FILE* lastAudio_fp = fopen(lastAudioSavename.c_str(), "wb");
-        if (lastAudio_fp==NULL) {
-            printf("Open file %s failed.\n", lastAudioSavename.c_str());
-        }
-        else {
-            for (int i=0; i<audioBufSize; i++) {
-                short f = short(audioBuf[i] * 32767.5 - 0.5);
-                fwrite(&f, sizeof(short), 1, lastAudio_fp);
-            }
-            fclose(lastAudio_fp); 
-        }
-    }
-}
-
-/*****************************************************************************
 * ON EXIT
 *****************************************************************************/
 void ofxNCoreAudio::_exit(ofEventArgs &e)
@@ -492,7 +476,7 @@ void ofxNCoreAudio::setupControls()
     // Source Image
     ofxGuiPanel* srcPanel = controls->addPanel(appPtr->sourcePanel, "Input Audio Panel", 41, 270, OFXGUI_PANEL_BORDER, OFXGUI_PANEL_SPACING);
     srcPanel->addButton(appPtr->sourcePanel_record, "RECORD SOUND", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
-    srcPanel->addButton(appPtr->sourcePanel_readfile, "READ SOUND FILE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Trigger);
+    srcPanel->addButton(appPtr->sourcePanel_sendToASR, "SEND TO RECOGNIZE ENGINE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Trigger);
     srcPanel->addButton(appPtr->sourcePanel_playpause, "PLAY/PAUSE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
     srcPanel->addButton(appPtr->sourcePanel_stop, "STOP", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Trigger);
     srcPanel->mObjHeight = 85;
@@ -506,26 +490,31 @@ void ofxNCoreAudio::setupControls()
 
     // Output Panel
     ofxGuiPanel* outputPanel = controls->addPanel(appPtr->outputPanel, "Convert Text Panel", 387, 270, OFXGUI_PANEL_BORDER, OFXGUI_PANEL_SPACING);
-    outputPanel->addButton(appPtr->outputPanel_startEngine, "START ASR ENGINE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
+    outputPanel->addButton(appPtr->outputPanel_switchPickingMode, "COMMAND PICKING MODE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_On, kofxGui_Button_Switch);
+    outputPanel->addButton(appPtr->outputPanel_switchFreeMode, "FREE SPEAKING MODE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
     outputPanel->mObjHeight = 85;
     outputPanel->mObjWidth = 319;
     outputPanel->mObjects[0]->mObjY = 42;
+    outputPanel->mObjects[1]->mObjY = 65;
 
     srcPanel->adjustToNewContent(100, 0);
 
     // do update while inactive
     controls->forceUpdate(false);
     controls->activate(true);
-
 }
 
 void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length)
 {
+
+    bool setBool;
+    short *buf_16;
+
     switch(parameterId)
     {
     case sourcePanel_record:
         if (bRecording) {
-            finishRecord();
+            ofSoundStreamClose();
             bRecording = false;            
         }
         else {
@@ -534,7 +523,7 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
                 ofSoundStreamClose();
                 bPlaying = false;
 
-                bool setBool = false;
+                setBool = false;
                 controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
             }
 
@@ -551,10 +540,10 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
 
     case sourcePanel_stop:
         if (bRecording) {            
-            finishRecord();
+            ofSoundStreamClose();
             bRecording = false;  
 
-            bool setBool = false;
+            setBool = false;
             controls->update(sourcePanel_record, kofxGui_Set_Bool, &setBool, sizeof(bool));
         }
         if (bPlaying) {
@@ -562,16 +551,16 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
             ofSoundStreamClose();
             bPlaying = false;
 
-            bool setBool = false;
+            setBool = false;
             controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
         }
         break;
     case sourcePanel_playpause:
         if (bRecording) {
-            finishRecord();
+            ofSoundStreamClose();
             bRecording = false;            
 
-            bool setBool = false;
+            setBool = false;
             controls->update(sourcePanel_record, kofxGui_Set_Bool, &setBool, sizeof(bool));
         }
 
@@ -587,7 +576,7 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
         }
         else {
             if (audioBufSize<AUDIO_SEGBUF_SIZE) {
-                bool setBool = false;
+                setBool = false;
                 controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
             }
             else {
@@ -597,23 +586,58 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
             }
         }
         break;
-    case outputPanel_startEngine:
-        if (asrEngine->isEngineStarted()) {
-            bool setBool = true;
-            controls->update(outputPanel_startEngine, kofxGui_Set_Bool, &setBool, sizeof(bool));
-            if (asrEngine->engineClose()==OFXASR_SUCCESS) {
-                setBool = false;
-                controls->update(outputPanel_startEngine, kofxGui_Set_Bool, &setBool, sizeof(bool));
-            }
+    case sourcePanel_sendToASR:
+        if (asr_mode != mode_commandpicking) {
+            break;
         }
-        else {
-            bool setBool = false;
-            controls->update(outputPanel_startEngine, kofxGui_Set_Bool, &setBool, sizeof(bool));
-            if (asrEngine->engineOpen()==OFXASR_SUCCESS) {
-                setBool = true;
-                controls->update(outputPanel_startEngine, kofxGui_Set_Bool, &setBool, sizeof(bool));
-            }
+
+        if (bRecording) {            
+            ofSoundStreamClose();
+            bRecording = false;  
+
+            setBool = false;
+            controls->update(sourcePanel_record, kofxGui_Set_Bool, &setBool, sizeof(bool));
         }
+        if (bPlaying) {
+            curPlayPoint = 0;
+            ofSoundStreamClose();
+            bPlaying = false;
+
+            setBool = false;
+            controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
+        }
+
+        if (audioBufSize < AUDIO_SEGBUF_SIZE) {
+            break;
+        }
+
+        if (! asrEngine->isEngineOpened()) {
+            asrEngine->engineOpen();
+        }
+        buf_16 = new short[audioBufSize];
+        for (int i=0; i<audioBufSize; i++) {
+            buf_16[i] = short(audioBuf[i] * 32767.5 - 0.5);
+        }
+        asrEngine->engineSentAudio(buf_16, audioBufSize);
+        asrEngine->engineClose();
+        printf("Test Converted: %s\n", asrEngine->engineGetText());
+        break;
+    case outputPanel_switchPickingMode:
+        setBool = true;
+        controls->update(outputPanel_switchPickingMode, kofxGui_Set_Bool, &setBool, sizeof(bool));
+        setBool = false;
+        controls->update(outputPanel_switchFreeMode, kofxGui_Set_Bool, &setBool, sizeof(bool));
+        asr_mode = mode_commandpicking;
+        if (asrEngine->isEngineOpened()) {
+            asrEngine->engineClose();
+        }
+        break;
+    case outputPanel_switchFreeMode:
+        setBool = true;
+        controls->update(outputPanel_switchFreeMode, kofxGui_Set_Bool, &setBool, sizeof(bool));
+        setBool = false;
+        controls->update(outputPanel_switchPickingMode, kofxGui_Set_Bool, &setBool, sizeof(bool));
+        asr_mode = mode_freespeaking;
         break;
     default:
         1;

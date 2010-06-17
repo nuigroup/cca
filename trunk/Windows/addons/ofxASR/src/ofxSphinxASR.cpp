@@ -14,13 +14,13 @@
 * by the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
-* Community Core Audio is distributed in the hope that it will be useful,
+* ofxASR is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 * GNU General Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Community Core Audio.  If not, see <http://www.gnu.org/licenses/>.
+* with ofxASR. If not, see <http://www.gnu.org/licenses/>.
 *
 *
 ***************************************************************************/
@@ -37,7 +37,7 @@ ofxSphinxASR::ofxSphinxASR()
 {
     ofAddListener(ofEvents.audioReceived, this, &ofxSphinxASR::_audioReceived);
     bEngineInitialed = false;
-    bEngineStarted = false;
+    bEngineOpened = false;
     decoder = NULL;
     fe = NULL;
     uttnum = 0;
@@ -148,14 +148,14 @@ int ofxSphinxASR::engineOpen()
         return OFXASR_FAIL_STARTENGINE;
     }
     else {
-        bEngineStarted = true;
+        bEngineOpened = true;
         return OFXASR_SUCCESS;
     }    
 }
 
 int ofxSphinxASR::engineClose()
 {
-    bEngineStarted = false;
+    bEngineOpened = false;
     if (! bEngineInitialed) 
         return OFXASR_SUCCESS;
 
@@ -167,6 +167,10 @@ int ofxSphinxASR::engineSentAudio(short *audioBuf, int audioSize)
 {
     float32 **frames;
     int n_frames;
+    if (!bEngineInitialed)
+        return OFXASR_HAVE_NOT_INIT;
+    if (!bEngineOpened)
+        return OFXASR_HAVE_NOT_START;
     fe_process_utt(fe, audioBuf, audioSize, &frames, &n_frames);
     if (frames != NULL) {
         s3_decode_process(decoder, frames, n_frames);
@@ -200,9 +204,9 @@ void ofxSphinxASR::_audioReceived(ofAudioEventArgs &e)
     engineSentAudio(buf_16, e.bufferSize);
 }
 
-bool ofxSphinxASR::isEngineStarted()
+bool ofxSphinxASR::isEngineOpened()
 {
-    return bEngineInitialed * bEngineStarted;
+    return bEngineInitialed * bEngineOpened;
 }
 
 fsg_model_t* ofxSphinxASR::get_fsg(jsgf_t *grammar, const char *name)

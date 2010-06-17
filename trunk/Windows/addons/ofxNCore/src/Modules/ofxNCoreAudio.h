@@ -46,13 +46,20 @@ class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
     {	
         sourcePanel,
         sourcePanel_record,
-        sourcePanel_readfile,
+        sourcePanel_sendToASR,
         sourcePanel_playpause,
         sourcePanel_stop,
 
         outputPanel,
-        outputPanel_startEngine,
+        outputPanel_switchPickingMode,
+        outputPanel_switchFreeMode,
     };
+
+    typedef enum
+    {	
+        mode_freespeaking,
+        mode_commandpicking,
+    } ASRMode;
 
 public:
     ofxNCoreAudio();
@@ -98,9 +105,6 @@ private:
     bool  				bMiniMode;
     int                 maxAudioSize;
 
-    // Log
-    string              lastAudioSavename;
-
     // Command Candidate List
     string              commandList;
     int                 maxSentenceLength;
@@ -140,10 +144,10 @@ private:
     bool                bRecording;
     bool                bPlaying;
     bool                bPaused;
-    void                finishRecord();    
 
     // The ASR Engine
     ofxASR *            asrEngine;
+    ASRMode             asr_mode;
 
 };
 

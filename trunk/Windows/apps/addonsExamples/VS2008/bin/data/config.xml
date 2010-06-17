@@ -27,9 +27,6 @@
     <MEMORY>
         <MAXAUDIOSIZE>102400</MAXAUDIOSIZE>
     </MEMORY>
-    <LOGS>
-        <LASTAUDIOFILENAME>lastaudio.pcm</LASTAUDIOFILENAME>
-    </LOGS>
     <ASR>
         <AM>data/sphinxmodel/digit.8gau</AM>
         <LM>data/sphinxmodel/digit.lm.DMP</LM>

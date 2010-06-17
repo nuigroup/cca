@@ -14,13 +14,13 @@
 * by the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
-* Community Core Audio is distributed in the hope that it will be useful,
+* ofxASR is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 * GNU General Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Community Core Audio.  If not, see <http://www.gnu.org/licenses/>.
+* with ofxASR. If not, see <http://www.gnu.org/licenses/>.
 *
 *
 ***************************************************************************/
@@ -42,6 +42,7 @@
 #define OFXASR_FAIL_STARTENGINE         -8
 #define OFXASR_FAIL_INIT_DECODER        -9
 #define OFXASR_INVALID_AUDIO_FORMAT     -10
+#define OFXASR_HAVE_NOT_START           -11
 
 struct ofAsrEngineArgs
 {    
@@ -76,7 +77,7 @@ public:
     virtual int engineClose() = 0;
     virtual int engineSentAudio(short *audioBuf, int audioSize) = 0;
     virtual char * engineGetText() = 0;
-    virtual bool isEngineStarted() = 0;
+    virtual bool isEngineOpened() = 0;
 
 private:
     // Audio receive event
