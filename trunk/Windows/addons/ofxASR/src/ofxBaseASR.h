@@ -78,10 +78,6 @@ public:
     virtual int engineSentAudio(short *audioBuf, int audioSize) = 0;
     virtual char * engineGetText() = 0;
     virtual bool isEngineOpened() = 0;
-
-private:
-    // Audio receive event
-    virtual void _audioReceived(ofAudioEventArgs &e) = 0;
 };
 
 #endif

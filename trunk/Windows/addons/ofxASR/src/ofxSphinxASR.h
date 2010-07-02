@@ -49,9 +49,6 @@ public:
     char * engineGetText();
 
 private:
-    // Audio Receive Event
-    void _audioReceived(ofAudioEventArgs &e);
-
     // The Decoder
     s3_decode_t *decoder;
     fe_t *fe;
