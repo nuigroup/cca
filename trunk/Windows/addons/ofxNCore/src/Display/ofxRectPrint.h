@@ -1,6 +1,6 @@
 /***************************************************************************
 *
-*  ofxNCore.h
+*  ofxRectPrint.h
 *  NUI Group Community Core Audio
 * 
 *  Author: Jimbo Zhang <dr.jimbozhang@gmail.com>
@@ -27,13 +27,31 @@
 *
 ***************************************************************************/
 
-#ifndef OFXCCA_H
-#define OFXCCA_H
+#ifndef OFXRECTPRINT_H
+#define OFXRECTPRINT_H
 
-//GUI
-#include "Controls/ofxGui.h"
-#include "Controls/ofxGuiTypes.h"
+#include <string>
+#include <vector>
+#include "ofMain.h"
 
-// Modules
-#include "Modules/ofxNCoreAudio.h"
+class ofRectPrint {
+public:
+    ofRectPrint();
+    void init(ofRectangle &_rect, ofColor &_bgColor, ofColor &_fgColor, string fontFile, int fontSize);
+    void addString(std::string s);
+    void upScroll(int lines);
+    void downScroll(int lines);
+    void clearAll();
+    void draw();
+
+private:
+    std::vector<std::string> stringQueue;
+    ofRectangle rect;
+    ofColor bgColor;
+    ofColor fgColor;
+    ofTrueTypeFont font;
+    int lastStringIdx;
+};
+
+
 #endif

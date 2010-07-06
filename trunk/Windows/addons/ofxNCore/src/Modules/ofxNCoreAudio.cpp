@@ -57,7 +57,6 @@ ofxNCoreAudio::ofxNCoreAudio()
 
     // The ASR Engine
     asrEngine = NULL;
-    asr_mode = mode_commandpicking;
 }
 
 ofxNCoreAudio::~ofxNCoreAudio()
@@ -101,6 +100,7 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     setupControls(); 
 
     // ASR Engine
+    asr_mode = mode_commandpicking;
     asrEngine = new ofxSphinxASR;
     ofAsrEngineArgs *engineArgs = new ofAsrEngineArgs;
     engineArgs->sphinxmodel_am = sphinxmodel_am;
@@ -122,6 +122,18 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     }
     delete engineArgs;
     delete []sentence;
+
+    // Display
+    ofColor outBgColor;
+    outBgColor.r = outBgColor.g = outBgColor.b = 0;
+    ofColor outFgColor;
+    outBgColor.r = outBgColor.g = outBgColor.b = 255;
+    ofRectangle outRect;
+    outRect.x = 386;
+    outRect.y = 41;
+    outRect.height = 229;
+    outRect.width = 320;
+    rectPrint.init(outRect, outBgColor, outFgColor, "verdana.ttf", 8);
 
     /*****************************************************************************************************
     * Startup Modes
@@ -322,6 +334,8 @@ void ofxNCoreAudio::drawFullMode()
 
     ofSetColor(0xFF0000);
     verdana.drawString("Press spacebar for mini mode", 748, 572);
+
+    rectPrint.draw();
 }
 
 void ofxNCoreAudio::drawMiniMode()
@@ -365,6 +379,7 @@ void ofxNCoreAudio::_keyPressed(ofKeyEventArgs &e)
                 bShowInterface = false;
                 ofSetWindowShape(190,200); //minimized size
             }
+            break;
         }
     }
 }

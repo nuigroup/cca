@@ -32,12 +32,14 @@
 
 // Main
 #include "ofMain.h"
+
 // Addons
 #include "ofxXmlSettings.h"
 #include "ofxASR.h"
 
 // Our Addon
 #include "ofxNCore.h"
+#include "../Display/ofxRectPrint.h"
 
 class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
 {
@@ -149,6 +151,8 @@ private:
     ofxASR *            asrEngine;
     ASRMode             asr_mode;
 
+    // Display
+    ofRectPrint         rectPrint;
 };
 
 #endif

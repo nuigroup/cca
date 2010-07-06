@@ -636,6 +636,18 @@
 							>
 						</File>
 					</Filter>
+					<Filter
+						Name="Display"
+						>
+						<File
+							RelativePath="..\..\..\addons\ofxNCore\src\Display\ofxRectPrint.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\..\addons\ofxNCore\src\Display\ofxRectPrint.h"
+							>
+						</File>
+					</Filter>
 				</Filter>
 			</Filter>
 			<Filter
