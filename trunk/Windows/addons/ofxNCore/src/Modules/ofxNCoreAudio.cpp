@@ -129,10 +129,11 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     ofColor outFgColor;
     outFgColor.r = outFgColor.g = outFgColor.b = 255;
     ofRectangle outRect;
-    outRect.x = 386;
-    outRect.y = 41;
-    outRect.height = 229;
-    outRect.width = 320;
+    int outRectBorder = 20;
+    outRect.x = 386 + outRectBorder;
+    outRect.y = 41 + outRectBorder;
+    outRect.height = 229 - 2 * outRectBorder;
+    outRect.width = 320 - 2 * outRectBorder;
     rectPrint.init(outRect, outBgColor, outFgColor, "verdana.ttf", 8);
 
     /*****************************************************************************************************
@@ -524,6 +525,7 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
 
     bool setBool;
     short *buf_16;
+    string result;
 
     switch(parameterId)
     {
@@ -642,7 +644,9 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
         }
         asrEngine->engineSentAudio(buf_16, audioBufSize);
         asrEngine->engineClose();
-        printf("Test Converted: %s\n", asrEngine->engineGetText());
+        result = asrEngine->engineGetText();
+        rectPrint.addString(result);
+        printf("Test Converted: %s\n", result.c_str());
         break;
     case outputPanel_switchPickingMode:
         setBool = true;

@@ -43,7 +43,6 @@ public:
     void downScroll(int lines);
     void clearAll();
     void draw();
-    void forceDraw();
 
 private:
     std::vector<std::string> stringQueue;
@@ -52,7 +51,6 @@ private:
     ofColor fgColor;
     ofTrueTypeFont font;
     int lastStringIdx;
-    bool needDraw;
 };
 
 

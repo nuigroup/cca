@@ -32,7 +32,6 @@
 ofRectPrint::ofRectPrint()
 {
     lastStringIdx = -1;
-    needDraw = false;
 }
 
 void ofRectPrint::init(ofRectangle &_rect, ofColor &_bgColor, ofColor &_fgColor, string fontFile, int fontSize) 
@@ -63,7 +62,6 @@ void ofRectPrint::addString(std::string s)
 {
     stringQueue.push_back(s);
     lastStringIdx = stringQueue.size() - 1;
-    needDraw = true;
 }
 
 void ofRectPrint::upScroll(int lines)
@@ -72,7 +70,6 @@ void ofRectPrint::upScroll(int lines)
     if (lastStringIdx < 0) {
         lastStringIdx = 0;
     }
-    needDraw = true;
 }
 
 void ofRectPrint::downScroll(int lines)
@@ -81,42 +78,32 @@ void ofRectPrint::downScroll(int lines)
     if (lastStringIdx > stringQueue.size() - 1) {
         lastStringIdx = stringQueue.size() - 1;
     }
-    needDraw = true;
 }
 
 void ofRectPrint::clearAll()
 {
     stringQueue.clear();
     lastStringIdx = -1;
-    needDraw = true;
 }
 
 void ofRectPrint::draw()
 {
-    if (! needDraw) {
+    if (! font.bLoadedOk) {
+        printf("Font file has not been loaded.\n");
         return;
-    }
+    }    
 
     // Clear rect
     ofSetColor(bgColor.r, bgColor.g, bgColor.b, bgColor.a);
     ofRect(rect.x, rect.y, rect.width, rect.height);    
     ofFill();
-    
-    if (! font.bLoadedOk) {
-        printf("Font file has not been loaded.\n");
-        return;
-    }
 
     if (lastStringIdx < 0 || lastStringIdx > stringQueue.size() - 1)  {
-        printf("Invalid index.\n");
+        printf("No strings in the output queue.\n");
         return;
-    }
+    }    
 
-    needDraw = false;
-}
-
-void ofRectPrint::forceDraw()
-{
-    needDraw = true;
-    draw();
+    // Draw strings
+    ofSetColor(fgColor.r, fgColor.g, fgColor.b, fgColor.a);
+    font.drawString(stringQueue[lastStringIdx], rect.x, rect.y);
 }
