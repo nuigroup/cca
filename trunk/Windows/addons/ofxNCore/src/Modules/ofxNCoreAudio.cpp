@@ -125,9 +125,9 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
 
     // Display
     ofColor outBgColor;
-    outBgColor.r = outBgColor.g = outBgColor.b = 0;
+    outBgColor.r = outBgColor.g = outBgColor.b = 51;
     ofColor outFgColor;
-    outBgColor.r = outBgColor.g = outBgColor.b = 255;
+    outFgColor.r = outFgColor.g = outFgColor.b = 255;
     ofRectangle outRect;
     outRect.x = 386;
     outRect.y = 41;
