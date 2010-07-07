@@ -55,6 +55,7 @@ class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
         outputPanel,
         outputPanel_switchPickingMode,
         outputPanel_switchFreeMode,
+        outputPanel_clear,
     };
 
     typedef enum

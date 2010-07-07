@@ -510,10 +510,13 @@ void ofxNCoreAudio::setupControls()
     ofxGuiPanel* outputPanel = controls->addPanel(appPtr->outputPanel, "Convert Text Panel", 387, 270, OFXGUI_PANEL_BORDER, OFXGUI_PANEL_SPACING);
     outputPanel->addButton(appPtr->outputPanel_switchPickingMode, "COMMAND PICKING MODE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_On, kofxGui_Button_Switch);
     outputPanel->addButton(appPtr->outputPanel_switchFreeMode, "FREE SPEAKING MODE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
-    outputPanel->mObjHeight = 85;
+    outputPanel->addButton(appPtr->outputPanel_clear, "CLEAR SCREEN", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Trigger);
+    srcPanel->mObjHeight = 85;
     outputPanel->mObjWidth = 319;
     outputPanel->mObjects[0]->mObjY = 42;
     outputPanel->mObjects[1]->mObjY = 65;
+    outputPanel->mObjects[2]->mObjX = 180;
+    outputPanel->mObjects[2]->mObjY = 65;
 
     srcPanel->adjustToNewContent(100, 0);
 
@@ -677,6 +680,9 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
         setBool = false;
         controls->update(outputPanel_switchPickingMode, kofxGui_Set_Bool, &setBool, sizeof(bool));
         asr_mode = mode_freespeaking;
+        break;
+    case outputPanel_clear:
+        rectPrint.clearAll();
         break;
     default:
         1;
