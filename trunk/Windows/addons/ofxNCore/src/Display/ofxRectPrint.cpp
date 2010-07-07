@@ -32,6 +32,7 @@
 ofRectPrint::ofRectPrint()
 {
     lastStringIdx = -1;
+    lineHeight = 20;
 }
 
 void ofRectPrint::init(ofRectangle &_rect, ofColor &_bgColor, ofColor &_fgColor, string fontFile, int fontSize) 
@@ -86,6 +87,11 @@ void ofRectPrint::clearAll()
     lastStringIdx = -1;
 }
 
+void ofRectPrint::setLineHeight(int height)
+{
+    lineHeight = height;
+}
+
 void ofRectPrint::draw()
 {
     if (! font.bLoadedOk) {
@@ -105,5 +111,12 @@ void ofRectPrint::draw()
 
     // Draw strings
     ofSetColor(fgColor.r, fgColor.g, fgColor.b, fgColor.a);
-    font.drawString(stringQueue[lastStringIdx], rect.x, rect.y);
+    int maxLineNum = rect.height / lineHeight;
+    int startLine = lastStringIdx - maxLineNum;
+    if (startLine < 0)
+        startLine = 0;
+
+    for (int i=0; i<=lastStringIdx-startLine; i++) {
+        font.drawString(stringQueue[startLine+i], rect.x, rect.y + i*lineHeight);
+    }    
 }

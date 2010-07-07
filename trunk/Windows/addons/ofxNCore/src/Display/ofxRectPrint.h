@@ -43,6 +43,7 @@ public:
     void downScroll(int lines);
     void clearAll();
     void draw();
+    void setLineHeight(int height);
 
 private:
     std::vector<std::string> stringQueue;
@@ -50,6 +51,7 @@ private:
     ofColor bgColor;
     ofColor fgColor;
     ofTrueTypeFont font;
+    int lineHeight;
     int lastStringIdx;
 };
 

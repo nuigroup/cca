@@ -27,6 +27,7 @@
 *
 ***************************************************************************/
 
+#include <time.h>
 #include "ofxNCoreAudio.h"
 
 #ifdef USE_SPHINX
@@ -125,16 +126,17 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
 
     // Display
     ofColor outBgColor;
-    outBgColor.r = outBgColor.g = outBgColor.b = 51;
+    outBgColor.r = outBgColor.g = outBgColor.b = 0x33;
     ofColor outFgColor;
-    outFgColor.r = outFgColor.g = outFgColor.b = 255;
+    outFgColor.r = 0; outFgColor.g = 255; outFgColor.b = 0;
     ofRectangle outRect;
     int outRectBorder = 20;
-    outRect.x = 386 + outRectBorder;
+    outRect.x = 386 + outRectBorder/2;
     outRect.y = 41 + outRectBorder;
     outRect.height = 229 - 2 * outRectBorder;
-    outRect.width = 320 - 2 * outRectBorder;
+    outRect.width = 320 - 2 * outRectBorder/2;
     rectPrint.init(outRect, outBgColor, outFgColor, "verdana.ttf", 8);
+    rectPrint.setLineHeight(15);
 
     /*****************************************************************************************************
     * Startup Modes
@@ -524,8 +526,11 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
 {
 
     bool setBool;
-    short *buf_16;
-    string result;
+    short *buf_16 = NULL;
+    time_t t;
+    struct tm *current_time;
+    char *result_tmp = NULL;
+    string result;        
 
     switch(parameterId)
     {
@@ -644,8 +649,16 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
         }
         asrEngine->engineSentAudio(buf_16, audioBufSize);
         asrEngine->engineClose();
-        result = asrEngine->engineGetText();
-        rectPrint.addString(result);
+
+        result_tmp = new char[maxSentenceLength];
+        t = time(0);
+        current_time = localtime(&t);
+        sprintf(result_tmp, "[%2d:%2d:%2d] %s", current_time->tm_hour, current_time->tm_min, 
+            current_time->tm_sec, asrEngine->engineGetText());
+        result = result_tmp;
+        rectPrint.addString(result);        
+        delete[] result_tmp;
+        result_tmp = NULL;
         printf("Test Converted: %s\n", result.c_str());
         break;
     case outputPanel_switchPickingMode:
