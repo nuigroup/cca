@@ -1,6 +1,6 @@
 /***************************************************************************
 *
-*  ofxCCA.h
+*  ofxNCore.h
 *  NUI Group Community Core Audio
 * 
 *  Author: Jimbo Zhang <dr.jimbozhang@gmail.com>

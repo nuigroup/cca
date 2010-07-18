@@ -22,12 +22,18 @@
         <MINIMODE>0</MINIMODE>
     </BOOLEAN>
     <FORMAT>
-        <SAMPLERATE>44100</SAMPLERATE>
+        <SAMPLERATE>48000</SAMPLERATE>
     </FORMAT>
     <MEMORY>
         <MAXAUDIOSIZE>102400</MAXAUDIOSIZE>
     </MEMORY>
-    <LOGS>
-        <LASTAUDIOFILENAME>lastaudio.pcm</LASTAUDIOFILENAME>
-    </LOGS>
+    <ASR>
+        <SAMPLERATE>16000</SAMPLERATE>
+        <AM>../../../data/sphinxmodel/digit.8gau</AM>
+        <LM>../../../data/sphinxmodel/digit.lm.DMP</LM>
+        <DICT>../../../data/sphinxmodel/digit.dict</DICT>
+        <FDICT>../../../data/sphinxmodel/digit.fdict</FDICT>
+        <LIST>../../../data/commandList.txt</LIST>
+        <MAXCOMMANDLENGTH>64</MAXCOMMANDLENGTH>
+    </ASR>
 </CONFIG>

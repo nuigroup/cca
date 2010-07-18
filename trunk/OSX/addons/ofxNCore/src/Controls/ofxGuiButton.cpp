@@ -131,7 +131,7 @@ bool ofxGuiButton::mouseReleased(int x, int y, int button)
 		if(mDisplay == kofxGui_Button_Trigger)
 		{
 			setValue(false);
-			mGlobals->mListener->handleGui(mParamId, kofxGui_Set_Bool, &mValue, sizeof(bool));
+			//mGlobals->mListener->handleGui(mParamId, kofxGui_Set_Bool, &mValue, sizeof(bool));
 		}
 		
 		mMouseIsDown = false;

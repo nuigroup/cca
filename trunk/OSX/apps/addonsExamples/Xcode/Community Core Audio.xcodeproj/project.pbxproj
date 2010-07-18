@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		587459351199B5660077BE63 /* model3DS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 587458791199B5660077BE63 /* model3DS.cpp */; };
-		587459361199B5660077BE63 /* texture3DS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5874587B1199B5660077BE63 /* texture3DS.cpp */; };
-		587459371199B5660077BE63 /* ofx3dModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5874587F1199B5660077BE63 /* ofx3dModelLoader.cpp */; };
 		587459381199B5660077BE63 /* ofxDirList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 587458861199B5660077BE63 /* ofxDirList.cpp */; };
 		587459391199B5660077BE63 /* ofxGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 587458911199B5660077BE63 /* ofxGui.cpp */; };
 		5874593A1199B5660077BE63 /* ofxGuiButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 587458931199B5660077BE63 /* ofxGuiButton.cpp */; };
@@ -51,6 +48,12 @@
 		5874595E1199B5660077BE63 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 587459301199B5660077BE63 /* tinyxmlerror.cpp */; };
 		5874595F1199B5660077BE63 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 587459311199B5660077BE63 /* tinyxmlparser.cpp */; };
 		587459601199B5660077BE63 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 587459331199B5660077BE63 /* ofxXmlSettings.cpp */; };
+		5891332E11F3625900A62687 /* libs3decoder.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5891332C11F3625900A62687 /* libs3decoder.dylib */; };
+		5891332F11F3625900A62687 /* libsphinxbase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5891332D11F3625900A62687 /* libsphinxbase.dylib */; };
+		5891333911F362C100A62687 /* ofxSphinxASR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5891333711F362C100A62687 /* ofxSphinxASR.cpp */; };
+		5891333C11F362E400A62687 /* ofxRectPrint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5891333A11F362E400A62687 /* ofxRectPrint.cpp */; };
+		5891334011F3631600A62687 /* libs3decoder.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5891332C11F3625900A62687 /* libs3decoder.dylib */; };
+		5891334111F3631600A62687 /* libsphinxbase.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5891332D11F3625900A62687 /* libsphinxbase.dylib */; };
 		E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE0A90E8CC67C009D7055 /* GLee.a */; };
 		E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE2E30E8CC69C009D7055 /* rtAudio.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -99,6 +102,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5891335311F3634100A62687 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				5891334011F3631600A62687 /* libs3decoder.dylib in CopyFiles */,
+				5891334111F3631600A62687 /* libsphinxbase.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4C2427710CC5ABF004149E2 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -123,21 +137,10 @@
 
 /* Begin PBXFileReference section */
 		587458741199B5660077BE63 /* ofAddons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofAddons.h; path = ../../../addons/ofAddons.h; sourceTree = SOURCE_ROOT; };
-		587458761199B5660077BE63 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = install.xml; path = ../../../addons/ofx3DModelLoader/install.xml; sourceTree = SOURCE_ROOT; };
-		587458791199B5660077BE63 /* model3DS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = model3DS.cpp; path = ../../../addons/ofx3DModelLoader/src/3DS/model3DS.cpp; sourceTree = SOURCE_ROOT; };
-		5874587A1199B5660077BE63 /* model3DS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = model3DS.h; path = ../../../addons/ofx3DModelLoader/src/3DS/model3DS.h; sourceTree = SOURCE_ROOT; };
-		5874587B1199B5660077BE63 /* texture3DS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = texture3DS.cpp; path = ../../../addons/ofx3DModelLoader/src/3DS/texture3DS.cpp; sourceTree = SOURCE_ROOT; };
-		5874587C1199B5660077BE63 /* texture3DS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = texture3DS.h; path = ../../../addons/ofx3DModelLoader/src/3DS/texture3DS.h; sourceTree = SOURCE_ROOT; };
-		5874587D1199B5660077BE63 /* Vector3DS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector3DS.h; path = ../../../addons/ofx3DModelLoader/src/3DS/Vector3DS.h; sourceTree = SOURCE_ROOT; };
-		5874587E1199B5660077BE63 /* ofx3DBaseLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofx3DBaseLoader.h; path = ../../../addons/ofx3DModelLoader/src/ofx3DBaseLoader.h; sourceTree = SOURCE_ROOT; };
-		5874587F1199B5660077BE63 /* ofx3dModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofx3dModelLoader.cpp; path = ../../../addons/ofx3DModelLoader/src/ofx3dModelLoader.cpp; sourceTree = SOURCE_ROOT; };
-		587458801199B5660077BE63 /* ofx3DModelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofx3DModelLoader.h; path = ../../../addons/ofx3DModelLoader/src/ofx3DModelLoader.h; sourceTree = SOURCE_ROOT; };
 		587458831199B5660077BE63 /* Instructions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Instructions.txt; path = ../../../addons/ofxDirList/doc/Instructions.txt; sourceTree = SOURCE_ROOT; };
 		587458841199B5660077BE63 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = install.xml; path = ../../../addons/ofxDirList/install.xml; sourceTree = SOURCE_ROOT; };
 		587458861199B5660077BE63 /* ofxDirList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxDirList.cpp; path = ../../../addons/ofxDirList/src/ofxDirList.cpp; sourceTree = SOURCE_ROOT; };
 		587458871199B5660077BE63 /* ofxDirList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxDirList.h; path = ../../../addons/ofxDirList/src/ofxDirList.h; sourceTree = SOURCE_ROOT; };
-		5874588A1199B5660077BE63 /* Lisence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Lisence.txt; path = ../../../addons/ofxNCore/docs/Lisence.txt; sourceTree = SOURCE_ROOT; };
-		5874588C1199B5660077BE63 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = install.xml; path = ../../../addons/ofxNCore/install.xml; sourceTree = SOURCE_ROOT; };
 		587458911199B5660077BE63 /* ofxGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxGui.cpp; path = ../../../addons/ofxNCore/src/Controls/ofxGui.cpp; sourceTree = SOURCE_ROOT; };
 		587458921199B5660077BE63 /* ofxGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxGui.h; path = ../../../addons/ofxNCore/src/Controls/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		587458931199B5660077BE63 /* ofxGuiButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxGuiButton.cpp; path = ../../../addons/ofxNCore/src/Controls/ofxGuiButton.cpp; sourceTree = SOURCE_ROOT; };
@@ -271,6 +274,14 @@
 		587459311199B5660077BE63 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxmlparser.cpp; path = ../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp; sourceTree = SOURCE_ROOT; };
 		587459331199B5660077BE63 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxXmlSettings.cpp; path = ../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp; sourceTree = SOURCE_ROOT; };
 		587459341199B5660077BE63 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxXmlSettings.h; path = ../../../addons/ofxXmlSettings/src/ofxXmlSettings.h; sourceTree = SOURCE_ROOT; };
+		5891332C11F3625900A62687 /* libs3decoder.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libs3decoder.dylib; path = ../../../addons/ofxASR/libs/sphinx/lib/osx/libs3decoder.dylib; sourceTree = SOURCE_ROOT; };
+		5891332D11F3625900A62687 /* libsphinxbase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsphinxbase.dylib; path = ../../../addons/ofxASR/libs/sphinx/lib/osx/libsphinxbase.dylib; sourceTree = SOURCE_ROOT; };
+		5891333511F362C100A62687 /* ofxASR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxASR.h; path = ofxASR/src/ofxASR.h; sourceTree = "<group>"; };
+		5891333611F362C100A62687 /* ofxBaseASR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxBaseASR.h; path = ofxASR/src/ofxBaseASR.h; sourceTree = "<group>"; };
+		5891333711F362C100A62687 /* ofxSphinxASR.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxSphinxASR.cpp; path = ofxASR/src/ofxSphinxASR.cpp; sourceTree = "<group>"; };
+		5891333811F362C100A62687 /* ofxSphinxASR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSphinxASR.h; path = ofxASR/src/ofxSphinxASR.h; sourceTree = "<group>"; };
+		5891333A11F362E400A62687 /* ofxRectPrint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxRectPrint.cpp; path = Display/ofxRectPrint.cpp; sourceTree = "<group>"; };
+		5891333B11F362E400A62687 /* ofxRectPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxRectPrint.h; path = Display/ofxRectPrint.h; sourceTree = "<group>"; };
 		E45BE0390E8CC647009D7055 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = ../../../libs/freeimage/include/FreeImage.h; sourceTree = SOURCE_ROOT; };
 		E45BE03F0E8CC650009D7055 /* fmod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmod.h; path = ../../../libs/fmodex/include/fmod.h; sourceTree = SOURCE_ROOT; };
 		E45BE0400E8CC650009D7055 /* fmod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fmod.hpp; path = ../../../libs/fmodex/include/fmod.hpp; sourceTree = SOURCE_ROOT; };
@@ -341,6 +352,8 @@
 				E4C2429410CC5C38004149E2 /* freetype.a in Frameworks */,
 				E4C242CD10CC650E004149E2 /* libfmodex.dylib in Frameworks */,
 				E4C246DA10CCAE22004149E2 /* freeimage.a in Frameworks */,
+				5891332E11F3625900A62687 /* libs3decoder.dylib in Frameworks */,
+				5891332F11F3625900A62687 /* libsphinxbase.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,9 +364,9 @@
 			isa = PBXGroup;
 			children = (
 				587458741199B5660077BE63 /* ofAddons.h */,
-				587458751199B5660077BE63 /* ofx3DModelLoader */,
-				587458811199B5660077BE63 /* ofxDirList */,
+				5891333411F362AD00A62687 /* ofxASR */,
 				587458881199B5660077BE63 /* ofxNCore */,
+				587458811199B5660077BE63 /* ofxDirList */,
 				587458B41199B5660077BE63 /* ofxNetwork */,
 				587458C21199B5660077BE63 /* ofxOpenCv */,
 				587458EA1199B5660077BE63 /* ofxOsc */,
@@ -364,41 +377,6 @@
 			);
 			name = addons;
 			path = ../../../addons;
-			sourceTree = SOURCE_ROOT;
-		};
-		587458751199B5660077BE63 /* ofx3DModelLoader */ = {
-			isa = PBXGroup;
-			children = (
-				587458761199B5660077BE63 /* install.xml */,
-				587458771199B5660077BE63 /* src */,
-			);
-			name = ofx3DModelLoader;
-			path = ../../../addons/ofx3DModelLoader;
-			sourceTree = SOURCE_ROOT;
-		};
-		587458771199B5660077BE63 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				587458781199B5660077BE63 /* 3DS */,
-				5874587E1199B5660077BE63 /* ofx3DBaseLoader.h */,
-				5874587F1199B5660077BE63 /* ofx3dModelLoader.cpp */,
-				587458801199B5660077BE63 /* ofx3DModelLoader.h */,
-			);
-			name = src;
-			path = ../../../addons/ofx3DModelLoader/src;
-			sourceTree = SOURCE_ROOT;
-		};
-		587458781199B5660077BE63 /* 3DS */ = {
-			isa = PBXGroup;
-			children = (
-				587458791199B5660077BE63 /* model3DS.cpp */,
-				5874587A1199B5660077BE63 /* model3DS.h */,
-				5874587B1199B5660077BE63 /* texture3DS.cpp */,
-				5874587C1199B5660077BE63 /* texture3DS.h */,
-				5874587D1199B5660077BE63 /* Vector3DS.h */,
-			);
-			name = 3DS;
-			path = ../../../addons/ofx3DModelLoader/src/3DS;
 			sourceTree = SOURCE_ROOT;
 		};
 		587458811199B5660077BE63 /* ofxDirList */ = {
@@ -434,44 +412,15 @@
 		587458881199B5660077BE63 /* ofxNCore */ = {
 			isa = PBXGroup;
 			children = (
-				587458891199B5660077BE63 /* docs */,
-				5874588B1199B5660077BE63 /* example */,
-				5874588C1199B5660077BE63 /* install.xml */,
-				5874588D1199B5660077BE63 /* libs */,
 				5874588E1199B5660077BE63 /* src */,
 			);
-			name = ofxNCore;
-			path = ../../../addons/ofxNCore;
-			sourceTree = SOURCE_ROOT;
-		};
-		587458891199B5660077BE63 /* docs */ = {
-			isa = PBXGroup;
-			children = (
-				5874588A1199B5660077BE63 /* Lisence.txt */,
-			);
-			name = docs;
-			path = ../../../addons/ofxNCore/docs;
-			sourceTree = SOURCE_ROOT;
-		};
-		5874588B1199B5660077BE63 /* example */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = example;
-			path = ../../../addons/ofxNCore/example;
-			sourceTree = SOURCE_ROOT;
-		};
-		5874588D1199B5660077BE63 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = libs;
-			path = ../../../addons/ofxNCore/libs;
-			sourceTree = SOURCE_ROOT;
+			path = ofxNCore;
+			sourceTree = "<group>";
 		};
 		5874588E1199B5660077BE63 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				5891333311F3628F00A62687 /* Display */,
 				5874588F1199B5660077BE63 /* Controls */,
 				587458B01199B5660077BE63 /* Modules */,
 				587458B31199B5660077BE63 /* ofxNCore.h */,
@@ -891,6 +840,26 @@
 			path = ../../../addons/ofxXmlSettings/src;
 			sourceTree = SOURCE_ROOT;
 		};
+		5891333311F3628F00A62687 /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				5891333A11F362E400A62687 /* ofxRectPrint.cpp */,
+				5891333B11F362E400A62687 /* ofxRectPrint.h */,
+			);
+			name = Display;
+			sourceTree = "<group>";
+		};
+		5891333411F362AD00A62687 /* ofxASR */ = {
+			isa = PBXGroup;
+			children = (
+				5891333511F362C100A62687 /* ofxASR.h */,
+				5891333611F362C100A62687 /* ofxBaseASR.h */,
+				5891333711F362C100A62687 /* ofxSphinxASR.cpp */,
+				5891333811F362C100A62687 /* ofxSphinxASR.h */,
+			);
+			name = ofxASR;
+			sourceTree = "<group>";
+		};
 		E45BE0360E8CC5DE009D7055 /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1071,9 +1040,11 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				587458731199B5660077BE63 /* addons */,
 				E4B69B5B0A3A1756003C02F2 /* Community Core AudioDebug.app */,
+				5891332C11F3625900A62687 /* libs3decoder.dylib */,
+				5891332D11F3625900A62687 /* libsphinxbase.dylib */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				587458731199B5660077BE63 /* addons */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4C2422310CC54B6004149E2 /* openFrameworks */,
 				E45BE0360E8CC5DE009D7055 /* libs */,
@@ -1185,6 +1156,7 @@
 				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
 				E4C2427710CC5ABF004149E2 /* CopyFiles */,
 				E4C2444710CC769B004149E2 /* CopyFiles */,
+				5891335311F3634100A62687 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1253,9 +1225,6 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				587459351199B5660077BE63 /* model3DS.cpp in Sources */,
-				587459361199B5660077BE63 /* texture3DS.cpp in Sources */,
-				587459371199B5660077BE63 /* ofx3dModelLoader.cpp in Sources */,
 				587459381199B5660077BE63 /* ofxDirList.cpp in Sources */,
 				587459391199B5660077BE63 /* ofxGui.cpp in Sources */,
 				5874593A1199B5660077BE63 /* ofxGuiButton.cpp in Sources */,
@@ -1297,6 +1266,8 @@
 				5874595E1199B5660077BE63 /* tinyxmlerror.cpp in Sources */,
 				5874595F1199B5660077BE63 /* tinyxmlparser.cpp in Sources */,
 				587459601199B5660077BE63 /* ofxXmlSettings.cpp in Sources */,
+				5891333911F362C100A62687 /* ofxSphinxASR.cpp in Sources */,
+				5891333C11F362E400A62687 /* ofxRectPrint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1385,11 +1356,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/freeimage/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../libs/fmodex/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../libs/freetype/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../libs/FreeImage/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxASR/libs/sphinx/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../libs/GLee/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../libs/poco/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../libs/rtAudio/lib/osx\"";
@@ -1425,7 +1398,13 @@
 					../../../libs/freetype/include/freetype2,
 					../../../libs/poco/include,
 					../../../addons/,
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2)",
+					"$(HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3)",
 				);
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_1 = "\"$(SRCROOT)/../../../addons/ofxASR/src\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_2 = "\"$(SRCROOT)/../../../addons/ofxASR/libs/sphinx/include/sphinxbase\"";
+				HEADER_SEARCH_PATHS_QUOTED_FOR_PROJECT_3 = "\"$(SRCROOT)/../../../addons/ofxASR/libs/sphinx/include/sphinx3\"";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -1508,11 +1487,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/freeimage/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../libs/fmodex/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../libs/freetype/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../libs/FreeImage/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxASR/libs/sphinx/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../libs/GLee/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../libs/poco/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../libs/rtAudio/lib/osx\"";
@@ -1557,11 +1538,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/freeimage/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../libs/fmodex/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../libs/freetype/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../libs/FreeImage/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxASR/libs/sphinx/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../libs/GLee/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../libs/poco/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../libs/rtAudio/lib/osx\"";
