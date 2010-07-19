@@ -26,11 +26,15 @@
 ***************************************************************************/
 #ifdef WIN32
 #include <io.h>
+#include <direct.h>
+#define getcwd _getcwd
 #else
 #include <unistd.h>
 #endif
+
 #include <stdio.h>
 #include "ofxSphinxASR.h"
+
 ofxSphinxASR::ofxSphinxASR()
 {
     bEngineInitialed = false;
@@ -65,6 +69,7 @@ int ofxSphinxASR::engineInit(ofAsrEngineArgs *e)
 	
 	char cur_path[1024];
 	getcwd(cur_path, 1024);
+
     fprintf(cfg_fp, "-samprate %d\n", e->samplerate);
     fprintf(cfg_fp, "-hmm %s/%s\n", cur_path, e->sphinxmodel_am.c_str());
     fprintf(cfg_fp, "-dict %s/%s\n", cur_path, e->sphinxmodel_dict.c_str());

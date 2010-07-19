@@ -151,6 +151,7 @@ private:
     // The ASR Engine
     ofxASR *            asrEngine;
     ASRMode             asr_mode;
+	int                 model_sampleRate;
 
     // Display
     ofRectPrint         rectPrint;

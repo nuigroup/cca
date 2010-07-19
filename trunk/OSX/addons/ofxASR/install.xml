@@ -29,10 +29,6 @@
         <link>
             <lib os="win32" compiler="visualstudio">../../../addons/ofxASR/libs/sphinx/lib/win32/s3decoder.lib</lib>
             <lib os="win32" compiler="visualstudio">../../../addons/ofxASR/libs/sphinx/lib/win32/sphinxbase.lib</lib>      
-            <lib os="mac"   compiler="xcode">../../../addons/ofxASR/libs/sphinx/lib/osx/libsphinxbase.a</lib>
-            <lib os="mac"   compiler="xcode">../../../addons/ofxASR/libs/sphinx/lib/osx/libs3decoder.a</lib>      
-            <lib os="linux" compiler="codeblocks, makefile">../../../addons/ofxASR/libs/sphinx/lib/linux/libsphinxbase.a</lib>
-            <lib os="linux" compiler="codeblocks, makefile">../../../addons/ofxASR/libs/sphinx/lib/linux/libs3decoder.a</lib>
         </link>
         
         <export>
