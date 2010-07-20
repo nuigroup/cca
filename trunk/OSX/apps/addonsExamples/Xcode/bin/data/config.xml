@@ -29,11 +29,11 @@
     </MEMORY>
     <ASR>
         <SAMPLERATE>16000</SAMPLERATE>
-        <AM>../../../data/sphinxmodel/digit.8gau</AM>
-        <LM>../../../data/sphinxmodel/digit.lm.DMP</LM>
-        <DICT>../../../data/sphinxmodel/digit.dict</DICT>
-        <FDICT>../../../data/sphinxmodel/digit.fdict</FDICT>
-        <LIST>../../../data/commandList.txt</LIST>
+        <AM>.</AM>
+        <LM>digit.lm.DMP</LM>
+        <DICT>digit.dict</DICT>
+        <FDICT>digit.fdict</FDICT>
+        <LIST>commandList.txt</LIST>
         <MAXCOMMANDLENGTH>64</MAXCOMMANDLENGTH>
     </ASR>
 </CONFIG>

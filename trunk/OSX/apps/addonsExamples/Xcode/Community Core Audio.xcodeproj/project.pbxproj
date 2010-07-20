@@ -58,6 +58,19 @@
 		58DDE4D911F5D5700060142D /* filterkit.c in Sources */ = {isa = PBXBuildFile; fileRef = 58DDE4D411F5D5700060142D /* filterkit.c */; };
 		58DDE4DA11F5D5700060142D /* resample.c in Sources */ = {isa = PBXBuildFile; fileRef = 58DDE4D711F5D5700060142D /* resample.c */; };
 		58DDE4DB11F5D5700060142D /* resamplesubs.c in Sources */ = {isa = PBXBuildFile; fileRef = 58DDE4D811F5D5700060142D /* resamplesubs.c */; };
+		58DDE53F11F5D9E40060142D /* automat.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE52E11F5D9C70060142D /* automat.ttf */; };
+		58DDE54011F5D9E40060142D /* verdana.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53E11F5D9C70060142D /* verdana.ttf */; };
+		58DDE54111F5D9E40060142D /* commandList.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE52F11F5D9C70060142D /* commandList.txt */; };
+		58DDE54211F5D9E40060142D /* config.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53011F5D9C70060142D /* config.xml */; };
+		58DDE54311F5D9F50060142D /* digit.dict in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53A11F5D9C70060142D /* digit.dict */; };
+		58DDE54411F5D9F50060142D /* digit.fdict in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53B11F5D9C70060142D /* digit.fdict */; };
+		58DDE54511F5D9F50060142D /* digit.lm.DMP in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53C11F5D9C70060142D /* digit.lm.DMP */; };
+		58DDE54611F5D9FC0060142D /* mdef in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53511F5D9C70060142D /* mdef */; };
+		58DDE54711F5D9FC0060142D /* means in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53611F5D9C70060142D /* means */; };
+		58DDE54811F5D9FC0060142D /* mixture_weights in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53711F5D9C70060142D /* mixture_weights */; };
+		58DDE54911F5D9FC0060142D /* transition_matrices in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53811F5D9C70060142D /* transition_matrices */; };
+		58DDE54A11F5D9FC0060142D /* variances in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53911F5D9C70060142D /* variances */; };
+		58DDE54B11F5DA080060142D /* background.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53211F5D9C70060142D /* background.jpg */; };
 		E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE0A90E8CC67C009D7055 /* GLee.a */; };
 		E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE2E30E8CC69C009D7055 /* rtAudio.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -71,7 +84,7 @@
 		E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
-		E4C2422B10CC554B004149E2 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2421E10CC549C004149E2 /* openFrameworksDebug.a */; };
+		E4C2422B10CC554B004149E2 /* openFrameworks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2421E10CC549C004149E2 /* openFrameworks.a */; };
 		E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
@@ -133,6 +146,19 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				58DDE54B11F5DA080060142D /* background.jpg in CopyFiles */,
+				58DDE54611F5D9FC0060142D /* mdef in CopyFiles */,
+				58DDE54711F5D9FC0060142D /* means in CopyFiles */,
+				58DDE54811F5D9FC0060142D /* mixture_weights in CopyFiles */,
+				58DDE54911F5D9FC0060142D /* transition_matrices in CopyFiles */,
+				58DDE54A11F5D9FC0060142D /* variances in CopyFiles */,
+				58DDE54311F5D9F50060142D /* digit.dict in CopyFiles */,
+				58DDE54411F5D9F50060142D /* digit.fdict in CopyFiles */,
+				58DDE54511F5D9F50060142D /* digit.lm.DMP in CopyFiles */,
+				58DDE53F11F5D9E40060142D /* automat.ttf in CopyFiles */,
+				58DDE54011F5D9E40060142D /* verdana.ttf in CopyFiles */,
+				58DDE54111F5D9E40060142D /* commandList.txt in CopyFiles */,
+				58DDE54211F5D9E40060142D /* config.xml in CopyFiles */,
 				E4C2443910CC7693004149E2 /* openFrameworks-Info.plist in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +320,20 @@
 		58DDE4D611F5D5700060142D /* resample_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = resample_defs.h; path = libs/libresample/lib/resample_defs.h; sourceTree = "<group>"; };
 		58DDE4D711F5D5700060142D /* resample.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = resample.c; path = libs/libresample/lib/resample.c; sourceTree = "<group>"; };
 		58DDE4D811F5D5700060142D /* resamplesubs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = resamplesubs.c; path = libs/libresample/lib/resamplesubs.c; sourceTree = "<group>"; };
+		58DDE52E11F5D9C70060142D /* automat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = automat.ttf; path = bin/data/automat.ttf; sourceTree = "<group>"; };
+		58DDE52F11F5D9C70060142D /* commandList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = commandList.txt; path = bin/data/commandList.txt; sourceTree = "<group>"; };
+		58DDE53011F5D9C70060142D /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = config.xml; path = bin/data/config.xml; sourceTree = "<group>"; };
+		58DDE53211F5D9C70060142D /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		58DDE53511F5D9C70060142D /* mdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdef; sourceTree = "<group>"; };
+		58DDE53611F5D9C70060142D /* means */ = {isa = PBXFileReference; lastKnownFileType = file; path = means; sourceTree = "<group>"; };
+		58DDE53711F5D9C70060142D /* mixture_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = mixture_weights; sourceTree = "<group>"; };
+		58DDE53811F5D9C70060142D /* transition_matrices */ = {isa = PBXFileReference; lastKnownFileType = file; path = transition_matrices; sourceTree = "<group>"; };
+		58DDE53911F5D9C70060142D /* variances */ = {isa = PBXFileReference; lastKnownFileType = file; path = variances; sourceTree = "<group>"; };
+		58DDE53A11F5D9C70060142D /* digit.dict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = digit.dict; sourceTree = "<group>"; };
+		58DDE53B11F5D9C70060142D /* digit.fdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = digit.fdict; sourceTree = "<group>"; };
+		58DDE53C11F5D9C70060142D /* digit.lm.DMP */ = {isa = PBXFileReference; lastKnownFileType = file; path = digit.lm.DMP; sourceTree = "<group>"; };
+		58DDE53D11F5D9C70060142D /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		58DDE53E11F5D9C70060142D /* verdana.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = verdana.ttf; path = bin/data/verdana.ttf; sourceTree = "<group>"; };
 		E45BE0390E8CC647009D7055 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = ../../../libs/freeimage/include/FreeImage.h; sourceTree = SOURCE_ROOT; };
 		E45BE03F0E8CC650009D7055 /* fmod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmod.h; path = ../../../libs/fmodex/include/fmod.h; sourceTree = SOURCE_ROOT; };
 		E45BE0400E8CC650009D7055 /* fmod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fmod.hpp; path = ../../../libs/fmodex/include/fmod.hpp; sourceTree = SOURCE_ROOT; };
@@ -315,7 +355,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudioDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityCoreAudioDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityCoreAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -340,7 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4C2422B10CC554B004149E2 /* openFrameworksDebug.a in Frameworks */,
+				E4C2422B10CC554B004149E2 /* openFrameworks.a in Frameworks */,
 				E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */,
 				E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
@@ -896,6 +936,54 @@
 			name = libresample;
 			sourceTree = "<group>";
 		};
+		58DDE53111F5D9C70060142D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				58DDE53211F5D9C70060142D /* background.jpg */,
+			);
+			name = images;
+			path = bin/data/images;
+			sourceTree = "<group>";
+		};
+		58DDE53311F5D9C70060142D /* sphinxmodel */ = {
+			isa = PBXGroup;
+			children = (
+				58DDE53411F5D9C70060142D /* digit.8gau */,
+				58DDE53A11F5D9C70060142D /* digit.dict */,
+				58DDE53B11F5D9C70060142D /* digit.fdict */,
+				58DDE53C11F5D9C70060142D /* digit.lm.DMP */,
+				58DDE53D11F5D9C70060142D /* README */,
+			);
+			name = sphinxmodel;
+			path = bin/data/sphinxmodel;
+			sourceTree = "<group>";
+		};
+		58DDE53411F5D9C70060142D /* digit.8gau */ = {
+			isa = PBXGroup;
+			children = (
+				58DDE53511F5D9C70060142D /* mdef */,
+				58DDE53611F5D9C70060142D /* means */,
+				58DDE53711F5D9C70060142D /* mixture_weights */,
+				58DDE53811F5D9C70060142D /* transition_matrices */,
+				58DDE53911F5D9C70060142D /* variances */,
+			);
+			path = digit.8gau;
+			sourceTree = "<group>";
+		};
+		58DDE54C11F5DA0F0060142D /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				58DDE52E11F5D9C70060142D /* automat.ttf */,
+				58DDE53E11F5D9C70060142D /* verdana.ttf */,
+				58DDE52F11F5D9C70060142D /* commandList.txt */,
+				58DDE53011F5D9C70060142D /* config.xml */,
+				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				58DDE53111F5D9C70060142D /* images */,
+				58DDE53311F5D9C70060142D /* sphinxmodel */,
+			);
+			name = resource;
+			sourceTree = "<group>";
+		};
 		E45BE0360E8CC5DE009D7055 /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,14 +1164,14 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudioDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudio.app */,
 				5891332C11F3625900A62687 /* libs3decoder.dylib */,
 				5891332D11F3625900A62687 /* libsphinxbase.dylib */,
-				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				587458731199B5660077BE63 /* addons */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4C2422310CC54B6004149E2 /* openFrameworks */,
 				E45BE0360E8CC5DE009D7055 /* libs */,
+				58DDE54C11F5DA0F0060142D /* resource */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1100,7 +1188,7 @@
 		E4C2421710CC549C004149E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E4C2421E10CC549C004149E2 /* openFrameworksDebug.a */,
+				E4C2421E10CC549C004149E2 /* openFrameworks.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1201,7 +1289,7 @@
 			);
 			name = CommunityCoreAudio;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudioDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudio.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1229,10 +1317,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		E4C2421E10CC549C004149E2 /* openFrameworksDebug.a */ = {
+		E4C2421E10CC549C004149E2 /* openFrameworks.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = openFrameworksDebug.a;
+			path = openFrameworks.a;
 			remoteRef = E4C2421D10CC549C004149E2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
