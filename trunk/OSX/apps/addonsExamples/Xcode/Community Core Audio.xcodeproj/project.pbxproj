@@ -54,6 +54,10 @@
 		5891333C11F362E400A62687 /* ofxRectPrint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5891333A11F362E400A62687 /* ofxRectPrint.cpp */; };
 		5891334011F3631600A62687 /* libs3decoder.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5891332C11F3625900A62687 /* libs3decoder.dylib */; };
 		5891334111F3631600A62687 /* libsphinxbase.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5891332D11F3625900A62687 /* libsphinxbase.dylib */; };
+		58DDE4CA11F5D4DC0060142D /* handleGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58DDE4C911F5D4DC0060142D /* handleGui.cpp */; };
+		58DDE4D911F5D5700060142D /* filterkit.c in Sources */ = {isa = PBXBuildFile; fileRef = 58DDE4D411F5D5700060142D /* filterkit.c */; };
+		58DDE4DA11F5D5700060142D /* resample.c in Sources */ = {isa = PBXBuildFile; fileRef = 58DDE4D711F5D5700060142D /* resample.c */; };
+		58DDE4DB11F5D5700060142D /* resamplesubs.c in Sources */ = {isa = PBXBuildFile; fileRef = 58DDE4D811F5D5700060142D /* resamplesubs.c */; };
 		E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE0A90E8CC67C009D7055 /* GLee.a */; };
 		E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE2E30E8CC69C009D7055 /* rtAudio.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -282,6 +286,14 @@
 		5891333811F362C100A62687 /* ofxSphinxASR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSphinxASR.h; path = ofxASR/src/ofxSphinxASR.h; sourceTree = "<group>"; };
 		5891333A11F362E400A62687 /* ofxRectPrint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxRectPrint.cpp; path = Display/ofxRectPrint.cpp; sourceTree = "<group>"; };
 		5891333B11F362E400A62687 /* ofxRectPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxRectPrint.h; path = Display/ofxRectPrint.h; sourceTree = "<group>"; };
+		58DDE4C911F5D4DC0060142D /* handleGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = handleGui.cpp; sourceTree = "<group>"; };
+		58DDE4D211F5D55F0060142D /* libresample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libresample.h; path = libs/libresample/include/libresample.h; sourceTree = "<group>"; };
+		58DDE4D311F5D5700060142D /* configtemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = configtemplate.h; path = libs/libresample/lib/configtemplate.h; sourceTree = "<group>"; };
+		58DDE4D411F5D5700060142D /* filterkit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = filterkit.c; path = libs/libresample/lib/filterkit.c; sourceTree = "<group>"; };
+		58DDE4D511F5D5700060142D /* filterkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = filterkit.h; path = libs/libresample/lib/filterkit.h; sourceTree = "<group>"; };
+		58DDE4D611F5D5700060142D /* resample_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = resample_defs.h; path = libs/libresample/lib/resample_defs.h; sourceTree = "<group>"; };
+		58DDE4D711F5D5700060142D /* resample.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = resample.c; path = libs/libresample/lib/resample.c; sourceTree = "<group>"; };
+		58DDE4D811F5D5700060142D /* resamplesubs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = resamplesubs.c; path = libs/libresample/lib/resamplesubs.c; sourceTree = "<group>"; };
 		E45BE0390E8CC647009D7055 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = ../../../libs/freeimage/include/FreeImage.h; sourceTree = SOURCE_ROOT; };
 		E45BE03F0E8CC650009D7055 /* fmod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmod.h; path = ../../../libs/fmodex/include/fmod.h; sourceTree = SOURCE_ROOT; };
 		E45BE0400E8CC650009D7055 /* fmod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fmod.hpp; path = ../../../libs/fmodex/include/fmod.hpp; sourceTree = SOURCE_ROOT; };
@@ -303,7 +315,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityCoreAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudioDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityCoreAudioDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -412,6 +424,7 @@
 		587458881199B5660077BE63 /* ofxNCore */ = {
 			isa = PBXGroup;
 			children = (
+				58DDE4D011F5D53F0060142D /* lib */,
 				5874588E1199B5660077BE63 /* src */,
 			);
 			path = ofxNCore;
@@ -471,6 +484,7 @@
 		587458B01199B5660077BE63 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				58DDE4C911F5D4DC0060142D /* handleGui.cpp */,
 				587458B11199B5660077BE63 /* ofxNCoreAudio.cpp */,
 				587458B21199B5660077BE63 /* ofxNCoreAudio.h */,
 			);
@@ -860,6 +874,28 @@
 			name = ofxASR;
 			sourceTree = "<group>";
 		};
+		58DDE4D011F5D53F0060142D /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				58DDE4D111F5D5480060142D /* libresample */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		58DDE4D111F5D5480060142D /* libresample */ = {
+			isa = PBXGroup;
+			children = (
+				58DDE4D311F5D5700060142D /* configtemplate.h */,
+				58DDE4D411F5D5700060142D /* filterkit.c */,
+				58DDE4D511F5D5700060142D /* filterkit.h */,
+				58DDE4D611F5D5700060142D /* resample_defs.h */,
+				58DDE4D711F5D5700060142D /* resample.c */,
+				58DDE4D811F5D5700060142D /* resamplesubs.c */,
+				58DDE4D211F5D55F0060142D /* libresample.h */,
+			);
+			name = libresample;
+			sourceTree = "<group>";
+		};
 		E45BE0360E8CC5DE009D7055 /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1040,7 +1076,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudio.app */,
+				E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudioDebug.app */,
 				5891332C11F3625900A62687 /* libs3decoder.dylib */,
 				5891332D11F3625900A62687 /* libsphinxbase.dylib */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
@@ -1165,7 +1201,7 @@
 			);
 			name = CommunityCoreAudio;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudio.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* CommunityCoreAudioDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1268,6 +1304,10 @@
 				587459601199B5660077BE63 /* ofxXmlSettings.cpp in Sources */,
 				5891333911F362C100A62687 /* ofxSphinxASR.cpp in Sources */,
 				5891333C11F362E400A62687 /* ofxRectPrint.cpp in Sources */,
+				58DDE4CA11F5D4DC0060142D /* handleGui.cpp in Sources */,
+				58DDE4D911F5D5700060142D /* filterkit.c in Sources */,
+				58DDE4DA11F5D5700060142D /* resample.c in Sources */,
+				58DDE4DB11F5D5700060142D /* resamplesubs.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
