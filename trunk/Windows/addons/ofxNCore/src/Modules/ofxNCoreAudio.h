@@ -41,6 +41,8 @@
 #include "ofxNCore.h"
 #include "../Display/ofxRectPrint.h"
 
+#define AUDIO_SEGBUF_SIZE 256
+
 class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
 {
     // ofxGUI setup stuff
@@ -91,6 +93,13 @@ private:
     void setupControls();
     void		handleGui(int parameterId, int task, void* data, int length);
     ofxGui*		controls;
+    void callback_outputPanel_clear();
+    void callback_outputPanel_switchFreeMode();
+    void callback_outputPanel_switchPickingMode();
+    void callback_sourcePanel_playpause();
+    void callback_sourcePanel_record();
+    void callback_sourcePanel_sendToASR();
+    void callback_sourcePanel_stop();
 
     // drawing
     void drawMiniMode();

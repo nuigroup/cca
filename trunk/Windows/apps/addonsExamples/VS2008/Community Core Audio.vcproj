@@ -628,6 +628,14 @@
 						Name="Modules"
 						>
 						<File
+							RelativePath="..\..\..\addons\ofxNCore\src\Modules\handleGui.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\..\addons\ofxNCore\src\Modules\handleGui.h"
+							>
+						</File>
+						<File
 							RelativePath="..\..\..\addons\ofxNCore\src\Modules\ofxNCoreAudio.cpp"
 							>
 						</File>
