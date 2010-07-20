@@ -29,12 +29,16 @@
 
 #include <time.h>
 #include "ofxNCoreAudio.h"
+#include "libresample.h"
 
 #ifdef USE_SPHINX
 #include "ofxSphinxASR.h"
 #endif
 
 #define AUDIO_SEGBUF_SIZE 256
+
+#define AUDIO_FLOAT2SHORT(P) ( short(P * 32767.5 - 0.5) )
+#define AUDIO_SHORT2FLOAT(P) ( (float(P) + 0.5) / 32767.5 )
 
 ofxNCoreAudio::ofxNCoreAudio()
 {
@@ -48,16 +52,14 @@ ofxNCoreAudio::ofxNCoreAudio()
     ofAddListener(ofEvents.draw, this, &ofxNCoreAudio::_draw);
     ofAddListener(ofEvents.exit, this, &ofxNCoreAudio::_exit);
 	
-    // Variables for Recording and Playings
     audioBuf = NULL;
     audioBufSize = 0;
     curPlayPoint = 0;
     bRecording = false;
     bPlaying = false;
     bPaused = false;
-	
-    // The ASR Engine
     asrEngine = NULL;
+    resample_handle = NULL;
 }
 
 ofxNCoreAudio::~ofxNCoreAudio()
@@ -137,6 +139,10 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     outRect.width = 320 - 2 * outRectBorder/2;
     rectPrint.init(outRect, outBgColor, outFgColor, "verdana.ttf", 8);
     rectPrint.setLineHeight(15);
+
+    // Resample
+    resample_factor = (float)model_sampleRate / SampleRate;
+    resample_handle = resample_open(1, resample_factor, resample_factor);
 	
     /*****************************************************************************************************
 	 * Startup Modes
@@ -537,6 +543,9 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
     struct tm *current_time;
     char *result_tmp = NULL;
     string result;        
+    float *sentBuf = audioBuf;
+    int sentBufSize = audioBufSize;
+    int srcused;
 	
     switch(parameterId)
     {
@@ -649,12 +658,25 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
 			if (! asrEngine->isEngineOpened()) {
 				asrEngine->engineOpen();
 			}
-			buf_16 = new short[audioBufSize];
-			for (int i=0; i<audioBufSize; i++) {
-				buf_16[i] = short(audioBuf[i] * 32767.5 - 0.5);
-			}
+
+            if (SampleRate != model_sampleRate) {
+                sentBufSize = int(audioBufSize * resample_factor);
+                sentBuf = new float[sentBufSize];
+                resample_process(resample_handle, resample_factor, audioBuf, audioBufSize, 1, &srcused, sentBuf, sentBufSize);
+            }
+            
+            buf_16 = new short[sentBufSize];
+            for (int i=0; i<sentBufSize; i++) {
+                buf_16[i] = AUDIO_FLOAT2SHORT(sentBuf[i]);
+            }
+			
 			asrEngine->engineSentAudio(buf_16, audioBufSize);
 			asrEngine->engineClose();
+
+            if (sentBuf != NULL && sentBuf != audioBuf) {
+                delete[] sentBuf;
+                sentBuf = NULL;
+            }
 			
 			result_tmp = new char[maxSentenceLength];
 			t = time(0);

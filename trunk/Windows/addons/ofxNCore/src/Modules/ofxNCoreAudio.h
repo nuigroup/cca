@@ -155,6 +155,10 @@ private:
 
     // Display
     ofRectPrint         rectPrint;
+
+    // Signal Process
+    void *resample_handle;
+    float resample_factor;
 };
 
 #endif
