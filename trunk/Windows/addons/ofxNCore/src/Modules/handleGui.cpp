@@ -173,7 +173,7 @@ void ofxNCoreAudio::callback_sourcePanel_sendToASR() {
         buf_16[i] = AUDIO_FLOAT2SHORT(sentBuf[i]);
     }
 
-    asrEngine->engineSentAudio(buf_16, audioBufSize);
+    asrEngine->engineSentAudio(buf_16, sentBufSize);
     asrEngine->engineClose();
 
     if (sentBuf != NULL && sentBuf != audioBuf) {

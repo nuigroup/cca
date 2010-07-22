@@ -29,7 +29,6 @@
 
 #include <time.h>
 #include "ofxNCoreAudio.h"
-#include "handleGui.h"
 #include "libresample.h"
 
 #ifdef USE_SPHINX

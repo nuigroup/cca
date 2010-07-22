@@ -632,10 +632,6 @@
 							>
 						</File>
 						<File
-							RelativePath="..\..\..\addons\ofxNCore\src\Modules\handleGui.h"
-							>
-						</File>
-						<File
 							RelativePath="..\..\..\addons\ofxNCore\src\Modules\ofxNCoreAudio.cpp"
 							>
 						</File>
