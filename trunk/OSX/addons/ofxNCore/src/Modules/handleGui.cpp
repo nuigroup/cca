@@ -49,10 +49,6 @@ void ofxNCoreAudio::callback_sourcePanel_record() {
             controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
         }
 
-        if (asr_mode != mode_commandpicking) {
-            return;
-        }
-
         if (audioBuf!=NULL) {
             delete[] audioBuf;
             audioBuf = NULL;
@@ -106,10 +102,6 @@ void ofxNCoreAudio::callback_sourcePanel_playpause() {
         }
     }
     else {
-        if (asr_mode != mode_commandpicking) {
-            return;
-        }
-
         if (audioBufSize<AUDIO_SEGBUF_SIZE) {
             setBool = false;
             controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
@@ -134,10 +126,6 @@ void ofxNCoreAudio::callback_sourcePanel_sendToASR() {
     char *result_tmp = NULL;
     string result;
 
-    if (asr_mode != mode_commandpicking) {
-        return;
-    }
-
     if (bRecording) {            
         ofSoundStreamClose();
         bRecording = false;  
@@ -158,8 +146,8 @@ void ofxNCoreAudio::callback_sourcePanel_sendToASR() {
         return;
     }
 
-    if (! asrEngine->isEngineOpened()) {
-        asrEngine->engineOpen();
+    if (! curAsrEngine->isEngineOpened()) {
+        curAsrEngine->engineOpen();
     }
 
     if (SampleRate != model_sampleRate) {
@@ -173,8 +161,8 @@ void ofxNCoreAudio::callback_sourcePanel_sendToASR() {
         buf_16[i] = AUDIO_FLOAT2SHORT(sentBuf[i]);
     }
 
-    asrEngine->engineSentAudio(buf_16, sentBufSize);
-    asrEngine->engineClose();
+    curAsrEngine->engineSentAudio(buf_16, sentBufSize);
+    curAsrEngine->engineClose();
 
     if (sentBuf != NULL && sentBuf != audioBuf) {
         delete[] sentBuf;
@@ -185,7 +173,7 @@ void ofxNCoreAudio::callback_sourcePanel_sendToASR() {
     t = time(0);
     current_time = localtime(&t);
     sprintf(result_tmp, "[%2d:%2d:%2d] %s", current_time->tm_hour, current_time->tm_min, 
-        current_time->tm_sec, asrEngine->engineGetText());
+        current_time->tm_sec, curAsrEngine->engineGetText());
     result = result_tmp;
     rectPrint.addString(result);        
     delete[] result_tmp;
@@ -200,10 +188,7 @@ void ofxNCoreAudio::callback_outputPanel_switchPickingMode() {
     controls->update(outputPanel_switchPickingMode, kofxGui_Set_Bool, &setBool, sizeof(bool));
     setBool = false;
     controls->update(outputPanel_switchFreeMode, kofxGui_Set_Bool, &setBool, sizeof(bool));
-    asr_mode = mode_commandpicking;
-    if (asrEngine->isEngineOpened()) {
-        asrEngine->engineClose();
-    }
+    curAsrEngine = asrEngine_1;
     return;
 }
 
@@ -213,7 +198,7 @@ void ofxNCoreAudio::callback_outputPanel_switchFreeMode() {
     controls->update(outputPanel_switchFreeMode, kofxGui_Set_Bool, &setBool, sizeof(bool));
     setBool = false;
     controls->update(outputPanel_switchPickingMode, kofxGui_Set_Bool, &setBool, sizeof(bool));
-    asr_mode = mode_freespeaking;
+    curAsrEngine = asrEngine_2;
     return;
 }
 

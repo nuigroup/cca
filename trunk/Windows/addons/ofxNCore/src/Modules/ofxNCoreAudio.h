@@ -158,8 +158,9 @@ private:
     bool                bPaused;
 
     // The ASR Engine
-    ofxASR *            asrEngine;
-    ASRMode             asr_mode;
+    ofxASR *            curAsrEngine;
+    ofxASR *            asrEngine_1;
+    ofxASR *            asrEngine_2;
 	int                 model_sampleRate;
 
     // Display

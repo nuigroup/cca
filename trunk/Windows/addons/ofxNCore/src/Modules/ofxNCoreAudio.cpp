@@ -53,22 +53,15 @@ ofxNCoreAudio::ofxNCoreAudio()
     bRecording = false;
     bPlaying = false;
     bPaused = false;
-    asrEngine = NULL;
+    curAsrEngine = NULL;
+    asrEngine_1 = NULL;
+    asrEngine_2 = NULL;
     resample_handle = NULL;
 }
 
 ofxNCoreAudio::~ofxNCoreAudio()
 {		
-    if (audioBuf!=NULL) {
-        delete[] audioBuf;
-        audioBuf = NULL;
-    }
-    if (asrEngine!=NULL) {
-        delete asrEngine;
-        asrEngine = NULL;
-    }
-	
-	
+    	
 }
 
 /******************************************************************************
@@ -97,15 +90,14 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     controls = ofxGui::Instance(this);
     setupControls(); 
 	
-    // ASR Engine
-    asr_mode = mode_commandpicking;
-    asrEngine = new ofxSphinxASR;
+    // ASR Engine: commandpicking
+    asrEngine_1 = new ofxSphinxASR;
     ofAsrEngineArgs *engineArgs = new ofAsrEngineArgs;
     engineArgs->sphinxmodel_am = sphinxmodel_am;
     engineArgs->sphinxmodel_lm = sphinxmodel_lm;
     engineArgs->sphinxmodel_dict = sphinxmodel_dict;
     engineArgs->sphinxmodel_fdict = sphinxmodel_fdict;
-    engineArgs->sphinx_mode = 2;  // other modes will be supported in later versions.
+    engineArgs->sphinx_mode = 2;
     engineArgs->samplerate = model_sampleRate;
     FILE *fp_list = fopen(commandList.c_str(), "rt");
     if (fp_list==NULL) {
@@ -115,11 +107,19 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     while (fgets(sentence, maxSentenceLength, fp_list)) {
         engineArgs->sphinx_candidate_sentences.push_back(sentence);
     }
-    if (asrEngine->engineInit(engineArgs) != OFXASR_SUCCESS) {
+    if (asrEngine_1->engineInit(engineArgs) != OFXASR_SUCCESS) {
+        printf("Initial ASR Engine Failed!");
+    }
+    delete []sentence;
+    curAsrEngine = asrEngine_1;
+
+    // ASR Engine: freespeaking
+    asrEngine_2 = new ofxSphinxASR;
+    engineArgs->sphinx_mode = 4;
+    if (asrEngine_2->engineInit(engineArgs) != OFXASR_SUCCESS) {
         printf("Initial ASR Engine Failed!");
     }
     delete engineArgs;
-    delete []sentence;
 	
     // Display
     ofColor outBgColor;
@@ -261,12 +261,7 @@ void ofxNCoreAudio::_draw(ofEventArgs &e)
 		
         // draw gui controls
         if (!bMiniMode) {
-            if (asr_mode == mode_commandpicking) {
-                controls->draw();
-            }
-            else if (asr_mode == mode_freespeaking) {
-                controls->draw();
-            }
+            controls->draw();
         }
     }
 }
@@ -448,6 +443,22 @@ void ofxNCoreAudio::audioRequested(float * output, int bufferSize, int nChannels
 void ofxNCoreAudio::_exit(ofEventArgs &e)
 {
     saveSettings();
+
+    asrEngine_1->engineExit();
+    delete asrEngine_1;
+    asrEngine_1 = NULL;
+
+    asrEngine_2->engineExit();
+    delete asrEngine_2;
+    asrEngine_2 = NULL;
+
+    if (audioBuf!=NULL) {
+        delete[] audioBuf;
+        audioBuf = NULL;
+    }
+    if (curAsrEngine!=NULL) {
+        curAsrEngine = NULL;
+    }
 	
     //  -------------------------------- SAVE STATE ON EXIT	
     printf("CCA module has exited!\n");
