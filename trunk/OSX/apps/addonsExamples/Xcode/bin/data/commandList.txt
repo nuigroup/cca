@@ -1,13 +1,4 @@
-one
-two
-three
-four
-five
-six
-seven
-eight
-nine
-good morning
 how do you do
 happy new year
 merry christmas
+nice to meet you

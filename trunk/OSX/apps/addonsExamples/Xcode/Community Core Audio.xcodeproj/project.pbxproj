@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5837EC3D11F89AA800899615 /* cmudict.0.7a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5837EC3311F89A9800899615 /* cmudict.0.7a */; };
+		5837EC3E11F89AA800899615 /* feat.params in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5837EC3411F89A9800899615 /* feat.params */; };
+		5837EC3F11F89AA800899615 /* feature_transform in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5837EC3511F89A9800899615 /* feature_transform */; };
+		5837EC4011F89AA800899615 /* mdef in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5837EC3611F89A9800899615 /* mdef */; };
+		5837EC4111F89AA800899615 /* means in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5837EC3711F89A9800899615 /* means */; };
+		5837EC4211F89AA800899615 /* mixture_weights in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5837EC3811F89A9800899615 /* mixture_weights */; };
+		5837EC4311F89AA800899615 /* noisedict in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5837EC3911F89A9800899615 /* noisedict */; };
+		5837EC4411F89AA800899615 /* transition_matrices in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5837EC3A11F89A9800899615 /* transition_matrices */; };
+		5837EC4511F89AA800899615 /* variances in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5837EC3B11F89A9800899615 /* variances */; };
+		5837EC4611F89AA800899615 /* voxforge_en_sphinx.lm.DMP in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5837EC3C11F89A9800899615 /* voxforge_en_sphinx.lm.DMP */; };
 		587459381199B5660077BE63 /* ofxDirList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 587458861199B5660077BE63 /* ofxDirList.cpp */; };
 		587459391199B5660077BE63 /* ofxGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 587458911199B5660077BE63 /* ofxGui.cpp */; };
 		5874593A1199B5660077BE63 /* ofxGuiButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 587458931199B5660077BE63 /* ofxGuiButton.cpp */; };
@@ -62,14 +72,6 @@
 		58DDE54011F5D9E40060142D /* verdana.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53E11F5D9C70060142D /* verdana.ttf */; };
 		58DDE54111F5D9E40060142D /* commandList.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE52F11F5D9C70060142D /* commandList.txt */; };
 		58DDE54211F5D9E40060142D /* config.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53011F5D9C70060142D /* config.xml */; };
-		58DDE54311F5D9F50060142D /* digit.dict in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53A11F5D9C70060142D /* digit.dict */; };
-		58DDE54411F5D9F50060142D /* digit.fdict in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53B11F5D9C70060142D /* digit.fdict */; };
-		58DDE54511F5D9F50060142D /* digit.lm.DMP in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53C11F5D9C70060142D /* digit.lm.DMP */; };
-		58DDE54611F5D9FC0060142D /* mdef in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53511F5D9C70060142D /* mdef */; };
-		58DDE54711F5D9FC0060142D /* means in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53611F5D9C70060142D /* means */; };
-		58DDE54811F5D9FC0060142D /* mixture_weights in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53711F5D9C70060142D /* mixture_weights */; };
-		58DDE54911F5D9FC0060142D /* transition_matrices in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53811F5D9C70060142D /* transition_matrices */; };
-		58DDE54A11F5D9FC0060142D /* variances in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53911F5D9C70060142D /* variances */; };
 		58DDE54B11F5DA080060142D /* background.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DDE53211F5D9C70060142D /* background.jpg */; };
 		E45BE0AA0E8CC67C009D7055 /* GLee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE0A90E8CC67C009D7055 /* GLee.a */; };
 		E45BE2E40E8CC69C009D7055 /* rtAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE2E30E8CC69C009D7055 /* rtAudio.a */; };
@@ -146,15 +148,17 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				5837EC3D11F89AA800899615 /* cmudict.0.7a in CopyFiles */,
+				5837EC3E11F89AA800899615 /* feat.params in CopyFiles */,
+				5837EC3F11F89AA800899615 /* feature_transform in CopyFiles */,
+				5837EC4011F89AA800899615 /* mdef in CopyFiles */,
+				5837EC4111F89AA800899615 /* means in CopyFiles */,
+				5837EC4211F89AA800899615 /* mixture_weights in CopyFiles */,
+				5837EC4311F89AA800899615 /* noisedict in CopyFiles */,
+				5837EC4411F89AA800899615 /* transition_matrices in CopyFiles */,
+				5837EC4511F89AA800899615 /* variances in CopyFiles */,
+				5837EC4611F89AA800899615 /* voxforge_en_sphinx.lm.DMP in CopyFiles */,
 				58DDE54B11F5DA080060142D /* background.jpg in CopyFiles */,
-				58DDE54611F5D9FC0060142D /* mdef in CopyFiles */,
-				58DDE54711F5D9FC0060142D /* means in CopyFiles */,
-				58DDE54811F5D9FC0060142D /* mixture_weights in CopyFiles */,
-				58DDE54911F5D9FC0060142D /* transition_matrices in CopyFiles */,
-				58DDE54A11F5D9FC0060142D /* variances in CopyFiles */,
-				58DDE54311F5D9F50060142D /* digit.dict in CopyFiles */,
-				58DDE54411F5D9F50060142D /* digit.fdict in CopyFiles */,
-				58DDE54511F5D9F50060142D /* digit.lm.DMP in CopyFiles */,
 				58DDE53F11F5D9E40060142D /* automat.ttf in CopyFiles */,
 				58DDE54011F5D9E40060142D /* verdana.ttf in CopyFiles */,
 				58DDE54111F5D9E40060142D /* commandList.txt in CopyFiles */,
@@ -166,6 +170,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5837EC3311F89A9800899615 /* cmudict.0.7a */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cmudict.0.7a; sourceTree = "<group>"; };
+		5837EC3411F89A9800899615 /* feat.params */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = feat.params; sourceTree = "<group>"; };
+		5837EC3511F89A9800899615 /* feature_transform */ = {isa = PBXFileReference; lastKnownFileType = file; path = feature_transform; sourceTree = "<group>"; };
+		5837EC3611F89A9800899615 /* mdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdef; sourceTree = "<group>"; };
+		5837EC3711F89A9800899615 /* means */ = {isa = PBXFileReference; lastKnownFileType = file; path = means; sourceTree = "<group>"; };
+		5837EC3811F89A9800899615 /* mixture_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = mixture_weights; sourceTree = "<group>"; };
+		5837EC3911F89A9800899615 /* noisedict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = noisedict; sourceTree = "<group>"; };
+		5837EC3A11F89A9800899615 /* transition_matrices */ = {isa = PBXFileReference; lastKnownFileType = file; path = transition_matrices; sourceTree = "<group>"; };
+		5837EC3B11F89A9800899615 /* variances */ = {isa = PBXFileReference; lastKnownFileType = file; path = variances; sourceTree = "<group>"; };
+		5837EC3C11F89A9800899615 /* voxforge_en_sphinx.lm.DMP */ = {isa = PBXFileReference; lastKnownFileType = file; path = voxforge_en_sphinx.lm.DMP; sourceTree = "<group>"; };
 		587458741199B5660077BE63 /* ofAddons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofAddons.h; path = ../../../addons/ofAddons.h; sourceTree = SOURCE_ROOT; };
 		587458831199B5660077BE63 /* Instructions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Instructions.txt; path = ../../../addons/ofxDirList/doc/Instructions.txt; sourceTree = SOURCE_ROOT; };
 		587458841199B5660077BE63 /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = install.xml; path = ../../../addons/ofxDirList/install.xml; sourceTree = SOURCE_ROOT; };
@@ -324,14 +338,6 @@
 		58DDE52F11F5D9C70060142D /* commandList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = commandList.txt; path = bin/data/commandList.txt; sourceTree = "<group>"; };
 		58DDE53011F5D9C70060142D /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = config.xml; path = bin/data/config.xml; sourceTree = "<group>"; };
 		58DDE53211F5D9C70060142D /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
-		58DDE53511F5D9C70060142D /* mdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdef; sourceTree = "<group>"; };
-		58DDE53611F5D9C70060142D /* means */ = {isa = PBXFileReference; lastKnownFileType = file; path = means; sourceTree = "<group>"; };
-		58DDE53711F5D9C70060142D /* mixture_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = mixture_weights; sourceTree = "<group>"; };
-		58DDE53811F5D9C70060142D /* transition_matrices */ = {isa = PBXFileReference; lastKnownFileType = file; path = transition_matrices; sourceTree = "<group>"; };
-		58DDE53911F5D9C70060142D /* variances */ = {isa = PBXFileReference; lastKnownFileType = file; path = variances; sourceTree = "<group>"; };
-		58DDE53A11F5D9C70060142D /* digit.dict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = digit.dict; sourceTree = "<group>"; };
-		58DDE53B11F5D9C70060142D /* digit.fdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = digit.fdict; sourceTree = "<group>"; };
-		58DDE53C11F5D9C70060142D /* digit.lm.DMP */ = {isa = PBXFileReference; lastKnownFileType = file; path = digit.lm.DMP; sourceTree = "<group>"; };
 		58DDE53D11F5D9C70060142D /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		58DDE53E11F5D9C70060142D /* verdana.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = verdana.ttf; path = bin/data/verdana.ttf; sourceTree = "<group>"; };
 		E45BE0390E8CC647009D7055 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = ../../../libs/freeimage/include/FreeImage.h; sourceTree = SOURCE_ROOT; };
@@ -948,26 +954,20 @@
 		58DDE53311F5D9C70060142D /* sphinxmodel */ = {
 			isa = PBXGroup;
 			children = (
-				58DDE53411F5D9C70060142D /* digit.8gau */,
-				58DDE53A11F5D9C70060142D /* digit.dict */,
-				58DDE53B11F5D9C70060142D /* digit.fdict */,
-				58DDE53C11F5D9C70060142D /* digit.lm.DMP */,
+				5837EC3311F89A9800899615 /* cmudict.0.7a */,
+				5837EC3411F89A9800899615 /* feat.params */,
+				5837EC3511F89A9800899615 /* feature_transform */,
+				5837EC3611F89A9800899615 /* mdef */,
+				5837EC3711F89A9800899615 /* means */,
+				5837EC3811F89A9800899615 /* mixture_weights */,
+				5837EC3911F89A9800899615 /* noisedict */,
+				5837EC3A11F89A9800899615 /* transition_matrices */,
+				5837EC3B11F89A9800899615 /* variances */,
+				5837EC3C11F89A9800899615 /* voxforge_en_sphinx.lm.DMP */,
 				58DDE53D11F5D9C70060142D /* README */,
 			);
 			name = sphinxmodel;
 			path = bin/data/sphinxmodel;
-			sourceTree = "<group>";
-		};
-		58DDE53411F5D9C70060142D /* digit.8gau */ = {
-			isa = PBXGroup;
-			children = (
-				58DDE53511F5D9C70060142D /* mdef */,
-				58DDE53611F5D9C70060142D /* means */,
-				58DDE53711F5D9C70060142D /* mixture_weights */,
-				58DDE53811F5D9C70060142D /* transition_matrices */,
-				58DDE53911F5D9C70060142D /* variances */,
-			);
-			path = digit.8gau;
 			sourceTree = "<group>";
 		};
 		58DDE54C11F5DA0F0060142D /* resource */ = {
