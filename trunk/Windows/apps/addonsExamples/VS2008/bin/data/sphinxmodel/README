@@ -1,23 +1,27 @@
-A Typical Model for CMU Sphinx
-------------------------------
+This is English Voxforge acoustic model for CMUSphinx decoders -
+pocketsphinx and sphinx4 version 0.1.3. It was trained with SphinxTrain.
+The process of training is described in SphinxTrain tutorial.
 
-This is a typical model for CMU Sphinx3. It was trained for recognition English
-digits sound.
+This is 8kHz model, it could be used both for desktop and telephone
+recordings.
 
-It provides complete resource for a digit sound recognition task. We also hope
-it can help people understand what files a typical model should contain.
+To setup the files use build.sh script as a base. It should download
+required files from Voxforge, setup structure and extract features.
+Scripts are located in scripts subfolder.
 
-Files in this package:
-* digit.8gau:   This folder contains acoustics model. You should not rename the
-                files under this folder. Below is a brief comments for these
-                files. To learn more, read books on speech recognition.
-                 digit.8gau/mdef:  The definitions of every tri-phone.
-                 digit.8gau/means: The mean values. Part of the GMM.
-                 digit.8gau/variances: The variance values. Part of the GMM.
-                 digit.8gau/mixture_weights: The mixture weights. Part of the GMM.
-                 digit.8gau/transition_matrices: Probability of a state to another.
-* digit.lm.DMP: The language model.
-* digit.dict  :   The dictionary which translate word to phonemes.
-* digit.fdict :   A special dictionary that only contains some silence.
+Testing is performed with sphinx3. Language model for testing is built
+from test prompts with SRILM. Result of the testing should be similar to
 
-This is shipped by Sphinx3 and arranged by Jimbo Zhang <dr.jimbozhang@gmail.com>.
+TOTAL Words: 44025 Correct: 40336 Errors: 4388
+TOTAL Percent correct = 91.62% Error = 9.97% Accuracy = 90.03%
+TOTAL Insertions: 699 Deletions: 930 Substitutions: 2759
+
+To use this model with pocketsphinx, just provide it's location with
+-hmm pocketsphinx option.For information on how to use this model with
+sphinx4 see the documentation
+
+http://cmusphinx.sourceforge.net/sphinx4/doc/UsingSphinxTrainModels.html
+
+Remember that this model uses MLLT and it requires both frontend
+modification. You need to use transform with LDA component and you need
+to adjust melfilter parameters.

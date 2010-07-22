@@ -28,11 +28,11 @@
         <MAXAUDIOSIZE>102400</MAXAUDIOSIZE>
     </MEMORY>
     <ASR>
-        <SAMPLERATE>16000</SAMPLERATE>
+        <SAMPLERATE>8000</SAMPLERATE>
         <AM>.</AM>
-        <LM>digit.lm.DMP</LM>
-        <DICT>digit.dict</DICT>
-        <FDICT>digit.fdict</FDICT>
+        <LM>voxforge_en_sphinx.lm.DMP</LM>
+        <DICT>cmudict.0.7a</DICT>
+        <FDICT>noisedict</FDICT>
         <LIST>commandList.txt</LIST>
         <MAXCOMMANDLENGTH>64</MAXCOMMANDLENGTH>
     </ASR>

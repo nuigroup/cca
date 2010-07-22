@@ -7,3 +7,7 @@ six
 seven
 eight
 nine
+good morning
+how do you do
+happy new year
+merry christmas

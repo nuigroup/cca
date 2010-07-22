@@ -1,11 +1,13 @@
-eight
-five
-four
-nine
-oh
 one
-seven
-six
-three
 two
-zero
+three
+four
+five
+six
+seven
+eight
+nine
+good morning
+how do you do
+happy new year
+merry christmas
