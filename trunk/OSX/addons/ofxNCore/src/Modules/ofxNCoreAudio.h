@@ -36,8 +36,9 @@
 // Addons
 #include "ofxXmlSettings.h"
 #include "ofxASR.h"
+#include "ofxThread.h"
+#include "ofxNetwork.h"
 
-// Our Addon
 #include "ofxNCore.h"
 #include "../Display/ofxRectPrint.h"
 
@@ -58,6 +59,10 @@ class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
         outputPanel_switchPickingMode,
         outputPanel_switchFreeMode,
         outputPanel_clear,
+        
+        tcpPanel,
+		tcpPanel_tcp_plaintext,
+		tcpPanel_tcp_xml,
     };
 
     typedef enum
@@ -65,6 +70,13 @@ class ofxNCoreAudio : public ofxGuiListener, public ofBaseApp
         mode_freespeaking,
         mode_commandpicking,
     } ASRMode;
+    
+    typedef enum
+    {	
+        screen_only,
+        tcp_plaintext,
+        tcp_xml,
+    } OutputMode;
 
 public:
     ofxNCoreAudio();
@@ -100,7 +112,9 @@ private:
     void callback_sourcePanel_record();
     void callback_sourcePanel_sendToASR();
     void callback_sourcePanel_stop();
-
+    void callback_tcpPanel_tcp_plaintext();
+    void callback_tcpPanel_tcp_xml();
+    
     // drawing
     void drawMiniMode();
     void drawFullMode();	
@@ -169,6 +183,9 @@ private:
     // Signal Process
     void *resample_handle;
     float resample_factor;
+    
+    // Communication
+    OutputMode networkMode;
 };
 
 #endif

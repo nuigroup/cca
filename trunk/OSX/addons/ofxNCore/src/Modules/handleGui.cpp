@@ -33,7 +33,8 @@
 #define AUDIO_FLOAT2SHORT(P) ( short(P * 32767.5 - 0.5) )
 #define AUDIO_SHORT2FLOAT(P) ( (float(P) + 0.5) / 32767.5 )
 
-void ofxNCoreAudio::callback_sourcePanel_record() {
+void ofxNCoreAudio::callback_sourcePanel_record()
+{
     bool setBool;
     if (bRecording) {
         ofSoundStreamClose();
@@ -61,7 +62,8 @@ void ofxNCoreAudio::callback_sourcePanel_record() {
 
 }
 
-void ofxNCoreAudio::callback_sourcePanel_stop() {
+void ofxNCoreAudio::callback_sourcePanel_stop()
+{
      bool setBool;
     if (bRecording) {            
         ofSoundStreamClose();
@@ -81,7 +83,8 @@ void ofxNCoreAudio::callback_sourcePanel_stop() {
     return;
 }
 
-void ofxNCoreAudio::callback_sourcePanel_playpause() {
+void ofxNCoreAudio::callback_sourcePanel_playpause()
+{
     bool setBool;
     if (bRecording) {
         ofSoundStreamClose();
@@ -115,7 +118,8 @@ void ofxNCoreAudio::callback_sourcePanel_playpause() {
     return;
 }
 
-void ofxNCoreAudio::callback_sourcePanel_sendToASR() {
+void ofxNCoreAudio::callback_sourcePanel_sendToASR()
+{
     bool setBool;
     float *sentBuf = audioBuf;
     int sentBufSize = audioBufSize;
@@ -182,7 +186,8 @@ void ofxNCoreAudio::callback_sourcePanel_sendToASR() {
     return;
 }
 
-void ofxNCoreAudio::callback_outputPanel_switchPickingMode() {
+void ofxNCoreAudio::callback_outputPanel_switchPickingMode()
+{
     bool setBool;
     setBool = true;
     controls->update(outputPanel_switchPickingMode, kofxGui_Set_Bool, &setBool, sizeof(bool));
@@ -192,7 +197,8 @@ void ofxNCoreAudio::callback_outputPanel_switchPickingMode() {
     return;
 }
 
-void ofxNCoreAudio::callback_outputPanel_switchFreeMode() {
+void ofxNCoreAudio::callback_outputPanel_switchFreeMode()
+{
     bool setBool;
     setBool = true;
     controls->update(outputPanel_switchFreeMode, kofxGui_Set_Bool, &setBool, sizeof(bool));
@@ -202,7 +208,35 @@ void ofxNCoreAudio::callback_outputPanel_switchFreeMode() {
     return;
 }
 
-void ofxNCoreAudio::callback_outputPanel_clear() {
+void ofxNCoreAudio::callback_outputPanel_clear()
+{
     rectPrint.clearAll();
+    return;
+}
+
+void ofxNCoreAudio::callback_tcpPanel_tcp_plaintext()
+{
+    if (networkMode!=tcp_plaintext) {
+        networkMode = tcp_plaintext;
+        bool setBool = false;
+        controls->update(tcpPanel_tcp_xml, kofxGui_Set_Bool, &setBool, sizeof(bool));        
+    }
+    else {
+        networkMode = screen_only;
+    }
+
+    return;
+}
+
+void ofxNCoreAudio::callback_tcpPanel_tcp_xml()
+{
+    if (networkMode!=tcp_xml) {
+        networkMode = tcp_xml;
+        bool setBool = false;
+        controls->update(tcpPanel_tcp_plaintext, kofxGui_Set_Bool, &setBool, sizeof(bool));        
+    }
+    else {
+        networkMode = screen_only;
+    }
     return;
 }

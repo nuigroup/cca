@@ -84,7 +84,7 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     bigvideo.loadFont("verdana.ttf", 13, true, true);  // Font used for big images.
 	
     // Static Images
-    background.loadImage("images/background.jpg"); // Main Background
+    background.loadImage("background.jpg"); // Main Background
 	
     // GUI Controls
     controls = ofxGui::Instance(this);
@@ -202,6 +202,11 @@ void ofxNCoreAudio::loadXMLSettings()
     sphinxmodel_dict            = XML.getValue("CONFIG:ASR:DICT", "");
     sphinxmodel_fdict           = XML.getValue("CONFIG:ASR:FDICT", "");
 #endif
+    
+    // Communication
+    networkMode                 = OutputMode(XML.getValue("CONFIG:COMMUNICATION:NETWORKMODE", 0));
+    printf("XML Loaded.\n");
+    
 	
     // --------------------------------------------------------------
     //   END XML SETUP
@@ -534,6 +539,12 @@ void ofxNCoreAudio::setupControls()
     outputPanel->mObjects[2]->mObjY = 65;
 	
     srcPanel->adjustToNewContent(100, 0);
+    
+    // Communication
+    ofxGuiPanel* tcpPanel = controls->addPanel(appPtr->tcpPanel, "Communication", 735, 10, 12, OFXGUI_PANEL_SPACING);
+	tcpPanel->addButton(appPtr->tcpPanel_tcp_plaintext, "TCP Plain Text", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, networkMode==tcp_plaintext ? kofxGui_Button_On : kofxGui_Button_Off, kofxGui_Button_Switch);
+	tcpPanel->addButton(appPtr->tcpPanel_tcp_xml, "TCP XML", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, networkMode==tcp_xml ? kofxGui_Button_On : kofxGui_Button_Off, kofxGui_Button_Switch);
+	tcpPanel->mObjWidth = 200;
 	
     // do update while inactive
     controls->forceUpdate(false);
@@ -565,6 +576,12 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
 		case outputPanel_clear:
 			callback_outputPanel_clear();
 			break;
+        case tcpPanel_tcp_plaintext:
+            callback_tcpPanel_tcp_plaintext();
+            break;
+        case tcpPanel_tcp_xml:
+            callback_tcpPanel_tcp_xml();
+            break;
 		default:
 			1;
     }
