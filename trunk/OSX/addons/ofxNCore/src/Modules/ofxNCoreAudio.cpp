@@ -61,7 +61,7 @@ ofxNCoreAudio::ofxNCoreAudio()
 
 ofxNCoreAudio::~ofxNCoreAudio()
 {		
-    	
+    
 }
 
 /******************************************************************************
@@ -112,7 +112,7 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     }
     delete []sentence;
     curAsrEngine = asrEngine_1;
-
+    
     // ASR Engine: freespeaking
     asrEngine_2 = new ofxSphinxASR;
     engineArgs->sphinx_mode = 4;
@@ -134,10 +134,13 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     outRect.width = 320 - 2 * outRectBorder/2;
     rectPrint.init(outRect, outBgColor, outFgColor, "verdana.ttf", 8);
     rectPrint.setLineHeight(15);
-
+    
     // Resample
     resample_factor = (float)model_sampleRate / SampleRate;
     resample_handle = resample_open(1, resample_factor, resample_factor);
+    
+    // Communication
+    tcpServer.setup(tcpPort);
 	
     /*****************************************************************************************************
 	 * Startup Modes
@@ -192,7 +195,7 @@ void ofxNCoreAudio::loadXMLSettings()
     // Command Candidate
     commandList                 = XML.getValue("CONFIG:ASR:LIST", "");
     maxSentenceLength           = XML.getValue("CONFIG:ASR:MAXCOMMANDLENGTH", 32);;
-
+    
 	// ASR
 	model_sampleRate            = XML.getValue("CONFIG:ASR:SAMPLERATE", 16000);
 #ifdef USE_SPHINX
@@ -204,7 +207,8 @@ void ofxNCoreAudio::loadXMLSettings()
 #endif
     
     // Communication
-    networkMode                 = OutputMode(XML.getValue("CONFIG:COMMUNICATION:NETWORKMODE", 0));
+    outputMode                 = OutputMode(XML.getValue("CONFIG:COMMUNICATION:NETWORKMODE", 0));
+    tcpPort                    = XML.getValue("CONFIG:COMMUNICATION:TCPPORT", 11999);
     printf("XML Loaded.\n");
     
 	
@@ -331,6 +335,21 @@ void ofxNCoreAudio::drawFullMode()
     ofSetColor(viewerBackColor);
     ofRect(outputViewerX, outputViewerY, viewerWidth, viewerHeight);
     ofSetColor(waveColor);
+    
+    // Draw network message
+    if (outputMode!=screen_only)
+	{
+		//Draw Port and IP to screen
+		ofSetColor(0xffffff);
+		char buf[256];
+		if(outputMode==tcp_plaintext)
+			sprintf(buf, "Sending TCP Plain messages on:\n Port: %i", tcpPort);
+		else if(outputMode==tcp_xml)
+            sprintf(buf, "Sending TCP XML messages on:\n Port: %i", tcpPort);
+        else {}
+        
+		verdana.drawString(buf, 740, 480);
+	}
 	
     // Draw link to CCA website
     ofSetColor(79, 79, 79);
@@ -340,7 +359,7 @@ void ofxNCoreAudio::drawFullMode()
     ofDrawBitmapString("nuicode.com/projects/cca-alpha", 725, 596);
 	
     ofSetColor(0xFF0000);
-    verdana.drawString("Press spacebar for mini mode", 748, 572);
+    // verdana.drawString("Press spacebar for mini mode", 748, 572);
 	
     rectPrint.draw();
 }
@@ -448,15 +467,15 @@ void ofxNCoreAudio::audioRequested(float * output, int bufferSize, int nChannels
 void ofxNCoreAudio::_exit(ofEventArgs &e)
 {
     saveSettings();
-
+    
     asrEngine_1->engineExit();
     delete asrEngine_1;
     asrEngine_1 = NULL;
-
+    
     asrEngine_2->engineExit();
     delete asrEngine_2;
     asrEngine_2 = NULL;
-
+    
     if (audioBuf!=NULL) {
         delete[] audioBuf;
         audioBuf = NULL;
@@ -542,8 +561,8 @@ void ofxNCoreAudio::setupControls()
     
     // Communication
     ofxGuiPanel* tcpPanel = controls->addPanel(appPtr->tcpPanel, "Communication", 735, 10, 12, OFXGUI_PANEL_SPACING);
-	tcpPanel->addButton(appPtr->tcpPanel_tcp_plaintext, "TCP Plain Text", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, networkMode==tcp_plaintext ? kofxGui_Button_On : kofxGui_Button_Off, kofxGui_Button_Switch);
-	tcpPanel->addButton(appPtr->tcpPanel_tcp_xml, "TCP XML", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, networkMode==tcp_xml ? kofxGui_Button_On : kofxGui_Button_Off, kofxGui_Button_Switch);
+	tcpPanel->addButton(appPtr->tcpPanel_tcp_plaintext, "TCP Plain Text", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, outputMode==tcp_plaintext ? kofxGui_Button_On : kofxGui_Button_Off, kofxGui_Button_Switch);
+	tcpPanel->addButton(appPtr->tcpPanel_tcp_xml, "TCP XML", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, outputMode==tcp_xml ? kofxGui_Button_On : kofxGui_Button_Off, kofxGui_Button_Switch);
 	tcpPanel->mObjWidth = 200;
 	
     // do update while inactive

@@ -181,11 +181,13 @@ private:
     ofRectPrint         rectPrint;
 
     // Signal Process
-    void *resample_handle;
-    float resample_factor;
+    void *              resample_handle;
+    float               resample_factor;
     
     // Communication
-    OutputMode networkMode;
+    OutputMode          outputMode;
+    ofxTCPServer        tcpServer;
+    int                 tcpPort;
 };
 
 #endif

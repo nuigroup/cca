@@ -105,7 +105,6 @@ void ofRectPrint::draw()
     ofFill();
 
     if (lastStringIdx < 0 || lastStringIdx > stringQueue.size() - 1)  {
-        printf("No strings in the output queue.\n");
         return;
     }    
 
