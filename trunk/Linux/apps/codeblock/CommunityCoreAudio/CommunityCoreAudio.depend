@@ -1230,7 +1230,7 @@
 1265470572 source:/home/jimbo/src/cca/trunk/Linux/apps/codeblock/src/testApp.cpp
 	"testApp.h"
 
-1265470572 source:/home/jimbo/src/cca/trunk/Linux/apps/codeblock/CommunityCoreAudio/src/main.cpp
+1281251770 source:/home/jimbo/src/cca/trunk/Linux/apps/codeblock/CommunityCoreAudio/src/main.cpp
 	"ofMain.h"
 	"testApp.h"
 	"ofAppGlutWindow.h"
@@ -1663,9 +1663,731 @@
 	"ofGstUtils.h"
 	"ofQtUtils.h"
 
-1265470572 /home/jimbo/src/cca/trunk/Linux/apps/codeblock/CommunityCoreAudio/src/testApp.h
+1281251770 /home/jimbo/src/cca/trunk/Linux/apps/codeblock/CommunityCoreAudio/src/testApp.h
+	"ofMain.h"
+	"ofAddons.h"
+
+1281251770 source:/home/jimbo/src/cca/trunk/Linux/apps/codeblock/CommunityCoreAudio/src/testApp.cpp
+	"testApp.h"
+
+1281274842 /home/jimbo/src/cca/trunk/Linux/addons//ofAddons.h
+	"ofxCvMain.h"
+	"ofxDirList.h"
+	"ofxVectorMath.h"
+	"ofxNetwork.h"
+	"ofxVectorGraphics.h"
+	"ofxOsc.h"
+	"ofxThread.h"
+	"ofxXmlSettings.h"
+	"ofxASR.h"
+	"ofxNCore.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOpenCv/src/ofxCvMain.h
+	"ofxCvConstants.h"
+	"ofxCvImage.h"
+	"ofxCvGrayscaleImage.h"
+	"ofxCvColorImage.h"
+	"ofxCvFloatImage.h"
+	"ofxCvShortImage.h"
+	"ofxCvContourFinder.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOpenCv/src/ofxCvConstants.h
+	"cv.h"
+	<vector>
 	"ofMain.h"
 
-1265470572 source:/home/jimbo/src/cca/trunk/Linux/apps/codeblock/CommunityCoreAudio/src/testApp.cpp
-	"testApp.h"
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOpenCv/src/ofxCvImage.h
+	"ofxCvConstants.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOpenCv/src/ofxCvGrayscaleImage.h
+	"ofxCvImage.h"
+	"ofxCvBlob.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOpenCv/src/ofxCvBlob.h
+	"ofxCvConstants.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOpenCv/src/ofxCvColorImage.h
+	"ofxCvImage.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOpenCv/src/ofxCvFloatImage.h
+	"ofxCvImage.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOpenCv/src/ofxCvShortImage.h
+	"ofxCvImage.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOpenCv/src/ofxCvContourFinder.h
+	"ofxCvConstants.h"
+	"ofxCvBlob.h"
+	"ofxCvGrayscaleImage.h"
+	<algorithm>
+
+1265470570 /home/jimbo/src/cca/trunk/Linux/addons/ofxDirList/src/ofxDirList.h
+	"ofMain.h"
+	<stdio.h>
+	<iostream>
+	<string.h>
+	<dirent.h>
+	<windows.h>
+	<tchar.h>
+	<string.h>
+	<assert.h>
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxVectorMath/src/ofxVectorMath.h
+	"ofxVec2f.h"
+	"ofxVec3f.h"
+	"ofxVec4f.h"
+	"ofxMatrix3x3.h"
+	"ofxMatrix4x4.h"
+	"ofxQuaternion.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxVectorMath/src/ofxVec2f.h
+	"ofConstants.h"
+	"ofTypes.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxVectorMath/src/ofxVec3f.h
+	"ofConstants.h"
+	"ofTypes.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxVectorMath/src/ofxVec4f.h
+	"ofConstants.h"
+	"ofTypes.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxVectorMath/src/ofxMatrix3x3.h
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxVectorMath/src/ofxMatrix4x4.h
+	"ofxVec3f.h"
+	"ofxVec4f.h"
+	"ofxQuaternion.h"
+	<cmath>
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxVectorMath/src/ofxQuaternion.h
+	"ofxVec3f.h"
+	"ofxVec4f.h"
+	<cmath>
+
+1265470570 /home/jimbo/src/cca/trunk/Linux/addons/ofxNetwork/src/ofxNetwork.h
+	"ofxThread.h"
+	"ofxTCPClient.h"
+	"ofxTCPManager.h"
+	"ofxTCPServer.h"
+	"ofxUDPManager.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxThread/src/ofxThread.h
+	"ofConstants.h"
+	<process.h>
+	<pthread.h>
+	<semaphore.h>
+
+1265470570 /home/jimbo/src/cca/trunk/Linux/addons/ofxNetwork/src/ofxTCPClient.h
+	"ofConstants.h"
+	"ofxTCPManager.h"
+
+1265470570 /home/jimbo/src/cca/trunk/Linux/addons/ofxNetwork/src/ofxTCPManager.h
+	"ofConstants.h"
+	<string.h>
+	<wchar.h>
+	<stdio.h>
+	<ctype.h>
+	<netdb.h>
+	<string.h>
+	<fcntl.h>
+	<time.h>
+	<errno.h>
+	<unistd.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<sys/timeb.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<sys/time.h>
+	<sys/ioctl.h>
+	<sys/signal.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+
+1265470570 /home/jimbo/src/cca/trunk/Linux/addons/ofxNetwork/src/ofxTCPServer.h
+	"ofConstants.h"
+	"ofxThread.h"
+	"ofxTCPManager.h"
+
+1265470570 /home/jimbo/src/cca/trunk/Linux/addons/ofxNetwork/src/ofxUDPManager.h
+	"ofConstants.h"
+	<string.h>
+	<wchar.h>
+	<stdio.h>
+	<ctype.h>
+	<netdb.h>
+	<string.h>
+	<fcntl.h>
+	<errno.h>
+	<unistd.h>
+	<arpa/inet.h>
+	<netinet/in.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<sys/time.h>
+	<sys/ioctl.h>
+	<netinet/tcp.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxVectorGraphics/src/ofxVectorGraphics.h
+	"CreEPS.hpp"
+	"ofMain.h"
+	<vector>
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOsc/src/ofxOsc.h
+	"ofxOscArg.h"
+	"ofxOscMessage.h"
+	"ofxOscSender.h"
+	"ofxOscReceiver.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOsc/src/ofxOscArg.h
+	"ofConstants.h"
+	<string>
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOsc/src/ofxOscMessage.h
+	"ofxOscArg.h"
+	<vector>
+	<string>
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOsc/src/ofxOscSender.h
+	<string>
+	"OscTypes.h"
+	"OscOutboundPacketStream.h"
+	"ofxOscBundle.h"
+	"ofxOscMessage.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOsc/src/ofxOscBundle.h
+	<vector>
+	"ofxOscMessage.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxOsc/src/ofxOscReceiver.h
+	<deque>
+	"ofMain.h"
+	<windows.h>
+	<pthread.h>
+	"OscTypes.h"
+	"OscPacketListener.h"
+	"UdpSocket.h"
+	"ofxOscMessage.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxXmlSettings/src/ofxXmlSettings.h
+	"ofMain.h"
+	<string.h>
+	"tinyxml.h"
+
+1265470572 /home/jimbo/src/cca/trunk/Linux/addons/ofxXmlSettings/libs/tinyxml.h
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1281252026 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/src/ofxASR.h
+	"ofxBaseASR.h"
+	"ofxSphinxASR.h"
+
+1281252026 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/src/ofxBaseASR.h
+	"ofMain.h"
+
+1281252026 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/src/ofxSphinxASR.h
+	"ofxBaseASR.h"
+	"s3_decode.h"
+	"fsg_model.h"
+	"jsgf.h"
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/s3_decode.h
+	<cmd_ln.h>
+	<fe.h>
+	"s3types.h"
+	"sphinx3_export.h"
+	"kb.h"
+	"kbcore.h"
+	"dag.h"
+	"search.h"
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/cmd_ln.h
+	<stdio.h>
+	<stdarg.h>
+	<sphinxbase_export.h>
+	<prim_type.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/sphinxbase_export.h
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/prim_type.h
+	<sphinx_config.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/sphinx_config.h
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/fe.h
+	<sphinxbase_export.h>
+	<sphinx_config.h>
+	<cmd_ln.h>
+	<fixpoint.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/fixpoint.h
+	<sphinxbase_export.h>
+	<prim_type.h>
+	<limits.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/s3types.h
+	<float.h>
+	<assert.h>
+	<prim_type.h>
+	<err.h>
+	<ckd_alloc.h>
+	<sphinx3_export.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/err.h
+	<stdarg.h>
+	<stdio.h>
+	<errno.h>
+	<sphinxbase_export.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/ckd_alloc.h
+	<stdlib.h>
+	<setjmp.h>
+	<sphinxbase_export.h>
+	<prim_type.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/sphinx3_export.h
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/kb.h
+	<stdio.h>
+	<s3types.h>
+	<cmd_ln.h>
+	<fe.h>
+	"kbcore.h"
+	"ascr.h"
+	"fast_algo_struct.h"
+	"stat.h"
+	"adaptor.h"
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/kbcore.h
+	<s3types.h>
+	<cmd_ln.h>
+	<logmath.h>
+	"feat.h"
+	"cont_mgau.h"
+	"ms_mgau.h"
+	"s2_semi_mgau.h"
+	"mdef.h"
+	"dict.h"
+	"dict2pid.h"
+	"fillpen.h"
+	"lm.h"
+	"tmat.h"
+	"subvq.h"
+	"gs.h"
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/logmath.h
+	<sphinxbase_export.h>
+	<sphinx_config.h>
+	<prim_type.h>
+	<cmd_ln.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/feat.h
+	<stdio.h>
+	<sphinxbase_export.h>
+	<prim_type.h>
+	<fe.h>
+	<cmn.h>
+	<agc.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/cmn.h
+	<sphinxbase_export.h>
+	<prim_type.h>
+	<fe.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/agc.h
+	<sphinxbase_export.h>
+	<prim_type.h>
+	<fe.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/cont_mgau.h
+	<s3types.h>
+	<logmath.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/ms_mgau.h
+	<prim_type.h>
+	<cmd_ln.h>
+	<logmath.h>
+	<s3types.h>
+	<ms_gauden.h>
+	<ms_senone.h>
+	<interp.h>
+	<feat.h>
+	<mdef.h>
+	<ascr.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/ms_gauden.h
+	<s3types.h>
+	<logmath.h>
+	"vector.h"
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/vector.h
+	<stdio.h>
+	<s3types.h>
+	<logmath.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/ms_senone.h
+	"s3types.h"
+	<logmath.h>
+	"mdef.h"
+	"ms_gauden.h"
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/mdef.h
+	<stdio.h>
+	<hash_table.h>
+	"s3types.h"
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/hash_table.h
+	<sphinxbase_export.h>
+	<prim_type.h>
+	<glist.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/glist.h
+	<stdlib.h>
+	<sphinxbase_export.h>
+	<prim_type.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/interp.h
+	<s3types.h>
+	<logmath.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/ascr.h
+	<s3types.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/s2_semi_mgau.h
+	<fe.h>
+	<feat.h>
+	<logmath.h>
+	<mmio.h>
+	"s3types.h"
+	"ascr.h"
+	"fast_algo_struct.h"
+	"kdtree.h"
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/mmio.h
+	<sphinxbase_export.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/fast_algo_struct.h
+	<s3types.h>
+	<mdef.h>
+	<ascr.h>
+	<logmath.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/kdtree.h
+	"s3types.h"
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/dict.h
+	<hash_table.h>
+	<s3types.h>
+	"mdef.h"
+	"lts.h"
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/lts.h
+	<s3types.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/dict2pid.h
+	<stdio.h>
+	<logmath.h>
+	"s3types.h"
+	"mdef.h"
+	"dict.h"
+	"ctxt_table.h"
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/ctxt_table.h
+	<s3types.h>
+	<prim_type.h>
+	<mdef.h>
+	<dict.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/fillpen.h
+	<logmath.h>
+	<s3types.h>
+	"dict.h"
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/lm.h
+	<stdio.h>
+	<logmath.h>
+	<hash_table.h>
+	<cmd_ln.h>
+	"s3types.h"
+	"lmclass.h"
+	"dict.h"
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/lmclass.h
+	<stdio.h>
+	<logmath.h>
+	"s3types.h"
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/tmat.h
+	<stdio.h>
+	<s3types.h>
+	<logmath.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/subvq.h
+	<cmd_ln.h>
+	<logmath.h>
+	"s3types.h"
+	"cont_mgau.h"
+	"vector.h"
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/gs.h
+	<stdio.h>
+	<s3types.h>
+	<logmath.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/stat.h
+	<profile.h>
+	<s3types.h>
+	"sphinx3_export.h"
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/profile.h
+	<stdio.h>
+	<sphinxbase_export.h>
+	<prim_type.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/adaptor.h
+	<s3types.h>
+	<cont_mgau.h>
+	<mdef.h>
+	<cmd_ln.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/dag.h
+	<stdio.h>
+	<listelem_alloc.h>
+	<s3types.h>
+	<cmd_ln.h>
+	<logmath.h>
+	"search.h"
+	"dict.h"
+	"lm.h"
+	"fillpen.h"
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/listelem_alloc.h
+	<stdlib.h>
+	<types.h>
+	<sphinxbase_export.h>
+	<prim_type.h>
+
+1281252032 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinx3/search.h
+	"s3types.h"
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/fsg_model.h
+	<stdio.h>
+	<string.h>
+	<prim_type.h>
+	<glist.h>
+	<logmath.h>
+	<bitvec.h>
+	<hash_table.h>
+	<listelem_alloc.h>
+	<sphinxbase_export.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/bitvec.h
+	<string.h>
+	<sphinxbase_export.h>
+	<sphinx_config.h>
+	<prim_type.h>
+	<ckd_alloc.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/jsgf.h
+	<stdio.h>
+	<sphinxbase_export.h>
+	<hash_table.h>
+	<fsg_model.h>
+	<logmath.h>
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/ofxNCore.h
+	"Controls/ofxGui.h"
+	"Controls/ofxGuiTypes.h"
+	"Modules/ofxNCoreAudio.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGui.h
+	"ofxGuiTypes.h"
+	"ofxGuiPanel.h"
+	"ofxGuiObject.h"
+	"ofxGuiGlobals.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiTypes.h
+	"ofMain.h"
+	"ofAddons.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiPanel.h
+	"ofxGuiObject.h"
+	"ofxGuiGlobals.h"
+	"ofxGuiSlider.h"
+	"ofxGuiXYPad.h"
+	"ofxGuiPoints.h"
+	"ofxGuiButton.h"
+	"ofxGuiFiles.h"
+	"ofxGuiColor.h"
+	"ofxGuiMatrix.h"
+	"ofxGuiScope.h"
+	"ofxGuiKnob.h"
+	"ofxGuiRadar.h"
+	"ofxGuiSwitch.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiObject.h
+	"ofxGuiTypes.h"
+	"ofxGuiGlobals.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiGlobals.h
+	"ofxGuiTypes.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiSlider.h
+	"ofxGuiTypes.h"
+	"ofxGuiObject.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiXYPad.h
+	"ofxGuiTypes.h"
+	"ofxGuiObject.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiPoints.h
+	"ofxGuiTypes.h"
+	"ofxGuiObject.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiButton.h
+	"ofxGuiTypes.h"
+	"ofxGuiObject.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiFiles.h
+	"ofxGuiTypes.h"
+	"ofxGuiObject.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiColor.h
+	"ofxGuiTypes.h"
+	"ofxGuiObject.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiMatrix.h
+	"ofxGuiTypes.h"
+	"ofxGuiObject.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiScope.h
+	"ofxGuiTypes.h"
+	"ofxGuiObject.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiKnob.h
+	"ofxGuiTypes.h"
+	"ofxGuiObject.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiRadar.h
+	"ofxGuiTypes.h"
+	"ofxGuiObject.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiSwitch.h
+	"ofxGuiTypes.h"
+	"ofxGuiObject.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Modules/ofxNCoreAudio.h
+	"ofMain.h"
+	"ofxXmlSettings.h"
+	"ofxASR.h"
+	"ofxThread.h"
+	"ofxNetwork.h"
+	"ofxNCore.h"
+	"../Display/ofxRectPrint.h"
+
+1281252039 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Display/ofxRectPrint.h
+	<string>
+	<vector>
+	"ofMain.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGui.cpp
+	"ofxGui.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiButton.cpp
+	"ofxGuiButton.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiColor.cpp
+	"ofxGuiColor.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiFiles.cpp
+	"ofxGuiFiles.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiGlobals.cpp
+	"ofxGuiGlobals.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiKnob.cpp
+	"ofxGuiKnob.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiMatrix.cpp
+	"ofxGuiMatrix.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiObject.cpp
+	"ofxGuiObject.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiPanel.cpp
+	"ofxGuiPanel.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiPoints.cpp
+	"ofxGuiPoints.h"
+
+1281252026 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxASR/src/ofxSphinxASR.cpp
+	<io.h>
+	<direct.h>
+	<unistd.h>
+	<stdio.h>
+	"ofxSphinxASR.h"
+
+1281252040 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/libs/libresample/lib/filterkit.c
+	"resample_defs.h"
+	"filterkit.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<math.h>
+
+1281252040 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/libs/libresample/lib/resample_defs.h
+	"config.h"
+	<inttypes.h>
+
+1281252028 /home/jimbo/src/cca/trunk/Linux/addons/ofxASR/libs/sphinx/include/sphinxbase/config.h
+
+1281252040 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/libs/libresample/lib/filterkit.h
+	"resample_defs.h"
+
+1281252040 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/libs/libresample/lib/resample.c
+	"../include/libresample.h"
+	"resample_defs.h"
+	"filterkit.h"
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	<string.h>
+
+1281252040 /home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/libs/libresample/include/libresample.h
+
+1281252040 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/libs/libresample/lib/resamplesubs.c
+	"resample_defs.h"
+	"filterkit.h"
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	<string.h>
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiRadar.cpp
+	"ofxGuiRadar.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiScope.cpp
+	"ofxGuiScope.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiSlider.cpp
+	"ofxGuiSlider.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiSwitch.cpp
+	"ofxGuiSwitch.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Controls/ofxGuiXYPad.cpp
+	"ofxGuiXYPad.h"
+
+1281252039 source:/home/jimbo/src/cca/trunk/Linux/addons/ofxNCore/src/Display/ofxRectPrint.cpp
+	"ofxRectPrint.h"
 

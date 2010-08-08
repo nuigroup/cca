@@ -45,3 +45,13 @@
 #ifdef OF_ADDON_USING_OFXXMLSETTINGS
 	#include "ofxXmlSettings.h"
 #endif
+
+//-------------------------------------------- Speech Recognition
+#ifdef OF_ADDON_USING_OFXASR
+#include "ofxASR.h"
+#endif
+
+//-------------------------------------------- NCore
+#ifdef OF_ADDON_USING_OFXNCORE
+#include "ofxNCore.h"
+#endif

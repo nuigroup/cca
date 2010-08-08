@@ -1,140 +1,340 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_project_file>
-	<FileVersion major="1" minor="6"/>
+	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="CommunityCoreAudio"/>
-		<Option pch_mode="2"/>
-		<Option compiler="gcc"/>
-		<Option virtualFolders="addons/;src/;"/>
+		<Option title="CommunityCoreAudio" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="addons/;src/;addons/ofxNCore/;" />
 		<Build>
-			
 			<Target title="Debug">
-				<Option output="bin/advancedEventsExample_debug" extension_auto="1" prefix_auto="1"/>
-				<Option working_dir="bin"/>
-				<Option object_output="obj/Debug/"/>
-				<Option external_deps="../../../libs/openFrameworksCompiled/lib/linux/libopenFrameworksDebug.a;"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Option projectLinkerOptionsRelation="2"/>
+				<Option output="bin/advancedEventsExample_debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Debug/" />
+				<Option external_deps="../../../libs/openFrameworksCompiled/lib/linux/libopenFrameworksDebug.a;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
-					<Add option="-g"/>
-					<Add option="-MMD"/>
+					<Add option="-g" />
+					<Add option="-MMD" />
 				</Compiler>
 				<Linker>
-					<Add library="openFrameworksDebug"/>
+					<Add library="openFrameworksDebug" />
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/advancedEventsExample" extension_auto="1" prefix_auto="1"/>
-				<Option working_dir="bin"/>
-				<Option object_output="obj/Release/"/>
-				<Option external_deps="../../../libs/openFrameworksCompiled/lib/linux/libopenFrameworks.a;"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Option projectLinkerOptionsRelation="2"/>
+				<Option output="bin/advancedEventsExample" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Release/" />
+				<Option external_deps="../../../libs/openFrameworksCompiled/lib/linux/libopenFrameworks.a;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
-					<Add option="-march=native"/>
-					<Add option="-O3"/>
-					<Add option="-MMD"/>
+					<Add option="-march=native" />
+					<Add option="-O3" />
+					<Add option="-MMD" />
 				</Compiler>
 				<Linker>
-					<Add option="-s"/>
-					<Add library="openFrameworks"/>
+					<Add option="-s" />
+					<Add library="openFrameworks" />
 				</Linker>
 			</Target>
 			<Environment>
-				<Variable name="target" value="CommunityCoreAudio"/>
-				<Variable name="nautilusOnBuild" value="false"/>
-				<Variable name="runOnBuild" value="false"/>
+				<Variable name="target" value="CommunityCoreAudio" />
+				<Variable name="nautilusOnBuild" value="false" />
+				<Variable name="runOnBuild" value="false" />
 			</Environment>
 		</Build>
 		<Compiler>
-			<Add option="-Wall"/>
-			<Add option="-fexceptions "/>
-			<Add directory="../../../addons/"/>
-			<Add directory="../../../libs/openFrameworks/"/>
-			<Add directory="../../../libs/openFrameworks/events"/>
-			<Add directory="../../../libs/openFrameworks/app"/>
-			<Add directory="../../../libs/openFrameworks/communication"/>
-			<Add directory="../../../libs/openFrameworks/graphics"/>
-			<Add directory="../../../libs/openFrameworks/video"/>
-			<Add directory="../../../libs/openFrameworks/utils"/>
-			<Add directory="../../../libs/openFrameworks/sound"/>
-			<Add directory="../../../libs/rtAudio"/>
-			<Add directory="../../../libs/fmodex/include"/>
-			<Add directory="../../../libs/glee/include"/>
-			<Add directory="../../../libs/FreeImage/include"/>
-			<Add directory="../../../libs/freetype/include"/>
-			<Add directory="../../../libs/freetype/include/freetype2"/>
-			<Add directory="../../../libs/unicap/include"/>
-			<Add directory="../../../libs/gstappsink/include"/>
-			<Add directory="../../../addons"/>
-			<Add directory="../../../libs/poco/include"/>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="../../../addons/" />
+			<Add directory="../../../libs/openFrameworks/" />
+			<Add directory="../../../libs/openFrameworks/events" />
+			<Add directory="../../../libs/openFrameworks/app" />
+			<Add directory="../../../libs/openFrameworks/communication" />
+			<Add directory="../../../libs/openFrameworks/graphics" />
+			<Add directory="../../../libs/openFrameworks/video" />
+			<Add directory="../../../libs/openFrameworks/utils" />
+			<Add directory="../../../libs/openFrameworks/sound" />
+			<Add directory="../../../libs/rtAudio" />
+			<Add directory="../../../libs/fmodex/include" />
+			<Add directory="../../../libs/glee/include" />
+			<Add directory="../../../libs/FreeImage/include" />
+			<Add directory="../../../libs/freetype/include" />
+			<Add directory="../../../libs/freetype/include/freetype2" />
+			<Add directory="../../../libs/unicap/include" />
+			<Add directory="../../../libs/gstappsink/include" />
+			<Add directory="../../../libs/poco/include" />
+			<Add directory="../../../addons/ofxASR/libs/sphinx/include/sphinxbase" />
+			<Add directory="../../../addons/ofxASR/libs/sphinx/include/sphinx3" />
+			<Add directory="../../../addons/ofxASR/src" />
+			<Add directory="../../../addons/ofxNCore/src" />
+			<Add directory="../../../addons/ofx3DModelLoader/src" />
+			<Add directory="../../../addons/ofxDirList/src" />
+			<Add directory="../../../addons/ofxNetwork/src" />
+			<Add directory="../../../addons/ofxOpenCv/src" />
+			<Add directory="../../../addons/ofxOsc/src" />
+			<Add directory="../../../addons/ofxThread/src" />
+			<Add directory="../../../addons/ofxVectorGraphics/src" />
+			<Add directory="../../../addons/ofxVectorMath/src" />
+			<Add directory="../../../addons/ofxXmlSettings/src" />
+			<Add directory="../../../addons/ofxXmlSettings/libs" />
+			<Add directory="../../../addons/ofxNCore/libs/libresample/include" />
 		</Compiler>
 		<Linker>
-			<Add library="openFrameworks"/>
-			<Add library="fmodex"/>
-			<Add library="raw1394"/>
-			<Add library="glut"/>
-			<Add library="GL"/>
-			<Add library="GLU"/>
-			<Add library="Xxf86vm"/>
-			<Add library="asound"/>
-			<Add library="PocoFoundation"/>
-			<Add library="unicap"/>
-			<Add library="freetype"/>
-			<Add library="freeimage"/>
-			<Add library="RtAudio"/>
-			<Add library="GLee"/>
-			<Add library="oFappsink"/>
-			<Add directory="../../../libs/openFrameworksCompiled/lib/linux"/>
-			<Add directory="../../../libs/freetype/lib/linux"/>
-			<Add directory="../../../libs/FreeImage/lib/linux"/>
-			<Add directory="../../../libs/rtAudio/lib/linux"/>
-			<Add directory="../../../libs/glee/lib/linux"/>
-			<Add directory="../../../libs/gstappsink/lib/linux"/>
-			<Add directory="../../../libs/fmodex/lib/linux"/>
-			<Add directory="../../../libs/unicap/lib/linux"/>
-			<Add directory="../../../libs/poco/lib/linux"/>
+			<Add library="openFrameworks" />
+			<Add library="fmodex" />
+			<Add library="raw1394" />
+			<Add library="glut" />
+			<Add library="GL" />
+			<Add library="GLU" />
+			<Add library="Xxf86vm" />
+			<Add library="asound" />
+			<Add library="PocoFoundation" />
+			<Add library="unicap" />
+			<Add library="freetype" />
+			<Add library="freeimage" />
+			<Add library="RtAudio" />
+			<Add library="GLee" />
+			<Add library="oFappsink" />
+			<Add directory="../../../libs/openFrameworksCompiled/lib/linux" />
+			<Add directory="../../../libs/freetype/lib/linux" />
+			<Add directory="../../../libs/FreeImage/lib/linux" />
+			<Add directory="../../../libs/rtAudio/lib/linux" />
+			<Add directory="../../../libs/glee/lib/linux" />
+			<Add directory="../../../libs/gstappsink/lib/linux" />
+			<Add directory="../../../libs/fmodex/lib/linux" />
+			<Add directory="../../../libs/unicap/lib/linux" />
+			<Add directory="../../../libs/poco/lib/linux" />
 		</Linker>
 		<ExtraCommands>
-			<Add after="#"/>
-			<Add after="#      copy libs and shell script to bin directory:"/>
-			<Add after="#"/>
-			<Add after="cp -r ../../../export/linux/libs $(PROJECT_DIR)bin/"/>
-			<Add after="cp ../../../export/linux/clickToLaunchApp.sh $(PROJECT_DIR)bin/clickToLaunchApp_$(TARGET_NAME).sh"/>
-			<Add after="sed -i s/applicationName/$(TARGET_OUTPUT_BASENAME)/g  $(PROJECT_DIR)bin/clickToLaunchApp_$(TARGET_NAME).sh"/>
-			<Add after="#"/>
-			<Add after="#    this is a shell script that can either (a) run the app or (b) launch nautilus to a good directory for you to run the app"/>
-			<Add after="#"/>
-			<Add after="./cb_build_runner.sh $(TARGET_OUTPUT_BASENAME) $runOnBuild $nautilusOnBuild"/>
-			<Add after="#"/>
-			<Add after="#     to enable either, change the custom variables in project->build options->custom variables"/>
-			<Add after="#     to true / false."/>
-			<Add after="#"/>
-			<Add after="#     currently this is disabled, but allows you to run the app from w/in CB."/>
-			<Add after="#"/>
-			<Mode after="always"/>
+			<Add after="#" />
+			<Add after="#      copy libs and shell script to bin directory:" />
+			<Add after="#" />
+			<Add after="cp -r ../../../export/linux/libs $(PROJECT_DIR)bin/" />
+			<Add after="cp ../../../export/linux/clickToLaunchApp.sh $(PROJECT_DIR)bin/clickToLaunchApp_$(TARGET_NAME).sh" />
+			<Add after="sed -i s/applicationName/$(TARGET_OUTPUT_BASENAME)/g  $(PROJECT_DIR)bin/clickToLaunchApp_$(TARGET_NAME).sh" />
+			<Add after="#" />
+			<Add after="#    this is a shell script that can either (a) run the app or (b) launch nautilus to a good directory for you to run the app" />
+			<Add after="#" />
+			<Add after="./cb_build_runner.sh $(TARGET_OUTPUT_BASENAME) $runOnBuild $nautilusOnBuild" />
+			<Add after="#" />
+			<Add after="#     to enable either, change the custom variables in project-&gt;build options-&gt;custom variables" />
+			<Add after="#     to true / false." />
+			<Add after="#" />
+			<Add after="#     currently this is disabled, but allows you to run the app from w/in CB." />
+			<Add after="#" />
+			<Mode after="always" />
 		</ExtraCommands>
+		<Unit filename="../../../addons/ofAddons.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/adaptor.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/approx_cont_mgau.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/ascr.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/astar.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/blkarray_list.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/cb2mllr_io.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/classifier.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/classify.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/cmdln_macro.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/confidence.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/cont_mgau.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/corpus.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/ctxt_table.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/dag.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/dict.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/dict2pid.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/encoding.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/endptr.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/fast_algo_struct.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/fillpen.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/fsg.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/fsg_history.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/fsg_lextree.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/fsg_psubtree.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/fsg_search.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/gmm_wrap.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/gs.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/hmm.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/interp.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/kb.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/kbcore.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/kdtree.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/lextree.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/lm.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/lmclass.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/logs3.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/lts.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/mdef.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/misc.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/mllr.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/ms_gauden.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/ms_mgau.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/ms_mllr.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/ms_senone.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/s2_semi_mgau.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/s3_arraylist.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/s3_cfg.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/s3_decode.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/s3_endpointer.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/s3types.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/search.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/sort.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/sphinx3_export.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/srch.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/srch_allphone.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/srch_debug.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/srch_do_nothing.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/srch_flat_fwd.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/srch_fsg.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/srch_output.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/srch_time_switch_tree.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/srch_word_switch_tree.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/stat.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/subvq.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/tmat.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/utt.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/vector.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/vithist.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/whmm.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/wid.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/word_fsg.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/word_graph.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinx3/word_ugprob.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/ad.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/agc.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/bio.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/bitvec.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/byteorder.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/case.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/ckd_alloc.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/clapack_lite.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/cmd_ln.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/cmn.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/config.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/cont_ad.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/err.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/f2c.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/fe.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/feat.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/filename.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/fixpoint.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/fsg_model.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/genrand.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/glist.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/hash_table.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/heap.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/huff_code.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/info.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/jsgf.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/libutil.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/listelem_alloc.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/logmath.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/matrix.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/mmio.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/mulaw.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/ngram_model.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/pio.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/prim_type.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/profile.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/sbthread.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/sphinx_config.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/sphinxbase_export.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/strfuncs.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/unlimit.h" />
+		<Unit filename="../../../addons/ofxASR/libs/sphinx/include/sphinxbase/yin.h" />
+		<Unit filename="../../../addons/ofxASR/src/ofxASR.h" />
+		<Unit filename="../../../addons/ofxASR/src/ofxBaseASR.h" />
+		<Unit filename="../../../addons/ofxASR/src/ofxSphinxASR.cpp" />
+		<Unit filename="../../../addons/ofxASR/src/ofxSphinxASR.h" />
+		<Unit filename="../../../addons/ofxNCore/libs/libresample/include/libresample.h" />
+		<Unit filename="../../../addons/ofxNCore/libs/libresample/lib/configtemplate.h" />
+		<Unit filename="../../../addons/ofxNCore/libs/libresample/lib/filterkit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNCore/libs/libresample/lib/filterkit.h" />
+		<Unit filename="../../../addons/ofxNCore/libs/libresample/lib/resample.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNCore/libs/libresample/lib/resample_defs.h" />
+		<Unit filename="../../../addons/ofxNCore/libs/libresample/lib/resamplesubs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGui.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGui.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiButton.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiButton.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiColor.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiColor.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiFiles.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiFiles.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiGlobals.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiGlobals.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiKnob.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiKnob.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiMatrix.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiMatrix.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiObject.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiObject.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiPanel.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiPanel.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiPoints.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiPoints.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiRadar.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiRadar.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiScope.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiScope.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiSlider.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiSlider.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiSwitch.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiSwitch.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiTypes.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiXYPad.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Controls/ofxGuiXYPad.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Display/ofxRectPrint.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Display/ofxRectPrint.h" />
+		<Unit filename="../../../addons/ofxNCore/src/Modules/handleGui.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Modules/ofxNCoreAudio.cpp" />
+		<Unit filename="../../../addons/ofxNCore/src/Modules/ofxNCoreAudio.h" />
+		<Unit filename="../../../addons/ofxNCore/src/ofxNCore.h" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxNetwork.h" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPClient.cpp" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPClient.h" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPManager.cpp" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPManager.h" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPServer.cpp" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPServer.h" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxUDPManager.cpp" />
+		<Unit filename="../../../addons/ofxNetwork/src/ofxUDPManager.h" />
+		<Unit filename="../../../addons/ofxThread/src/ofxThread.cpp" />
+		<Unit filename="../../../addons/ofxThread/src/ofxThread.h" />
+		<Unit filename="../../../addons/ofxXmlSettings/libs/tinyxml.cpp" />
+		<Unit filename="../../../addons/ofxXmlSettings/libs/tinyxml.h" />
+		<Unit filename="../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp" />
+		<Unit filename="../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp" />
+		<Unit filename="../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp" />
+		<Unit filename="../../../addons/ofxXmlSettings/src/ofxXmlSettings.h" />
 		<Unit filename="src/main.cpp">
-			<Option virtualFolder="src/"/>
+			<Option virtualFolder="src/" />
 		</Unit>
 		<Unit filename="src/testApp.cpp">
-			<Option virtualFolder="src/"/>
+			<Option virtualFolder="src/" />
 		</Unit>
 		<Unit filename="src/testApp.h">
-			<Option virtualFolder="src/"/>
+			<Option virtualFolder="src/" />
 		</Unit>
 		<Extensions>
 			<lib_finder>
-				<lib name="gstreamer-0.10"/>
-				<lib name="gstreamer-video-0.10"/>
-				<lib name="gstreamer-base-0.10"/>
-				<lib name="libudev"/>
+				<lib name="gstreamer-0.10" />
+				<lib name="gstreamer-video-0.10" />
+				<lib name="gstreamer-base-0.10" />
+				<lib name="libudev" />
 			</lib_finder>
-			<code_completion/>
-			<envvars/>
-			<debugger/>
+			<code_completion />
+			<envvars />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
