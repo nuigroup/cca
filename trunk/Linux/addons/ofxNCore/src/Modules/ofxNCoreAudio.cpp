@@ -84,7 +84,7 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     bigvideo.loadFont("verdana.ttf", 13, true, true);  // Font used for big images.
 	
     // Static Images
-    background.loadImage("background.jpg"); // Main Background
+    background.loadImage("images/background.jpg"); // Main Background
 	
     // GUI Controls
     controls = ofxGui::Instance(this);

@@ -25,7 +25,7 @@
         <SAMPLERATE>48000</SAMPLERATE>
     </FORMAT>
     <MEMORY>
-        <MAXAUDIOSIZE>102400</MAXAUDIOSIZE>
+        <MAXAUDIOSIZE>809600</MAXAUDIOSIZE>
     </MEMORY>
     <ASR>
         <SAMPLERATE>8000</SAMPLERATE>
@@ -34,6 +34,10 @@
         <DICT>data/sphinxmodel/cmudict.0.7a</DICT>
         <FDICT>data/sphinxmodel/noisedict</FDICT>
         <LIST>data/commandList.txt</LIST>
-        <MAXCOMMANDLENGTH>64</MAXCOMMANDLENGTH>
+        <MAXCOMMANDLENGTH>1024</MAXCOMMANDLENGTH>
     </ASR>
+    <COMMUNICATION>
+        <NETWORKMODE>1</NETWORKMODE>
+        <TCPPORT>11999</TCPPORT>
+    </COMMUNICATION>
 </CONFIG>

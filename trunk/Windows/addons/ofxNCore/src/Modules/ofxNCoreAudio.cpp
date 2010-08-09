@@ -138,6 +138,7 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     // Resample
     resample_factor = (float)model_sampleRate / SampleRate;
     resample_handle = resample_open(1, resample_factor, resample_factor);
+    tcpServer.setup(tcpPort);
 	
     /*****************************************************************************************************
 	 * Startup Modes
@@ -202,6 +203,12 @@ void ofxNCoreAudio::loadXMLSettings()
     sphinxmodel_dict            = XML.getValue("CONFIG:ASR:DICT", "");
     sphinxmodel_fdict           = XML.getValue("CONFIG:ASR:FDICT", "");
 #endif
+    
+    // Communication
+    outputMode                 = OutputMode(XML.getValue("CONFIG:COMMUNICATION:NETWORKMODE", 0));
+    tcpPort                    = XML.getValue("CONFIG:COMMUNICATION:TCPPORT", 11999);
+    printf("XML Loaded.\n");
+    
 	
     // --------------------------------------------------------------
     //   END XML SETUP
@@ -326,6 +333,21 @@ void ofxNCoreAudio::drawFullMode()
     ofSetColor(viewerBackColor);
     ofRect(outputViewerX, outputViewerY, viewerWidth, viewerHeight);
     ofSetColor(waveColor);
+    
+    // Draw network message
+    if (outputMode!=screen_only)
+	{
+		//Draw Port and IP to screen
+		ofSetColor(0xffffff);
+		char buf[256];
+		if(outputMode==tcp_plaintext)
+			sprintf(buf, "Sending TCP Plain messages on:\n Port: %i", tcpPort);
+		else if(outputMode==tcp_xml)
+            sprintf(buf, "Sending TCP XML messages on:\n Port: %i", tcpPort);
+        else {}
+        
+		verdana.drawString(buf, 740, 480);
+	}
 	
     // Draw link to CCA website
     ofSetColor(79, 79, 79);
@@ -335,7 +357,7 @@ void ofxNCoreAudio::drawFullMode()
     ofDrawBitmapString("nuicode.com/projects/cca-alpha", 725, 596);
 	
     ofSetColor(0xFF0000);
-    verdana.drawString("Press spacebar for mini mode", 748, 572);
+    // verdana.drawString("Press spacebar for mini mode", 748, 572);
 	
     rectPrint.draw();
 }
@@ -534,6 +556,12 @@ void ofxNCoreAudio::setupControls()
     outputPanel->mObjects[2]->mObjY = 65;
 	
     srcPanel->adjustToNewContent(100, 0);
+    
+    // Communication
+    ofxGuiPanel* tcpPanel = controls->addPanel(appPtr->tcpPanel, "Communication", 735, 10, 12, OFXGUI_PANEL_SPACING);
+	tcpPanel->addButton(appPtr->tcpPanel_tcp_plaintext, "TCP Plain Text", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, outputMode==tcp_plaintext ? kofxGui_Button_On : kofxGui_Button_Off, kofxGui_Button_Switch);
+	tcpPanel->addButton(appPtr->tcpPanel_tcp_xml, "TCP XML", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, outputMode==tcp_xml ? kofxGui_Button_On : kofxGui_Button_Off, kofxGui_Button_Switch);
+	tcpPanel->mObjWidth = 200;
 	
     // do update while inactive
     controls->forceUpdate(false);
@@ -565,6 +593,12 @@ void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length
 		case outputPanel_clear:
 			callback_outputPanel_clear();
 			break;
+        case tcpPanel_tcp_plaintext:
+            callback_tcpPanel_tcp_plaintext();
+            break;
+        case tcpPanel_tcp_xml:
+            callback_tcpPanel_tcp_xml();
+            break;
 		default:
 			1;
     }

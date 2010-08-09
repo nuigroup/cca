@@ -29,11 +29,11 @@
     </MEMORY>
     <ASR>
         <SAMPLERATE>8000</SAMPLERATE>
-        <AM>.</AM>
-        <LM>voxforge_en_sphinx.lm.DMP</LM>
-        <DICT>cmudict.0.7a</DICT>
-        <FDICT>noisedict</FDICT>
-        <LIST>commandList.txt</LIST>
+        <AM>data/sphinxmodel</AM>
+        <LM>data/sphinxmodel/voxforge_en_sphinx.lm.DMP</LM>
+        <DICT>data/sphinxmodel/cmudict.0.7a</DICT>
+        <FDICT>data/sphinxmodel/noisedict</FDICT>
+        <LIST>data/commandList.txt</LIST>
         <MAXCOMMANDLENGTH>1024</MAXCOMMANDLENGTH>
     </ASR>
     <COMMUNICATION>

@@ -5,6 +5,7 @@
 #include "ofMain.h"
 
 // addon
+#define OF_ADDON_USING_OFXASR
 #define OF_ADDON_USING_OFXNCORE
 #include "ofAddons.h"
 
