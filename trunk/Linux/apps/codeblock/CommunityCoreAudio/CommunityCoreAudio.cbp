@@ -117,7 +117,9 @@
 			<Add after="#" />
 			<Add after="#      copy libs and shell script to bin directory:" />
 			<Add after="#" />
-			<Add after="cp -r ../../../export/linux/libs/*.so $(PROJECT_DIR)bin/" />
+			<Add after="rm -rf $(PROJECT_DIR)bin/libs" />
+			<Add after="mkdir $(PROJECT_DIR)bin/libs" />
+			<Add after="cp -r ../../../export/linux/libs/*.so $(PROJECT_DIR)bin/libs" />
 			<Add after="cp ../../../export/linux/clickToLaunchApp.sh $(PROJECT_DIR)bin/clickToLaunchApp_$(TARGET_NAME).sh" />
 			<Add after="sed -i s/applicationName/$(TARGET_OUTPUT_BASENAME)/g  $(PROJECT_DIR)bin/clickToLaunchApp_$(TARGET_NAME).sh" />
 			<Add after="#" />
@@ -130,8 +132,8 @@
 			<Add after="#" />
 			<Add after="#     currently this is disabled, but allows you to run the app from w/in CB." />
 			<Add after="#" />
-			<Add after="cp ../../../addons/ofxASR/libs/sphinx/lib/linux/libs3decoder.so.0 $(PROJECT_DIR)bin/" />
-			<Add after="cp ../../../addons/ofxASR/libs/sphinx/lib/linux/libsphinxbase.so.1 $(PROJECT_DIR)bin/" />
+			<Add after="cp ../../../addons/ofxASR/libs/sphinx/lib/linux/libs3decoder.so.0 $(PROJECT_DIR)bin/libs" />
+			<Add after="cp ../../../addons/ofxASR/libs/sphinx/lib/linux/libsphinxbase.so.1 $(PROJECT_DIR)bin/libs" />
 			<Mode after="always" />
 		</ExtraCommands>
 		<Unit filename="../../../addons/ofAddons.h" />
