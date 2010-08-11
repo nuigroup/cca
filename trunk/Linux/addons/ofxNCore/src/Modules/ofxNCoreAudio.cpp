@@ -2,9 +2,9 @@
  *
  *  ofxNCoreAudio.cpp
  *  NUI Group Community Core Audio
- * 
+ *
  *  Author: Jimbo Zhang <dr.jimbozhang@gmail.com>
- *  Copyright 2010 NUI Group. All rights reserved.       
+ *  Copyright 2010 NUI Group. All rights reserved.
  *
  *
  * This file is part of Community Core Audio.
@@ -46,7 +46,7 @@ ofxNCoreAudio::ofxNCoreAudio()
     ofAddListener(ofEvents.update, this, &ofxNCoreAudio::_update);
     ofAddListener(ofEvents.draw, this, &ofxNCoreAudio::_draw);
     ofAddListener(ofEvents.exit, this, &ofxNCoreAudio::_exit);
-	
+
     audioBuf = NULL;
     audioBufSize = 0;
     curPlayPoint = 0;
@@ -60,36 +60,36 @@ ofxNCoreAudio::ofxNCoreAudio()
 }
 
 ofxNCoreAudio::~ofxNCoreAudio()
-{		
-    
+{
+
 }
 
 /******************************************************************************
  * The setup function is run once to perform initializations in the application
  *****************************************************************************/
 void ofxNCoreAudio::_setup(ofEventArgs &e)
-{	
+{
     // set the title
-    ofSetWindowTitle(" Community Core Audio ");	
-	
+    ofSetWindowTitle(" Community Core Audio ");
+
     // Load Settings from config.xml file
     loadXMLSettings();
-	
+
     // Setup Window Properties
     ofSetWindowShape(winWidth,winHeight);
     ofSetVerticalSync(false);
-	
+
     // Fonts
     verdana.loadFont("verdana.ttf", 8, true, true);	   // Font used for small images
     bigvideo.loadFont("verdana.ttf", 13, true, true);  // Font used for big images.
-	
+
     // Static Images
     background.loadImage("images/background.jpg"); // Main Background
-	
+
     // GUI Controls
     controls = ofxGui::Instance(this);
-    setupControls(); 
-	
+    setupControls();
+
     // ASR Engine: commandpicking
     asrEngine_1 = new ofxSphinxASR;
     ofAsrEngineArgs *engineArgs = new ofAsrEngineArgs;
@@ -112,7 +112,7 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     }
     delete []sentence;
     curAsrEngine = asrEngine_1;
-    
+
     // ASR Engine: freespeaking
     asrEngine_2 = new ofxSphinxASR;
     engineArgs->sphinx_mode = 4;
@@ -120,7 +120,7 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
         printf("Initial ASR Engine Failed!");
     }
     delete engineArgs;
-	
+
     // Display
     ofColor outBgColor;
     outBgColor.r = outBgColor.g = outBgColor.b = 0x33;
@@ -134,14 +134,14 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
     outRect.width = 320 - 2 * outRectBorder/2;
     rectPrint.init(outRect, outBgColor, outFgColor, "verdana.ttf", 8);
     rectPrint.setLineHeight(15);
-    
+
     // Resample
     resample_factor = (float)model_sampleRate / SampleRate;
     resample_handle = resample_open(1, resample_factor, resample_factor);
-    
+
     // Communication
     tcpServer.setup(tcpPort);
-	
+
     /*****************************************************************************************************
 	 * Startup Modes
 	 ******************************************************************************************************/
@@ -156,13 +156,13 @@ void ofxNCoreAudio::_setup(ofEventArgs &e)
         bShowInterface = true;
         printf("Starting in full mode...\n\n");
     }
-	
+
 #ifdef TARGET_WIN32
 #ifndef _DEBUG
     FreeConsole();
 #endif
 #endif
-	
+
     printf("Community Core Audio is setup!\n\n");
 }
 
@@ -176,42 +176,42 @@ void ofxNCoreAudio::loadXMLSettings()
         message = "Settings Loaded!\n\n";
     else
         message = "No Settings Found...\n\n";
-	
+
     // --------------------------------------------------------------
     //   START BINDING XML TO VARS
     // --------------------------------------------------------------
     winWidth                    = XML.getValue("CONFIG:WINDOW:WIDTH", 950);
-    winHeight                   = XML.getValue("CONFIG:WINDOW:HEIGHT", 600);	
-	
+    winHeight                   = XML.getValue("CONFIG:WINDOW:HEIGHT", 600);
+
     // MODES
     bMiniMode                   = XML.getValue("CONFIG:BOOLEAN:MINIMODE", 0);
-	
+
     // Memory
     maxAudioSize                = XML.getValue("CONFIG:MEMORY:MAXAUDIOSIZE", 102400);
-	
+
     // Formats
     SampleRate                  = XML.getValue("CONFIG:FORMAT:SAMPLERATE", 16000);
-	
+
     // Command Candidate
     commandList                 = XML.getValue("CONFIG:ASR:LIST", "");
     maxSentenceLength           = XML.getValue("CONFIG:ASR:MAXCOMMANDLENGTH", 32);;
-    
+
 	// ASR
 	model_sampleRate            = XML.getValue("CONFIG:ASR:SAMPLERATE", 16000);
 #ifdef USE_SPHINX
-	
+
     sphinxmodel_am              = XML.getValue("CONFIG:ASR:AM", "");
     sphinxmodel_lm              = XML.getValue("CONFIG:ASR:LM", "");
     sphinxmodel_dict            = XML.getValue("CONFIG:ASR:DICT", "");
     sphinxmodel_fdict           = XML.getValue("CONFIG:ASR:FDICT", "");
 #endif
-    
+
     // Communication
     outputMode                 = OutputMode(XML.getValue("CONFIG:COMMUNICATION:NETWORKMODE", 0));
     tcpPort                    = XML.getValue("CONFIG:COMMUNICATION:TCPPORT", 11999);
     printf("XML Loaded.\n");
-    
-	
+
+
     // --------------------------------------------------------------
     //   END XML SETUP
 }
@@ -232,18 +232,18 @@ void ofxNCoreAudio::_update(ofEventArgs &e)
     if (bRecording && audioBufSize>=maxAudioSize) {
         printf("Sound is too long. Try to set MAXAUDIOSIZE in config.xml.");
         ofSoundStreamClose();
-		
+
         bool setBool = false;
         controls->update(sourcePanel_record, kofxGui_Set_Bool, &setBool, sizeof(bool));
         bRecording = false;
     }
-    
+
     // playing auto stop
     if (bPlaying && audioBufSize-curPlayPoint < AUDIO_SEGBUF_SIZE) {
         curPlayPoint = 0;
         ofSoundStreamClose();
         bPlaying = false;
-		
+
         bool setBool = false;
         controls->update(sourcePanel_playpause, kofxGui_Set_Bool, &setBool, sizeof(bool));
     }
@@ -254,20 +254,20 @@ void ofxNCoreAudio::_update(ofEventArgs &e)
  *****************************************************************************/
 void ofxNCoreAudio::_draw(ofEventArgs &e)
 {
-    if (showConfiguration) 
+    if (showConfiguration)
     {
         // if mini mode
         if (bMiniMode)
         {
             drawMiniMode();
         }
-		
+
         // if full mode
         else if (bShowInterface)
         {
             drawFullMode();
         }
-		
+
         // draw gui controls
         if (!bMiniMode) {
             controls->draw();
@@ -280,17 +280,17 @@ void ofxNCoreAudio::drawFullMode()
     ofSetColor(0xFFFFFF);
     // Draw Background Image
     background.draw(0, 0);
-	
+
     // Draw arrows
     ofSetColor(187, 200, 203);
     ofFill();
     ofTriangle(680, 420, 680, 460, 700, 440);
     ofTriangle(70, 420, 70, 460, 50, 440);
-	
+
     ofSetColor(0x969696);
     bigvideo.drawString("Source Audio", 140, 30);
     bigvideo.drawString("Converted Text", 475, 30);
-	
+
     // Draw input waveform viewer
     int inputViewerX = 40;
     int inputViewerY = 41;
@@ -301,9 +301,9 @@ void ofxNCoreAudio::drawFullMode()
     int viewerMiddleY = inputViewerY + viewerHeight / 2;
     ofSetColor(viewerBackColor);
     ofRect(inputViewerX, inputViewerY, viewerWidth, viewerHeight);
-    
+
     ofSetColor(waveColor);
-	
+
     if (audioBufSize > viewerWidth) {
         for (int i = 0; i < viewerWidth; i++){
             if (bRecording) {
@@ -319,7 +319,7 @@ void ofxNCoreAudio::drawFullMode()
 					   -audioBuf[i*audioBufSize/viewerWidth]*100.0f);
             }
         }
-		
+
         if (bPlaying) {
             ofSetColor(0xFFFFFF);
             int curDrawPoint = int(curPlayPoint/(float)audioBufSize*viewerWidth);
@@ -328,14 +328,14 @@ void ofxNCoreAudio::drawFullMode()
             ofSetColor(waveColor);
         }
     }
-	
+
 	// Draw output text viewer
 	int outputViewerX = 386;
     int outputViewerY = 41;
     ofSetColor(viewerBackColor);
     ofRect(outputViewerX, outputViewerY, viewerWidth, viewerHeight);
     ofSetColor(waveColor);
-    
+
     // Draw network message
     if (outputMode!=screen_only)
 	{
@@ -347,20 +347,20 @@ void ofxNCoreAudio::drawFullMode()
 		else if(outputMode==tcp_xml)
             sprintf(buf, "Sending TCP XML messages on:\n Port: %i", tcpPort);
         else {}
-        
+
 		verdana.drawString(buf, 740, 480);
 	}
-	
+
     // Draw link to CCA website
     ofSetColor(79, 79, 79);
     ofFill();
     ofRect(721, 584, 228, 16);
     ofSetColor(0xFFFFFF);
     ofDrawBitmapString("nuicode.com/projects/cca-alpha", 725, 596);
-	
+
     ofSetColor(0xFF0000);
     // verdana.drawString("Press spacebar for mini mode", 748, 572);
-	
+
     rectPrint.draw();
 }
 
@@ -369,7 +369,7 @@ void ofxNCoreAudio::drawMiniMode()
     //black background
     ofSetColor(0,0,0);
     ofRect(0,0,ofGetWidth(), ofGetHeight());
-	
+
     //draw grey rectagles for text information
     ofSetColor(128,128,128);
     ofFill();
@@ -377,7 +377,7 @@ void ofxNCoreAudio::drawMiniMode()
     ofRect(0,ofGetHeight() - 62, ofGetWidth(), 20);
     ofRect(0,ofGetHeight() - 41, ofGetWidth(), 20);
     ofRect(0,ofGetHeight() - 20, ofGetWidth(), 20);
-	
+
     //draw text
     ofSetColor(250,250,250);
     verdana.drawString("CCA" ,10, ofGetHeight() - 9 );
@@ -426,7 +426,7 @@ void ofxNCoreAudio::_mousePressed(ofMouseEventArgs &e)
         controls->mousePressed(e.x, e.y, e.button); // guilistener
         if (e.x > 722 && e.y > 586){ofLaunchBrowser("http://nuicode.com/projects/cca-alpha");}
     }
-	
+
     // printf("Mouse pressed at x=%d, y=%d\n", e.x, e.y);
 }
 
@@ -437,12 +437,12 @@ void ofxNCoreAudio::_mouseReleased(ofMouseEventArgs &e)
 }
 
 void ofxNCoreAudio::audioReceived( float * input, int bufferSize, int nChannels )
-{    
+{
     if (audioBuf==NULL) {
         audioBuf = new float[maxAudioSize];
         audioBufSize = 0;
     }
-    for (int i=0; i<bufferSize; i++) {  
+    for (int i=0; i<bufferSize; i++) {
         audioBuf[audioBufSize++] = input[i];
     }
 }
@@ -452,13 +452,13 @@ void ofxNCoreAudio::audioRequested(float * output, int bufferSize, int nChannels
     float pan = 0.5f;
     float leftScale = 1 - pan;
     float rightScale = pan;
-	
+
     for (int i=0; i<bufferSize; i++) {
         output[i*nChannels    ] = audioBuf[curPlayPoint] * leftScale;
         output[i*nChannels + 1] = audioBuf[curPlayPoint] * rightScale;
         curPlayPoint++;
     }
-	
+
 }
 
 /*****************************************************************************
@@ -467,15 +467,15 @@ void ofxNCoreAudio::audioRequested(float * output, int bufferSize, int nChannels
 void ofxNCoreAudio::_exit(ofEventArgs &e)
 {
     saveSettings();
-    
+
     asrEngine_1->engineExit();
     delete asrEngine_1;
     asrEngine_1 = NULL;
-    
+
     asrEngine_2->engineExit();
     delete asrEngine_2;
     asrEngine_2 = NULL;
-    
+
     if (audioBuf!=NULL) {
         delete[] audioBuf;
         audioBuf = NULL;
@@ -483,8 +483,8 @@ void ofxNCoreAudio::_exit(ofEventArgs &e)
     if (curAsrEngine!=NULL) {
         curAsrEngine = NULL;
     }
-	
-    //  -------------------------------- SAVE STATE ON EXIT	
+
+    //  -------------------------------- SAVE STATE ON EXIT
     printf("CCA module has exited!\n");
 }
 
@@ -494,7 +494,7 @@ void ofxNCoreAudio::_exit(ofEventArgs &e)
 void ofxNCoreAudio::setupControls()
 {
     ofxNCoreAudio  *appPtr = this;
-	
+
     // panel border color
     controls->mGlobals->mBorderColor.r = 0;
     controls->mGlobals->mBorderColor.g = 0;
@@ -529,7 +529,7 @@ void ofxNCoreAudio::setupControls()
     controls->mGlobals->mSliderColor.g = 0;
     controls->mGlobals->mSliderColor.b = 0;
     controls->mGlobals->mSliderColor.a = .8;
-	
+
     // Source Image
     ofxGuiPanel* srcPanel = controls->addPanel(appPtr->sourcePanel, "Input Audio Panel", 41, 270, OFXGUI_PANEL_BORDER, OFXGUI_PANEL_SPACING);
     srcPanel->addButton(appPtr->sourcePanel_record, "RECORD SOUND", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_Off, kofxGui_Button_Switch);
@@ -544,7 +544,7 @@ void ofxNCoreAudio::setupControls()
     srcPanel->mObjects[2]->mObjX = 130;
     srcPanel->mObjects[2]->mObjY = 65;
     srcPanel->mObjects[3]->mObjY = 65;
-	
+
     // Output Panel
     ofxGuiPanel* outputPanel = controls->addPanel(appPtr->outputPanel, "Convert Text Panel", 387, 270, OFXGUI_PANEL_BORDER, OFXGUI_PANEL_SPACING);
     outputPanel->addButton(appPtr->outputPanel_switchPickingMode, "COMMAND PICKING MODE", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, kofxGui_Button_On, kofxGui_Button_Switch);
@@ -556,27 +556,27 @@ void ofxNCoreAudio::setupControls()
     outputPanel->mObjects[1]->mObjY = 65;
     outputPanel->mObjects[2]->mObjX = 180;
     outputPanel->mObjects[2]->mObjY = 65;
-	
+
     srcPanel->adjustToNewContent(100, 0);
-    
+
     // Communication
     ofxGuiPanel* tcpPanel = controls->addPanel(appPtr->tcpPanel, "Communication", 735, 10, 12, OFXGUI_PANEL_SPACING);
 	tcpPanel->addButton(appPtr->tcpPanel_tcp_plaintext, "TCP Plain Text", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, outputMode==tcp_plaintext ? kofxGui_Button_On : kofxGui_Button_Off, kofxGui_Button_Switch);
 	tcpPanel->addButton(appPtr->tcpPanel_tcp_xml, "TCP XML", OFXGUI_BUTTON_HEIGHT, OFXGUI_BUTTON_HEIGHT, outputMode==tcp_xml ? kofxGui_Button_On : kofxGui_Button_Off, kofxGui_Button_Switch);
 	tcpPanel->mObjWidth = 200;
-	
+
     // do update while inactive
     controls->forceUpdate(false);
     controls->activate(true);
 }
 
 void ofxNCoreAudio ::handleGui(int parameterId, int task, void* data, int length)
-{	
+{
     switch(parameterId)
     {
 		case sourcePanel_record:
 			callback_sourcePanel_record();
-			break;			
+			break;
 		case sourcePanel_stop:
 			callback_sourcePanel_stop();
 			break;

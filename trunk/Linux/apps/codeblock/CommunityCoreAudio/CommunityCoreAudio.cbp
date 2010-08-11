@@ -100,6 +100,8 @@
 			<Add library="RtAudio" />
 			<Add library="GLee" />
 			<Add library="oFappsink" />
+			<Add library="../../../addons/ofxASR/libs/sphinx/lib/linux/libsphinxbase.so.1" />
+			<Add library="../../../addons/ofxASR/libs/sphinx/lib/linux/libs3decoder.so.0" />
 			<Add directory="../../../libs/openFrameworksCompiled/lib/linux" />
 			<Add directory="../../../libs/freetype/lib/linux" />
 			<Add directory="../../../libs/FreeImage/lib/linux" />
@@ -109,12 +111,13 @@
 			<Add directory="../../../libs/fmodex/lib/linux" />
 			<Add directory="../../../libs/unicap/lib/linux" />
 			<Add directory="../../../libs/poco/lib/linux" />
+			<Add directory="../../../addons/ofxASR/libs/sphinx/lib/linux" />
 		</Linker>
 		<ExtraCommands>
 			<Add after="#" />
 			<Add after="#      copy libs and shell script to bin directory:" />
 			<Add after="#" />
-			<Add after="cp -r ../../../export/linux/libs $(PROJECT_DIR)bin/" />
+			<Add after="cp -r ../../../export/linux/libs/*.so $(PROJECT_DIR)bin/" />
 			<Add after="cp ../../../export/linux/clickToLaunchApp.sh $(PROJECT_DIR)bin/clickToLaunchApp_$(TARGET_NAME).sh" />
 			<Add after="sed -i s/applicationName/$(TARGET_OUTPUT_BASENAME)/g  $(PROJECT_DIR)bin/clickToLaunchApp_$(TARGET_NAME).sh" />
 			<Add after="#" />
@@ -127,6 +130,8 @@
 			<Add after="#" />
 			<Add after="#     currently this is disabled, but allows you to run the app from w/in CB." />
 			<Add after="#" />
+			<Add after="cp ../../../addons/ofxASR/libs/sphinx/lib/linux/libs3decoder.so.0 $(PROJECT_DIR)bin/" />
+			<Add after="cp ../../../addons/ofxASR/libs/sphinx/lib/linux/libsphinxbase.so.1 $(PROJECT_DIR)bin/" />
 			<Mode after="always" />
 		</ExtraCommands>
 		<Unit filename="../../../addons/ofAddons.h" />
@@ -249,6 +254,8 @@
 		<Unit filename="../../../addons/ofxASR/src/ofxBaseASR.h" />
 		<Unit filename="../../../addons/ofxASR/src/ofxSphinxASR.cpp" />
 		<Unit filename="../../../addons/ofxASR/src/ofxSphinxASR.h" />
+		<Unit filename="../../../addons/ofxDirList/src/ofxDirList.cpp" />
+		<Unit filename="../../../addons/ofxDirList/src/ofxDirList.h" />
 		<Unit filename="../../../addons/ofxNCore/libs/libresample/include/libresample.h" />
 		<Unit filename="../../../addons/ofxNCore/libs/libresample/lib/configtemplate.h" />
 		<Unit filename="../../../addons/ofxNCore/libs/libresample/lib/filterkit.c">
